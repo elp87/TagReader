@@ -39,8 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvalidSynchSafeInt32Exception.cs" />
-    <Compile Include="SynchsafeInteger.cs" />
+    <Compile Include="ByteArray.cs" />
+    <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
+    <Compile Include="id3v2\Header.cs" />
+    <Compile Include="id3v2\ID3V2.cs" />
+    <Compile Include="id3v2\Exceptions\InvalidSynchSafeInt32Exception.cs" />
+    <Compile Include="id3v2\SynchsafeInteger.cs" />
+    <Compile Include="MP3File.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
