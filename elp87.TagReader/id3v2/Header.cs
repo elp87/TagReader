@@ -16,7 +16,10 @@ namespace elp87.TagReader.id3v2
         private int _tagSize;
         private FlagField _flagField;
 
-        public Header(byte[] file, int headerPosition)
+        public Header()
+        {
+        }
+        private Header(byte[] file, int headerPosition)
         {
             _header = new byte[_headerLenght];
             Array.Copy(file, headerPosition, _header, 0, _headerLenght);
@@ -51,7 +54,14 @@ namespace elp87.TagReader.id3v2
         public int tagSize
         {
             get { return _tagSize; }
-        }        
+        }
+
+        public void ReadHeader(byte[] file, int headerPosition)
+        {
+            _header = new byte[_headerLenght];
+            Array.Copy(file, headerPosition, _header, 0, _headerLenght);
+            this.ParseHeader();
+        }
 
         private void ParseHeader()
         {
