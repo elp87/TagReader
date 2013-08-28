@@ -22,15 +22,16 @@ namespace elp87.TagReader
             private int _pointPosition;
 
 
-            internal string _performer;
-            internal string _album = "";
-            internal string _title;
+            private string _album;
+            private string _performer;
+            private string _title;
+            private int _trackNumber;
+            private string _year;
             #endregion
 
             #region Constructors
             public ID3V2(string filename)
             {
-                // TODO: Complete member initialization
                 this._pointPosition = 0;
                 this.filename = filename;
                 this.ReadTag();
@@ -43,9 +44,15 @@ namespace elp87.TagReader
             public Frame frame { get; set; }
 
             #region TagProperties
-            public string performer { get { return _performer; } set { _performer = value; } }
             public string album { get { return _album; } set { _album = value; } }
+            public string performer { get { return _performer; } set { _performer = value; } }
             public string title { get { return _title; } set { _title = value; } }
+            public string trackNumber { get { return _trackNumber.ToString(); } set { _trackNumber = setTrackNumber(value); }
+            }
+
+            
+
+            public string year { get { return _year; } set { _year = value; } }
             #endregion
             #endregion
             #region Methods
@@ -64,19 +71,18 @@ namespace elp87.TagReader
                 this.GetTagByteArray(file, headerPosition);
 
                 _pointPosition += 10;
-
-                frame = new Frame();
-                frame.ReadFrame(this, _byteArray, _pointPosition);
-                _pointPosition += frame.frameSize + 10;
-
-                //this.SetFrame(frame);
+                while (this._header.tagSize > _pointPosition)
+                {
+                    frame = new Frame();
+                    frame.ReadFrame(this, _byteArray, _pointPosition);
+                    _pointPosition += frame.frameSize + 10;
+                }
             }
 
 
             private void GetTagByteArray(byte[] file, int headerPosition)
             {
                 int tagSize = this._header.tagSize;
-                //byte[] _byteArray = new byte[tagSize + 10];
                 Array.Copy(file, headerPosition, _byteArray, 0, tagSize + 10);
             }
 
@@ -89,11 +95,21 @@ namespace elp87.TagReader
             {
                 return ByteArray.FindSubArray(byteArray, _ID3HeaderMask);
             }
-
-            private void SetFrame(Frame frame)
+            
+            #region Getters and Setters
+            private int setTrackNumber(string value)
             {
-
+                int slashPos;
+                if ((slashPos = value.IndexOf('/')) == -1)
+                {
+                    return Convert.ToInt32(value);
+                }
+                else
+                {
+                    return Convert.ToInt32(value.Substring(0, slashPos));
+                }
             }
+            #endregion
             #endregion
 
 

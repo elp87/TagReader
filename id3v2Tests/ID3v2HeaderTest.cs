@@ -9,9 +9,10 @@ namespace id3v2Tests
     [TestClass]
     public class ID3v2HeaderTest
     {
+        private const string _filename02 = @"D:\TestAudio\01 Не простил .mp3";
         private const string _filename03 = @"Audio\01 Opening.mp3"; // Maybeshewill [2011 I Was Here For A Moment, Then I Was Gone] - 01 Opening
         private const string _filename04 = @"Audio\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
-        
+
         MP3File testFile03 = new MP3File(_filename03);
         MP3File testFile04 = new MP3File(_filename04);
         
@@ -58,6 +59,13 @@ namespace id3v2Tests
             Assert.AreEqual(_expFlag.extendedHeader, testFile04.id3v2.header.flagField.extendedHeader);
             Assert.AreEqual(_expFlag.experimentalIndicator, testFile04.id3v2.header.flagField.experimentalIndicator);
             Assert.AreEqual(_expFlag.footer, testFile04.id3v2.header.flagField.footer);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UnsupportedTagVersionException))]
+        public void UnsupportedTagVersionExceptionTest()
+        {
+            MP3File testFile02 = new MP3File(_filename02);
         }
     }
 }

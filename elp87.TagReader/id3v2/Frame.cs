@@ -11,7 +11,10 @@ namespace elp87.TagReader.id3v2
     {
         #region Constants
         private static Dictionary<string, string> _frameIDs
-            = new Dictionary<string, string>() { { "TALB", "album" }, { "TIT2", "title" }, { "TPE1", "performer" } };
+            = new Dictionary<string, string>() { { "TALB", "album" }, {"TDRC","year"}, { "TIT2", "title" }, { "TPE1", "performer" }, {"TRCK", "trackNumber"} };
+
+        private static Dictionary<string, string> _conformityFrame3To4
+            = new Dictionary<string, string>() { { "TYER", "TDRC" } };
         #endregion
 
         #region Fields
@@ -52,22 +55,20 @@ namespace elp87.TagReader.id3v2
             byte[] bom = new byte[2];
 
             GetIdentificator(tagArray, _id);
+            AdjustTagID();
             GetFrameSize(tagArray, size);
-            GetFlagsField(tagArray);
-            GetEncoding(tagArray, bom);
-            GetDataValue(tagArray);
-
-            SetValueIntoTag(tag);
-        }
-
-        private void SetValueIntoTag(ID3V2 tag)
-        {
-            if (_frameIDs.ContainsKey(this.id)) 
+            if (FindId())
             {
-                Type tagType = tag.GetType();
-                string propertyName = _frameIDs[this.id];
-                PropertyInfo selectedField = tagType.GetProperty(propertyName);
-                selectedField.SetValue(tag, this.value);
+                
+                GetFlagsField(tagArray);
+                GetEncoding(tagArray, bom);
+                GetDataValue(tagArray);
+
+                SetValueIntoTag(tag);
+            }
+            else
+            {
+                _pointPosition += this.frameSize;
             }
         }
         #endregion
@@ -78,6 +79,21 @@ namespace elp87.TagReader.id3v2
             Array.Copy(tag, _pointPosition, id, 0, 4);
             _identificator = Encoding.UTF8.GetString(id);
             _pointPosition += 4;            
+        }
+
+        private void AdjustTagID()
+        {
+            string _id4frame = "";
+            if (_conformityFrame3To4.TryGetValue(this._identificator, out _id4frame))
+            {
+                this._identificator = _id4frame;
+            }
+        }
+
+        private bool FindId()
+        {
+            string idDescription = "";
+            return _frameIDs.TryGetValue(this.id, out idDescription);
         }
 
         private void GetFrameSize(byte[] tag, byte[] size)
@@ -129,6 +145,19 @@ namespace elp87.TagReader.id3v2
             _frameData = new byte[_frameSize - _posOffset];
             Array.Copy(tag, _pointPosition, _frameData, 0, _frameSize - _posOffset);
             _frameValue = _enc.GetString(_frameData);
+        }
+
+        private void SetValueIntoTag(ID3V2 tag)
+        {
+            string propertyName = "";
+            bool isGetValue = _frameIDs.TryGetValue(this.id, out propertyName);
+            if (isGetValue == false) return;
+            else
+            {
+                Type tagType = tag.GetType();
+                PropertyInfo selectedField = tagType.GetProperty(propertyName);
+                selectedField.SetValue(tag, this.value);
+            }
         }
         #endregion
         #endregion

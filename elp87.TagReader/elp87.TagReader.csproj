@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ByteArray.cs" />
     <Compile Include="id3v2\Exceptions\UnknownEncodingException.cs" />
+    <Compile Include="id3v2\Exceptions\UnsupportedTagVersionException.cs" />
     <Compile Include="id3v2\Frame.cs" />
     <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
     <Compile Include="id3v2\Header.cs" />

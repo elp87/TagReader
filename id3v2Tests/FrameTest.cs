@@ -15,15 +15,21 @@ namespace id3v2Tests
         MP3File testFile04 = new MP3File(_filename04);
 
         [TestMethod]
-        public void FrameTest1()
+        public void FrameFile3Test()
         {
-            string expID = "TALB";
             string expAlbum = "I Was Here For A Moment, Then I Was Gone";
             string expArtist = "Maybeshewill";
+            string expTitle = "Opening";
+            string expDate = "2011";
+            string expNumber = "1";
 
-            Assert.AreEqual(expID, testFile03.id3v2.frame.id);
             Assert.AreEqual(expAlbum, testFile03.id3v2.album);
             Assert.AreEqual(expArtist, testFile03.id3v2.performer);
+            Assert.AreEqual(expTitle, testFile03.id3v2.title);
+            Assert.AreEqual(expDate, testFile03.id3v2.year);
+            Assert.AreEqual(expNumber, testFile03.id3v2.trackNumber);
         }
+
+        
     }
 }
