@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace elp87.TagReader
+namespace elp87.TagReader.id3v2.Exceptions
 {
     class InvalidSynchSafeInt32Exception : Exception
     {

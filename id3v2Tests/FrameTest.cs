@@ -30,6 +30,15 @@ namespace id3v2Tests
             Assert.AreEqual(expNumber, testFile03.id3v2.trackNumber);
         }
 
+        [TestMethod]
+        public void FrameStoaTest()
+        {
+            string _filename = @"D:\TestAudio\11 Hommage.mp3";
+            MP3File testFile = new MP3File(_filename);
+            string expArtist = "sToa";
+
+            Assert.AreEqual(expArtist, testFile.id3v2.performer);
+        }
         
     }
 }

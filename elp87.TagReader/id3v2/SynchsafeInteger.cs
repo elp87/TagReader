@@ -58,8 +58,8 @@ namespace elp87.TagReader
             {
                 byte[] returnByteArray = new byte[4];
                 int length = synchsafeByte.Length;
-                if (length > 4) { throw new InvalidSynchSafeInt32Exception("Invalid Synchsafe Integer Byte Array", "Length of byte array is more then 4 bytes", DateTime.Now); }
-                if (length == 0) { throw new InvalidSynchSafeInt32Exception("Invalid Synchsafe Integer Byte Array", "Byte array in NULL", DateTime.Now); }
+                if (length > 4) { throw new Exceptions.InvalidSynchSafeInt32Exception("Invalid Synchsafe Integer Byte Array", "Length of byte array is more then 4 bytes", DateTime.Now); }
+                if (length == 0) { throw new Exceptions.InvalidSynchSafeInt32Exception("Invalid Synchsafe Integer Byte Array", "Byte array in NULL", DateTime.Now); }
                 else
                 {
                     if (length == 1) { returnByteArray = new byte[4] {0, 0, 0, synchsafeByte[0]}; }

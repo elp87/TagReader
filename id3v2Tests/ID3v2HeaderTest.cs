@@ -62,7 +62,7 @@ namespace id3v2Tests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UnsupportedTagVersionException))]
+        [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.UnsupportedTagVersionException))]
         public void UnsupportedTagVersionExceptionTest()
         {
             MP3File testFile02 = new MP3File(_filename02);

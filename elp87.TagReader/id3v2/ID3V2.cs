@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Reflection;
 
 namespace elp87.TagReader
 {
@@ -47,14 +44,12 @@ namespace elp87.TagReader
             public string album { get { return _album; } set { _album = value; } }
             public string performer { get { return _performer; } set { _performer = value; } }
             public string title { get { return _title; } set { _title = value; } }
-            public string trackNumber { get { return _trackNumber.ToString(); } set { _trackNumber = setTrackNumber(value); }
-            }
-
+            public string trackNumber { get { return _trackNumber.ToString(); } set { _trackNumber = setTrackNumber(value); } }
             
-
             public string year { get { return _year; } set { _year = value; } }
             #endregion
             #endregion
+
             #region Methods
             #region Public
             #endregion

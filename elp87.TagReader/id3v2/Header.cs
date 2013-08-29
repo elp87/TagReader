@@ -58,7 +58,7 @@ namespace elp87.TagReader.id3v2
         private void ParseHeader()
         {
             _tagVersion = Convert.ToInt32(_header[3]);
-            if (_tagVersion > 4 || _tagVersion < 3) throw new UnsupportedTagVersionException("Unsupported Tag Version", "Tag version is " + _tagVersion, DateTime.Now);
+            if (_tagVersion > 4 || _tagVersion < 3) throw new Exceptions.UnsupportedTagVersionException("Unsupported Tag Version", "Tag version is " + _tagVersion, DateTime.Now);
             _tagRevVersion = Convert.ToInt32(_header[4]);
             _flagByte = _header[5];
             _flagField = new FlagField(_flagByte);
@@ -82,7 +82,7 @@ namespace elp87.TagReader.id3v2
                 _extendedHeader = Convert.ToBoolean((flagByte & 0x40) >> 6);
                 _experimental = Convert.ToBoolean((flagByte & 0x20) >> 5);
                 _footer = Convert.ToBoolean((flagByte & 0x10) >> 4);
-                if ((flagByte & 0x0F) != 0) throw new NotUsableFlagException("Invalid flag field. Undefined flags are set", Convert.ToString(flagByte, 2), DateTime.Now);
+                if ((flagByte & 0x0F) != 0) throw new Exceptions.NotUsableFlagException("Invalid flag field. Undefined flags are set", Convert.ToString(flagByte, 2), DateTime.Now);
             }
 
             public FlagField(bool unsynchronisation, bool extendedHeader, bool experimentalIndicator, bool footer)

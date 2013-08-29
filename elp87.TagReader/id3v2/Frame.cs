@@ -10,14 +10,13 @@ namespace elp87.TagReader.id3v2
     public class Frame
     {
         #region Constants
-        private static Dictionary<string, string> _frameIDs
-            = new Dictionary<string, string>() { { "TALB", "album" }, {"TDRC","year"}, { "TIT2", "title" }, { "TPE1", "performer" }, {"TRCK", "trackNumber"} };
+        private static Dictionary<string, FrameTypeInfo> _frameIDs = Dictionaries.frameIDs;
 
-        private static Dictionary<string, string> _conformityFrame3To4
-            = new Dictionary<string, string>() { { "TYER", "TDRC" } };
+        private static Dictionary<string, string> _conformityFrame3To4 = Dictionaries.conformityFrame3To4;
         #endregion
 
         #region Fields
+        private FrameTypeInfo _frame;
         private string _identificator;
         private string _frameValue;
         private byte[] _frameData;
@@ -59,11 +58,9 @@ namespace elp87.TagReader.id3v2
             GetFrameSize(tagArray, size);
             if (FindId())
             {
-                
                 GetFlagsField(tagArray);
-                GetEncoding(tagArray, bom);
+                if (_frame.hasEncoding) { GetEncoding(tagArray, bom); }
                 GetDataValue(tagArray);
-
                 SetValueIntoTag(tag);
             }
             else
@@ -78,7 +75,7 @@ namespace elp87.TagReader.id3v2
         {
             Array.Copy(tag, _pointPosition, id, 0, 4);
             _identificator = Encoding.UTF8.GetString(id);
-            _pointPosition += 4;            
+            _pointPosition += 4;
         }
 
         private void AdjustTagID()
@@ -92,8 +89,7 @@ namespace elp87.TagReader.id3v2
 
         private bool FindId()
         {
-            string idDescription = "";
-            return _frameIDs.TryGetValue(this.id, out idDescription);
+            return _frameIDs.TryGetValue(this.id, out _frame);
         }
 
         private void GetFrameSize(byte[] tag, byte[] size)
@@ -113,7 +109,7 @@ namespace elp87.TagReader.id3v2
         {
             _encodingByte = tag[_pointPosition];
             _posOffset = 1;
-            _pointPosition++;
+            _pointPosition += _frame.encogingOffset;
             switch (_encodingByte)
             {
                 case 0x00:
@@ -135,7 +131,7 @@ namespace elp87.TagReader.id3v2
                     break;
                 default:
                     byte[] idb = Encoding.UTF8.GetBytes(id);
-                    throw new UnknownEncodingException("Unknown encoding in frame " + _pointPosition, _encodingByte.ToString(), DateTime.Now);
+                    throw new Exceptions.UnknownEncodingException("Unknown encoding in frame " + _pointPosition, _encodingByte.ToString(), DateTime.Now);
                     break;
             }
         }
@@ -144,20 +140,20 @@ namespace elp87.TagReader.id3v2
         {
             _frameData = new byte[_frameSize - _posOffset];
             Array.Copy(tag, _pointPosition, _frameData, 0, _frameSize - _posOffset);
-            _frameValue = _enc.GetString(_frameData);
+            //if (_frameData[_frameData.Length - 1] == 0x00) Array.Resize(ref _frameData, _frameData.Length - 1);
+            if (_frame.hasEncoding)
+            {
+                _frameValue = _enc.GetString(_frameData);
+                if (_frameValue[_frameValue.Length - 1] == '\0') _frameValue = _frameValue.Substring(0, _frameValue.Length - 1);
+            }
         }
 
         private void SetValueIntoTag(ID3V2 tag)
-        {
-            string propertyName = "";
-            bool isGetValue = _frameIDs.TryGetValue(this.id, out propertyName);
-            if (isGetValue == false) return;
-            else
-            {
-                Type tagType = tag.GetType();
-                PropertyInfo selectedField = tagType.GetProperty(propertyName);
-                selectedField.SetValue(tag, this.value);
-            }
+        {            
+            Type tagType = tag.GetType();
+            PropertyInfo selectedField = tagType.GetProperty(_frame.idDescription);
+            if (_frame.hasEncoding) { selectedField.SetValue(tag, this.value); }
+            else { selectedField.SetValue(tag, this._frameData); }
         }
         #endregion
         #endregion

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteArray.cs" />
+    <Compile Include="id3v2\Dictionaries.cs" />
     <Compile Include="id3v2\Exceptions\UnknownEncodingException.cs" />
     <Compile Include="id3v2\Exceptions\UnsupportedTagVersionException.cs" />
     <Compile Include="id3v2\Frame.cs" />
     <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
+    <Compile Include="id3v2\FrameTypeInfo.cs" />
     <Compile Include="id3v2\Header.cs" />
     <Compile Include="id3v2\ID3V2.cs" />
     <Compile Include="id3v2\Exceptions\InvalidSynchSafeInt32Exception.cs" />

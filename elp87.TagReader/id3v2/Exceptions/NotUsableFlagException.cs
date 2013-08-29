@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace elp87.TagReader.id3v2
+namespace elp87.TagReader.id3v2.Exceptions
 {
     public class NotUsableFlagException: Exception
     {
