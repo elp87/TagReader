@@ -51,7 +51,7 @@ namespace elp87.TagReader.id3v2
             _pointPosition = pointPosition;
             byte[] _id = new byte[4];
             byte[] size = new byte[4];
-            byte[] bom = new byte[2];
+            
 
             GetIdentificator(tagArray, _id);
             AdjustTagID();
@@ -59,7 +59,6 @@ namespace elp87.TagReader.id3v2
             if (FindId())
             {
                 GetFlagsField(tagArray);
-                if (_frame.hasEncoding) { GetEncoding(tagArray, bom); }
                 GetDataValue(tagArray);
                 SetValueIntoTag(tag);
             }
@@ -67,7 +66,7 @@ namespace elp87.TagReader.id3v2
             {
                 _pointPosition += this.frameSize;
             }
-        }
+        }        
         #endregion
 
         #region Private
@@ -105,55 +104,17 @@ namespace elp87.TagReader.id3v2
             _pointPosition += 2;
         }
 
-        private void GetEncoding(byte[] tag, byte[] bom)
-        {
-            _encodingByte = tag[_pointPosition];
-            _posOffset = 1;
-            _pointPosition += _frame.encogingOffset;
-            switch (_encodingByte)
-            {
-                case 0x00:
-                    _enc = Encoding.GetEncoding("ISO-8859-1");
-                    break;
-                case 0x01:
-                    Array.Copy(tag, _pointPosition, bom, 0, 2);
-                    _enc = Encoding.Unicode;
-                    _pointPosition += 2;
-                    _posOffset += 2;
-                    // или Encoding.BigEndianUnicode в зависимости от BOM
-                    // TODO : Разобраться с BOM
-                    break;
-                case 0x02:
-                    _enc = Encoding.Unicode;
-                    break;
-                case 0x03:
-                    _enc = Encoding.UTF8;
-                    break;
-                default:
-                    byte[] idb = Encoding.UTF8.GetBytes(id);
-                    throw new Exceptions.UnknownEncodingException("Unknown encoding in frame " + _pointPosition, _encodingByte.ToString(), DateTime.Now);
-                    break;
-            }
-        }
-
         private void GetDataValue(byte[] tag)
         {
-            _frameData = new byte[_frameSize - _posOffset];
-            Array.Copy(tag, _pointPosition, _frameData, 0, _frameSize - _posOffset);
-            //if (_frameData[_frameData.Length - 1] == 0x00) Array.Resize(ref _frameData, _frameData.Length - 1);
-            if (_frame.hasEncoding)
-            {
-                _frameValue = _enc.GetString(_frameData);
-                if (_frameValue[_frameValue.Length - 1] == '\0') _frameValue = _frameValue.Substring(0, _frameValue.Length - 1);
-            }
+            _frameData = new byte[_frameSize];
+            Array.Copy(tag, _pointPosition, _frameData, 0, _frameSize);
         }
 
         private void SetValueIntoTag(ID3V2 tag)
         {            
             Type tagType = tag.GetType();
-            PropertyInfo selectedField = tagType.GetProperty(_frame.idDescription);
-            if (_frame.hasEncoding) { selectedField.SetValue(tag, this.value); }
-            else { selectedField.SetValue(tag, this._frameData); }
+            string methodName = "Set" + _frame.id;
+            tagType.GetMethod(methodName).Invoke(tag, new object[] {_frameData});
         }
         #endregion
         #endregion

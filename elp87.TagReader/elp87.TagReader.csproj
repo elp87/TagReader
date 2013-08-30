@@ -50,6 +50,7 @@
     <Compile Include="id3v2\Header.cs" />
     <Compile Include="id3v2\ID3V2.cs" />
     <Compile Include="id3v2\Exceptions\InvalidSynchSafeInt32Exception.cs" />
+    <Compile Include="id3v2\ID3V2_SetMetods.cs" />
     <Compile Include="id3v2\SynchsafeInteger.cs" />
     <Compile Include="MP3File.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

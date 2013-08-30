@@ -6,7 +6,7 @@ namespace elp87.TagReader
 {
     namespace id3v2
     {
-        public class ID3V2
+        public partial class ID3V2
         {
             #region Constants
             private readonly byte[] _ID3HeaderMask = { 0x49, 0x44, 0x33 };
