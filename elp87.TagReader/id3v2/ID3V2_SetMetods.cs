@@ -80,7 +80,9 @@ namespace elp87.TagReader.id3v2
             Array.Copy(tag, posOffset, _frameData, 0, _frameData.Length);
             
             string _frameValue = enc.GetString(_frameData);
+            if (_frameValue.Length == 0) return "";
             if (_frameValue[_frameValue.Length - 1] == '\0') _frameValue = _frameValue.Substring(0, _frameValue.Length - 1);
+            
             return _frameValue;
 
         }

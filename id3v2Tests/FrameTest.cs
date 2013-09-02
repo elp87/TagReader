@@ -10,7 +10,8 @@ namespace id3v2Tests
     {
         private const string _filename03 = @"Audio\01 Opening.mp3"; // Maybeshewill [2011 I Was Here For A Moment, Then I Was Gone] - 01 Opening
         private const string _filename04 = @"Audio\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
-        private const string _filenameTIE = @"D:\TestAudio\07 Манечка.mp3";
+        private const string _filenameTRCKWithDot = @"D:\TestAudio\07 Манечка.mp3";
+        private const string _filenameTRCKEmpty = @"D:\TestAudio\01.The Sounds Of Infinity - Pianology.mp3";
         
         MP3File testFile03 = new MP3File(_filename03);
         MP3File testFile04 = new MP3File(_filename04);
@@ -44,7 +45,7 @@ namespace id3v2Tests
         [TestMethod]
         public void FrameTRCKWithDotTest()
         {
-            MP3File testFileWithDot = new MP3File(_filenameTIE);
+            MP3File testFileWithDot = new MP3File(_filenameTRCKWithDot);
 
             string expTrackPositionWithDot = "1.07";
             int expTrackNumberWithDot = 7;
@@ -57,6 +58,18 @@ namespace id3v2Tests
             Assert.AreEqual(expTrackPositionWithSlash, testFile03.id3v2.trackPosition);
             Assert.AreEqual(expTrackNumberWithSlash, testFile03.id3v2.trackNumber);
         }
-        
+
+        [TestMethod]
+        //[ExpectedException(typeof(FormatException))]
+        public void EmptyTRCKFrameTest()
+        {
+            MP3File testFileTIE = new MP3File(_filenameTRCKEmpty);
+
+            int expTrackNumber = -1;
+            string expTrackPosition = "";
+
+            Assert.AreEqual(expTrackNumber, testFileTIE.id3v2.trackNumber);
+            Assert.AreEqual(expTrackPosition, testFileTIE.id3v2.trackPosition);
+        }
     }
 }

@@ -48,8 +48,8 @@ namespace elp87.TagReader
             public int trackNumber
             {
                 get
-                {
-                    return setTrackNumber(_trackNumber);
+                {                    
+                    return getTrackNumber(_trackNumber);
                 }
                 set
                 {
@@ -104,8 +104,9 @@ namespace elp87.TagReader
             }
             
             #region Getters and Setters
-            private int setTrackNumber(string value)
+            private int getTrackNumber(string value)
             {
+                if (value == "") return -1;
                 int slashPos = value.IndexOf('/');
                 int dotPos = value.IndexOf('.');
                 if ((slashPos == -1) && (dotPos == -1))
