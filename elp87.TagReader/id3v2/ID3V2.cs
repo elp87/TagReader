@@ -14,6 +14,7 @@ namespace elp87.TagReader
             #region Fields
             private string filename;
             private Header _header;
+            private ExtHeader _extHeader;
             private byte[] _byteArray;
             private int _pointPosition;
 
@@ -42,8 +43,8 @@ namespace elp87.TagReader
 
             #region Properties
             public Header header { get { return _header; } }
-
-            public Frame frame { get; set; }
+            public ExtHeader extHeader { get { return _extHeader; } }
+            //public Frame frame { get; set; }
 
             #region TagProperties
             public string album { get { return _album; } set { _album = value; } }
@@ -73,13 +74,16 @@ namespace elp87.TagReader
                 this.GetTagByteArray(file, headerPosition);
 
                 _pointPosition += 10;
+                if (this._header.flagField.extendedHeader) this.ReadExtHeader();
                 while (this._header.tagSize > _pointPosition)
                 {
-                    frame = new Frame();
+                    Frame frame = new Frame();
                     frame.ReadFrame(this, _byteArray, _pointPosition);
                     _pointPosition += frame.frameSize + 10;
                 }
             }
+
+            
 
 
             private void GetTagByteArray(byte[] file, int headerPosition)
@@ -96,6 +100,18 @@ namespace elp87.TagReader
             private int FindHeader(byte[] byteArray)
             {
                 return ByteArray.FindSubArray(byteArray, _ID3HeaderMask);
+            }
+
+            private void ReadExtHeader()
+            {
+                this._extHeader = new ExtHeader();
+                byte[] extHeaderSizeArray = new byte[4];
+                Array.Copy(_byteArray, _pointPosition, extHeaderSizeArray, 0, 4);
+                SynchsafeInteger ssSize = new SynchsafeInteger(extHeaderSizeArray);
+                this._extHeader.size = ssSize.ToInt();
+                _pointPosition += 4;
+                this.extHeader.ParseFlagField(_byteArray[_pointPosition]);
+                _pointPosition += this.extHeader.size;
             }
             
             #region Getters and Setters

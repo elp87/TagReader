@@ -13,6 +13,7 @@ namespace id3v2Tests
         private const string _filename02 = @"D:\TestAudio\01 Не простил .mp3";
         private const string _filename03 = @"Audio\01 Opening.mp3"; // Maybeshewill [2011 I Was Here For A Moment, Then I Was Gone] - 01 Opening
         private const string _filename04 = @"Audio\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
+        private const string _filenameExtHeader = @"D:\TestAudio\sample_v2_3_ext_header.mp3";
 
         MP3File testFile03 = new MP3File(_filename03);
         MP3File testFile04 = new MP3File(_filename04);
@@ -76,6 +77,20 @@ namespace id3v2Tests
             MP3File testFileNull = new MP3File(_filenameNull);
         }
 
+        [TestMethod]
+        public void ExtendedHeaderTest()
+        {
+            int expSize = 6;
+            string expTitle = "Title v2";
+
+            MP3File testFileExtHeader = new MP3File(_filenameExtHeader);
+
+            Assert.AreEqual(expSize, testFileExtHeader.id3v2.extHeader.size);
+            Assert.AreEqual(false, testFileExtHeader.id3v2.extHeader.update);
+            Assert.AreEqual(false, testFileExtHeader.id3v2.extHeader.CRC);
+            Assert.AreEqual(false, testFileExtHeader.id3v2.extHeader.restrictions);
+            Assert.AreEqual(expTitle, testFileExtHeader.id3v2.title);
+        }
         
     }
 }
