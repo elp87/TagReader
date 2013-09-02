@@ -9,6 +9,7 @@ namespace id3v2Tests
     [TestClass]
     public class ID3v2HeaderTest
     {
+        private const string _filenameNull = @"D:\TestAudio\03.The Sounds Of Infinity - Freedom (Vocal).mp3";
         private const string _filename02 = @"D:\TestAudio\01 Не простил .mp3";
         private const string _filename03 = @"Audio\01 Opening.mp3"; // Maybeshewill [2011 I Was Here For A Moment, Then I Was Gone] - 01 Opening
         private const string _filename04 = @"Audio\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
@@ -66,6 +67,13 @@ namespace id3v2Tests
         public void UnsupportedTagVersionExceptionTest()
         {
             MP3File testFile02 = new MP3File(_filename02);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.NoID3V2TagException))]
+        public void NoID3V2TagExceptionTest()
+        {
+            MP3File testFileNull = new MP3File(_filenameNull);
         }
     }
 }
