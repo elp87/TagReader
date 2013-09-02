@@ -22,7 +22,7 @@ namespace elp87.TagReader
             private string _album;
             private string _performer;
             private string _title;
-            private int _trackNumber;
+            private string _trackNumber;
             private string _year;
             #endregion
 
@@ -44,7 +44,18 @@ namespace elp87.TagReader
             public string album { get { return _album; } set { _album = value; } }
             public string performer { get { return _performer; } set { _performer = value; } }
             public string title { get { return _title; } set { _title = value; } }
-            public string trackNumber { get { return _trackNumber.ToString(); } set { _trackNumber = setTrackNumber(value); } }
+            public string trackPosition { get { return _trackNumber; } set { _trackNumber = value; } }
+            public int trackNumber
+            {
+                get
+                {
+                    return setTrackNumber(_trackNumber);
+                }
+                set
+                {
+                    _trackNumber = value.ToString();
+                }
+            }
             
             public string year { get { return _year; } set { _year = value; } }
             #endregion
@@ -95,15 +106,18 @@ namespace elp87.TagReader
             #region Getters and Setters
             private int setTrackNumber(string value)
             {
-                int slashPos;
-                if ((slashPos = value.IndexOf('/')) == -1)
+                int slashPos = value.IndexOf('/');
+                int dotPos = value.IndexOf('.');
+                if ((slashPos == -1) && (dotPos == -1))
                 {
                     return Convert.ToInt32(value);
                 }
                 else
                 {
-                    return Convert.ToInt32(value.Substring(0, slashPos));
+                    if (slashPos != -1) return Convert.ToInt32(value.Substring(0, slashPos));
+                    if (dotPos != -1) return Convert.ToInt32(value.Substring(dotPos + 1));
                 }
+                throw new Exceptions.FrameTRCKException("Cant parse frame value", "Frame value - " + value, DateTime.Now);
             }
             #endregion
             #endregion

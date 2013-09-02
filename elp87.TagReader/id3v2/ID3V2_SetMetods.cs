@@ -30,9 +30,10 @@ namespace elp87.TagReader.id3v2
 
         public void SetTRCK(byte[] data)
         {
-            this.trackNumber = SetTextInformationFrame(data);
+            this.trackPosition = SetTextInformationFrame(data);
         }
 
+        #region Private
         private string SetTextInformationFrame(byte[] data)
         {
             byte[] bom = new byte[2];
@@ -42,6 +43,7 @@ namespace elp87.TagReader.id3v2
             return GetDataValue(data, _enc, _posOffset);
         }
 
+        
         private Encoding GetEncoding(byte[] tag, byte[] bom, out int posOffset)
         {
             Encoding _enc;
@@ -82,7 +84,7 @@ namespace elp87.TagReader.id3v2
             return _frameValue;
 
         }
-
+        #endregion
 
     }
 }
