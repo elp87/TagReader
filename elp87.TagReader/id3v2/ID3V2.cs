@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 
 namespace elp87.TagReader
@@ -24,10 +23,16 @@ namespace elp87.TagReader
             private string _title;
             private string _trackNumber;
             private string _year;
+            private Ufid _UFID;
             #endregion
 
             #region Constructors
+            private ID3V2()
+            {
+                _UFID = new Ufid();
+            }
             public ID3V2(string filename)
+                : this()
             {
                 this._pointPosition = 0;
                 this.filename = filename;
@@ -45,19 +50,9 @@ namespace elp87.TagReader
             public string performer { get { return _performer; } set { _performer = value; } }
             public string title { get { return _title; } set { _title = value; } }
             public string trackPosition { get { return _trackNumber; } set { _trackNumber = value; } }
-            public int trackNumber
-            {
-                get
-                {                    
-                    return getTrackNumber(_trackNumber);
-                }
-                set
-                {
-                    _trackNumber = value.ToString();
-                }
-            }
-            
+            public int trackNumber { get { return getTrackNumber(_trackNumber); } set { _trackNumber = value.ToString(); } }            
             public string year { get { return _year; } set { _year = value; } }
+            public Ufid UFID { get { return _UFID; } set { _UFID = value; } }
             #endregion
             #endregion
 

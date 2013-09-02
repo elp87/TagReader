@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace elp87.TagReader.id3v2
 {
@@ -33,6 +30,18 @@ namespace elp87.TagReader.id3v2
             this.trackPosition = SetTextInformationFrame(data);
         }
 
+        public void SetUFID(byte[] data)
+        {
+            byte zeroMask = Convert.ToByte(0);
+            int zeroPos = Array.IndexOf(data, zeroMask);
+            byte[] ownerArray = new byte[zeroPos];
+            byte[] idArray = new byte[data.Length - zeroPos - 1];
+            Array.Copy(data, ownerArray, zeroPos);            
+            this.UFID.owner = Encoding.UTF8.GetString(ownerArray);
+            Array.Copy(data, zeroPos + 1, idArray, 0, data.Length - zeroPos - 1);
+            this.UFID.id = idArray;
+        }
+
         #region Private
         private string SetTextInformationFrame(byte[] data)
         {
@@ -43,7 +52,7 @@ namespace elp87.TagReader.id3v2
             return GetDataValue(data, _enc, _posOffset);
         }
 
-        
+
         private Encoding GetEncoding(byte[] tag, byte[] bom, out int posOffset)
         {
             Encoding _enc;
@@ -78,11 +87,11 @@ namespace elp87.TagReader.id3v2
         {
             byte[] _frameData = new byte[tag.Length - posOffset];
             Array.Copy(tag, posOffset, _frameData, 0, _frameData.Length);
-            
+
             string _frameValue = enc.GetString(_frameData);
             if (_frameValue.Length == 0) return "";
             if (_frameValue[_frameValue.Length - 1] == '\0') _frameValue = _frameValue.Substring(0, _frameValue.Length - 1);
-            
+
             return _frameValue;
 
         }

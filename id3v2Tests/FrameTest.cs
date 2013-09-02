@@ -12,6 +12,7 @@ namespace id3v2Tests
         private const string _filename04 = @"Audio\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
         private const string _filenameTRCKWithDot = @"D:\TestAudio\07 Манечка.mp3";
         private const string _filenameTRCKEmpty = @"D:\TestAudio\01.The Sounds Of Infinity - Pianology.mp3";
+        private const string _filenameUFID = @"D:\TestAudio\01 - Legend.mp3";
         
         MP3File testFile03 = new MP3File(_filename03);
         MP3File testFile04 = new MP3File(_filename04);
@@ -60,16 +61,29 @@ namespace id3v2Tests
         }
 
         [TestMethod]
-        //[ExpectedException(typeof(FormatException))]
         public void EmptyTRCKFrameTest()
         {
-            MP3File testFileTIE = new MP3File(_filenameTRCKEmpty);
+            MP3File testFileEmptyTRCK = new MP3File(_filenameTRCKEmpty);
 
             int expTrackNumber = -1;
             string expTrackPosition = "";
 
-            Assert.AreEqual(expTrackNumber, testFileTIE.id3v2.trackNumber);
-            Assert.AreEqual(expTrackPosition, testFileTIE.id3v2.trackPosition);
+            Assert.AreEqual(expTrackNumber, testFileEmptyTRCK.id3v2.trackNumber);
+            Assert.AreEqual(expTrackPosition, testFileEmptyTRCK.id3v2.trackPosition);
+        }
+
+        [TestMethod]
+        public void UFIDFrameTest()
+        {
+            string expOwner = @"http://www.cddb.com/id3/taginfo1.html";
+            string idString = "3CD3N93Q269365932U2185C4CA14D5CD229F887726B0116D8B8BBP2";
+            byte[] expID = System.Text.Encoding.UTF8.GetBytes(idString);
+            
+            MP3File testFileUFID = new MP3File(_filenameUFID);
+
+            Assert.AreEqual(expOwner, testFileUFID.id3v2.UFID.owner);
+            Assert.AreEqual(idString, testFileUFID.id3v2.UFID.GetStringID());
+            CollectionAssert.AreEqual(expID, testFileUFID.id3v2.UFID.id);            
         }
     }
 }
