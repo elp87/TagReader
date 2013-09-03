@@ -17,8 +17,7 @@ namespace elp87.TagReader
             private ExtHeader _extHeader;
             private byte[] _byteArray;
             private int _pointPosition;
-
-
+            
             private string _album;
             private string _performer;
             private string _title;
@@ -44,16 +43,15 @@ namespace elp87.TagReader
             #region Properties
             public Header header { get { return _header; } }
             public ExtHeader extHeader { get { return _extHeader; } }
-            //public Frame frame { get; set; }
-
+            
             #region TagProperties
-            public string album { get { return _album; } set { _album = value; } }
-            public string performer { get { return _performer; } set { _performer = value; } }
-            public string title { get { return _title; } set { _title = value; } }
-            public string trackPosition { get { return _trackNumber; } set { _trackNumber = value; } }
-            public int trackNumber { get { return getTrackNumber(_trackNumber); } set { _trackNumber = value.ToString(); } }            
-            public string year { get { return _year; } set { _year = value; } }
-            public Ufid UFID { get { return _UFID; } set { _UFID = value; } }
+            public string album             { get { return _album; } set { _album = value; } }            
+            public string performer         { get { return _performer; } set { _performer = value; } }
+            public string title             { get { return _title; } set { _title = value; } }
+            public string trackPosition     { get { return _trackNumber; } set { _trackNumber = value; } }
+            public int trackNumber          { get { return getTrackNumber(_trackNumber); } set { _trackNumber = value.ToString(); } }            
+            public string year              { get { return _year; } set { _year = value; } }
+            public Ufid UFID                { get { return _UFID; } set { _UFID = value; } }
             #endregion
             #endregion
 
