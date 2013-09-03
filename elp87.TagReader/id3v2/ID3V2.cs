@@ -74,7 +74,12 @@ namespace elp87.TagReader
                 this.GetTagByteArray(file, headerPosition);
 
                 _pointPosition += 10;
-                if (this._header.flagField.extendedHeader) this.ReadExtHeader();
+                if (this._header.flagField.extendedHeader)
+                {
+                    this._extHeader = new ExtHeader();
+                    _extHeader.ReadExtHeader(_byteArray, _pointPosition);
+                    _pointPosition += this._extHeader.size;
+                }
                 while (this._header.tagSize > _pointPosition)
                 {
                     Frame frame = new Frame();
@@ -102,17 +107,7 @@ namespace elp87.TagReader
                 return ByteArray.FindSubArray(byteArray, _ID3HeaderMask);
             }
 
-            private void ReadExtHeader()
-            {
-                this._extHeader = new ExtHeader();
-                byte[] extHeaderSizeArray = new byte[4];
-                Array.Copy(_byteArray, _pointPosition, extHeaderSizeArray, 0, 4);
-                SynchsafeInteger ssSize = new SynchsafeInteger(extHeaderSizeArray);
-                this._extHeader.size = ssSize.ToInt();
-                _pointPosition += 4;
-                this.extHeader.ParseFlagField(_byteArray[_pointPosition]);
-                _pointPosition += this.extHeader.size;
-            }
+            
             
             #region Getters and Setters
             private int getTrackNumber(string value)

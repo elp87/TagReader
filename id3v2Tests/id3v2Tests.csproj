@@ -53,6 +53,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExtendedHeaderTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,6 +16,8 @@ namespace id3v2Tests
         byte[] ssByte3 = { 0, 3, 127, 127 };
         byte[] ssByte4 = { 0, 9, 63, 17 };
 
+        byte[] ssCRCBytes = { 0x06, 0x35, 0x75, 0x4D, 0x78 };
+
         int expValue1 = 10;
         int expValue2 = 255;
         int expValue3 = 65535;
@@ -42,8 +44,36 @@ namespace id3v2Tests
             Assert.AreEqual(expValue1, testSSInt1.ToInt());
             Assert.AreEqual(expValue2, testSSInt2.ToInt());
             Assert.AreEqual(expValue3, testSSInt3.ToInt());
-            //Assert.AreEqual(expValue4, testSSInt4.ToInt());
+            Assert.AreEqual(expValue4, testSSInt4.ToInt());
         }
-               
+
+        [TestMethod]
+        public void TestSynchsafeIntToSynchsafeByte()
+        {
+            SynchsafeInteger testSSInt2 = new SynchsafeInteger(ssByte2);
+            int ssIntCalc = testSSInt2.SynchSafeInt;
+
+            Assert.AreEqual(ssInt2, ssIntCalc);
+        }
+
+        [TestMethod]
+        public void TestSynchsafeCRCToInt()
+        {            
+            int expInt = 1723688696;
+
+            SynchsafeCRC test = new SynchsafeCRC(ssCRCBytes);
+
+            Assert.AreEqual(expInt, test.ToInt());
+        }
+
+        [TestMethod]
+        public void TestSynchsafeCRCToCRC32()
+        {
+            byte[] expByte = { 0X66, 0xBD, 0x66, 0xF8 };
+
+            SynchsafeCRC test = new SynchsafeCRC(ssCRCBytes);
+
+            CollectionAssert.AreEqual(expByte, test.ToByte());
+        }
     }
 }

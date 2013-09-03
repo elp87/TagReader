@@ -25,6 +25,19 @@ namespace elp87.TagReader
             return -1;
         }
 
+        public static byte[] Reverse(byte[] byteArray)
+        {
+            int length = byteArray.Length;
+            byte[] reverseArray = new byte[length];
+            int index = 0;
+            for (int i = length - 1; i >= 0; i--)
+            {
+                reverseArray[index] = byteArray[i];
+                index++;
+            }
+            return reverseArray;
+        }
+
         
     }
 }
