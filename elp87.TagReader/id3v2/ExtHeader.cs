@@ -5,11 +5,19 @@ namespace elp87.TagReader.id3v2
     public class ExtHeader
     {
         // TODO: ExtHeader work with id3v2.4 only. Make for 2.3
+        #region Fields
         private bool _isUpdate;
         private bool _isCRC;
         private bool _isRestrictions;
         private int _CRC;
+        private TagSizeRestriction _tagSizeRestriction;
+        private TextEncodingRestriction _textEncodingRestriction;
+        private TextFieldsSizeRestriction _textFieldsSizeRestriction;
+        private ImageEncodingRestriction _imageEncodingRestriction;
+        private ImageSizeRestriction _imageSizeRestriction;
+        #endregion
 
+        #region Properties
         public int size { get; set; }
         public bool isUpdate { get { return _isUpdate; } }
         public bool isCRC { get { return _isCRC; } }
@@ -17,6 +25,15 @@ namespace elp87.TagReader.id3v2
 
         public int CRC { get { return _CRC; } }
 
+        public TagSizeRestriction tagSizeRestriction { get { return _tagSizeRestriction; } }
+        public TextEncodingRestriction textEncodingRestriction { get { return _textEncodingRestriction; } }
+        public TextFieldsSizeRestriction textFieldsSizeRestriction { get { return _textFieldsSizeRestriction; } }
+        public ImageEncodingRestriction imageEncodingRestriction { get { return _imageEncodingRestriction; } }
+        public ImageSizeRestriction imageSizeRestriction { get { return _imageSizeRestriction; } }
+        #endregion
+
+        #region Methods
+        #region Internal
         internal void ParseFlagField(byte flagByte)
         {
             _isUpdate = Convert.ToBoolean((flagByte & 0x40) >> 6);
@@ -42,10 +59,14 @@ namespace elp87.TagReader.id3v2
             }
             if (this._isRestrictions)
             {
-                this.ReadRestrictions();
+                pointPosition += 1; // 0x01 - Кол-во байт флага
+                this.ReadRestrictions(byteArray, pointPosition);
+                pointPosition += 1; // Сдвиг после поля ограничения тега
             }
-        }
+        }       
+        #endregion
 
+        #region Private
         private int GetSize(byte[] byteArray, int pointPosition)
         {
             byte[] extHeaderSizeArray = new byte[4];
@@ -62,11 +83,85 @@ namespace elp87.TagReader.id3v2
             this._CRC = CRCField.ToInt();
         }
 
-        private void ReadRestrictions()
+        private void ReadRestrictions(byte[] byteArray, int pointPosition)
         {
-            throw new NotImplementedException();
+            byte RestrictionByte = byteArray[pointPosition];
+            this._tagSizeRestriction = GetTagSizeRestrict(RestrictionByte);
+            this._textEncodingRestriction = GetTextEncodingRestriction(RestrictionByte);
+            this._textFieldsSizeRestriction = GetTextFieldsSizeRestriction(RestrictionByte);
+            this._imageEncodingRestriction = GetImageEncodingRestriction(RestrictionByte);
+            this._imageSizeRestriction = GetImageSizeRestriction(RestrictionByte);
         }
 
-        
+        private TagSizeRestriction GetTagSizeRestrict(byte RestrictionByte)
+        {
+            int tagSizeFlagValue = (RestrictionByte & 0xC0) >> 6;
+            return (TagSizeRestriction)tagSizeFlagValue;             
+        }
+
+        private TextEncodingRestriction GetTextEncodingRestriction(byte RestrictionByte)
+        {
+            int textEncodingFlagValue = (RestrictionByte & 0x20) >> 5;
+            return (TextEncodingRestriction)textEncodingFlagValue;
+        }
+
+        private TextFieldsSizeRestriction GetTextFieldsSizeRestriction(byte RestrictionByte)
+        {
+            int textFieldSizeFlagValue = (RestrictionByte & 0x18) >> 3;
+            return (TextFieldsSizeRestriction)textFieldSizeFlagValue;
+        }
+
+        private ImageEncodingRestriction GetImageEncodingRestriction(byte RestrictionByte)
+        {
+            int imageEncodingFlagValue = (RestrictionByte & 0x04) >> 2;
+            return (ImageEncodingRestriction)imageEncodingFlagValue;
+        }
+
+        private ImageSizeRestriction GetImageSizeRestriction(byte RestrictionByte)
+        {
+            int imageSizeFlagValue = (RestrictionByte & 0x03);
+            return (ImageSizeRestriction)imageSizeFlagValue;
+        }
+        #endregion
+        #endregion
+
+        #region Enums
+        public enum TagSizeRestriction
+        {
+            NoMore1MBTagSize = 0,
+            NoMore128KBTagSize = 1,
+            NoMore40KBTagSize = 2,
+            NoMore4KBTagSize = 3
+        }
+
+        public enum TextEncodingRestriction
+        {
+            NoRestrictions = 0,
+            ISO_8859_Or_UTF8_Only
+        }
+
+        public enum TextFieldsSizeRestriction
+        {
+            NoRestrictions = 0,
+            NoLonger1024Char = 1,
+            NoLonger128Char = 2,
+            NoLonger30Char = 3
+        }
+
+        public enum ImageEncodingRestriction
+        {
+            NoRestrictions = 0,
+            PngOrJpegOnly = 1
+        }
+
+        public enum ImageSizeRestriction
+        {
+            NoRestrictions = 0,
+            Smaller256Pixel = 1,
+            Smaller64Pixel = 2,
+            Exactly64Pixel = 3
+        }
+        #endregion
+
     }
 }

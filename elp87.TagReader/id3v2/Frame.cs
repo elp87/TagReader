@@ -15,28 +15,21 @@ namespace elp87.TagReader.id3v2
         #region Fields
         private FrameTypeInfo _frame;
         private string _identificator;
-        private string _frameValue;
         private byte[] _frameData;
         private int _frameSize;
-        private int _posOffset;
         private int _pointPosition;
         private byte[] _flags;
-        private byte _encodingByte;
-        private Encoding _enc;
         #endregion
 
         #region Constructors
         public Frame()
         {
             _flags = new byte[2];
-            _posOffset = 0;
         }
         #endregion
 
         #region Properties
         public string id { get { return _identificator; } }
-
-        public string value { get { return _frameValue; } }
 
         public int frameSize { get { return _frameSize; } }
         #endregion
