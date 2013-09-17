@@ -58,6 +58,7 @@
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FrameTest.cs" />
+    <Compile Include="BitOperationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\elp87.TagReader\elp87.TagReader.csproj">

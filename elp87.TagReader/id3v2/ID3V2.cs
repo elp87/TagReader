@@ -80,7 +80,7 @@ namespace elp87.TagReader
                 }
                 while (this._header.tagSize > _pointPosition)
                 {
-                    Frame frame = new Frame();
+                    FrameReader frame = new FrameReader();
                     frame.ReadFrame(this, _byteArray, _pointPosition);
                     _pointPosition += frame.frameSize + 10;
                 }

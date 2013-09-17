@@ -37,6 +37,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteOperation.cs" />
     <Compile Include="ByteArray.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
     <Compile Include="id3v2\Exceptions\FrameTRCKException.cs" />
@@ -44,8 +45,10 @@
     <Compile Include="id3v2\Exceptions\UnknownEncodingException.cs" />
     <Compile Include="id3v2\Exceptions\UnsupportedTagVersionException.cs" />
     <Compile Include="id3v2\ExtHeader.cs" />
-    <Compile Include="id3v2\Frame.cs" />
+    <Compile Include="id3v2\Exceptions\FlagUnsetException.cs" />
+    <Compile Include="id3v2\FrameReader.cs" />
     <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
+    <Compile Include="id3v2\FrameFlagSet.cs" />
     <Compile Include="id3v2\FrameTypeInfo.cs" />
     <Compile Include="id3v2\Header.cs" />
     <Compile Include="id3v2\ID3V2.cs" />

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2
 {
-    public class Frame
+    public class FrameReader
     {
         #region Constants
         private static Dictionary<string, FrameTypeInfo> _frameIDs = Dictionaries.frameIDs;
@@ -19,12 +19,13 @@ namespace elp87.TagReader.id3v2
         private int _frameSize;
         private int _pointPosition;
         private byte[] _flags;
+        private FrameFlagSet _flagSet;
         #endregion
 
         #region Constructors
-        public Frame()
+        public FrameReader()
         {
-            _flags = new byte[2];
+            _flags = new byte[2];            
         }
         #endregion
 
@@ -49,6 +50,8 @@ namespace elp87.TagReader.id3v2
             if (FindId())
             {
                 GetFlagsField(tagArray);
+                _flagSet = new FrameFlagSet(_flags);
+                _pointPosition += _flagSet.GetExtraDate(tagArray, _pointPosition);
                 GetDataValue(tagArray);
                 SetValueIntoTag(tag);
             }

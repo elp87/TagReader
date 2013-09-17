@@ -3,7 +3,7 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2
 {
-    public partial class ID3V2
+    /*public partial class ID3V2
     {
         public void SetTALB(byte[] data)
         {
@@ -97,5 +97,5 @@ namespace elp87.TagReader.id3v2
         }
         #endregion
 
-    }
+    }*/
 }
