@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="ByteOperation.cs" />
     <Compile Include="ByteArray.cs" />
+    <Compile Include="id3v2\Abstract\Frame.cs" />
+    <Compile Include="id3v2\Abstract\TextFrame.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
     <Compile Include="id3v2\Exceptions\FrameTRCKException.cs" />
     <Compile Include="id3v2\Exceptions\NoID3V2TagException.cs" />
