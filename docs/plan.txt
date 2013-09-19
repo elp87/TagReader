@@ -1,0 +1,101 @@
+1.	abstract
+	1.1		FrameFlagSet - testing
+			1.1.0	FrameFlagSet
+			1.1.1	FlagUnsetException
+			1.1.2	NotUsableFlagException
+	1.2		Frame
+	1.3		TextFrame
+			1.3.0	TextFrame
+			1.3.1	enum TextEncoding
+	1.4		TextInfoFrame
+	1.5		NumericStringFrame
+	1.6		SlashNumericStringFrame
+	1.7		OwnerIDFrame
+	1.8		OwnerIDTextFrame
+	1.9 	UserDefinedFrame
+	1.10	PositionFrame
+	1.11	ITimeStampFrame
+	1.12	TimeStampFrame
+	1.13	TimeStampTextFrame
+	1.14	LanguageTextFrame
+	1.15	LanguageImeStampTextFrame
+	1.16	TypeRefinementFrame (see TextFrames1)
+2.	TextFrames
+	2.1		IdentificationFrameSet
+	2.2		PersonsFrameSet
+			2.2.0	PersonFrameSet
+			2.2.1	PersonMapItem
+			2.2.2	PersonListTextFrame
+	2.3		DeliveredFrameSet
+			2.3.0	DeliveredFrameSet
+			2.3.1	ContentTypeFrame
+					2.3.1.0 ContentTyprFrame
+					2.3.1.1	Genres
+			2.3.2	FileTypeFrame
+					2.3.2.0	FileTypeFrame
+					2.3.2.1	fileType
+			2.3.3	MediaTypeFrame
+					2.3.3.0	MediaTypeFrame
+					2.3.3.1 mediaType
+			2.3.4	LicensesFrameSet
+			2.3.5	OtherFrameSet
+					2.3.5.0 OtherFrameSet
+					2.3.5.1	UserDefinedTextFrame
+3.	URLs
+	3.1		UrlFrame
+	3.2		UserDefinedUrlFrame
+	3.3		URLFrameSet
+4.OtherFrames
+	4.1		UniqueFileIdintifierFrame
+	4.2		MusicIdFrame
+	4.3		EventTimingCodesFrame
+			4.3.0	EventTimingCodesFrame
+			4.3.1	EtcoEventType
+			4.3.2	EtcoKeyEvent
+	4.4		MpegLocationLookupTableFrame
+			4.4.0	MpegLocationLookupTableFrame
+			4.4.1	MlltOffset
+	4.5		SynchTempoCodesFrame
+			4.5.0	SynchTempoCodesFrame
+			4.5.1	TempoCode
+	4.6		UnsunchTextFrame
+	4.7		SunchTextFrame 
+			4.7.0	SunchTextFrame 
+			4.7.1	enum SyltContextType
+			4.7.2	SyltTextSynchranisation
+	4.8		CommentFrame
+	4.9		VolumeAdjustmentFrame
+			4.9.0	VolumeAdjustmentFrame
+			4.9.1	enum ChannelType
+			4.9.2	ChannelVolumeAdjustment
+	4.10	EqualisationFrame
+			4.10.0	EqualisationFrame
+			4.10.1	InterpolationMethod
+			4.10.2	Equalisation
+	4.11	ReverbFrame
+	4.12	AttachedPictureFrame 
+			4.12.0	AttachedPictureFrame 
+			4.12.1	PictureType
+	4.13	EncapsulatedObjectFrame 
+	4.14	PlayCounterFrame
+	4.15	PopularimeterFrame
+	4.16	BufferSizeFrame 
+	4.17	AudioEncryptionFrame
+	4.18	LinkedInfoFrame 
+	4.19	PositionSynchFrame 
+	4.20	TermOfUseFrame
+	4.21	OwnershipFrame 
+	4.22	CommercialFrame
+			4.22.0	CommercialFrame
+			4.22.1	ComrReceivedTypes
+	4.23	EncryptMethodRegFrame
+	4.24	GroupIdRegFrame
+	4.25	PrivateFrame
+	4.26	SignatureFrame
+	4.27	SeekFrame
+	4.28	AudioSeekPointIndexFrame
+			4.28.0	AudioSeekPointIndexFrame
+			4.28.1	IndexPoint
+			
+	
+	
