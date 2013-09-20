@@ -8,6 +8,7 @@ namespace elp87.TagReader.id3v2.Abstract
     {
         #region Fields
         protected TextEncoding _encoding;
+        private int posOffset;
         #endregion
 
         #region Constructors
@@ -27,7 +28,7 @@ namespace elp87.TagReader.id3v2.Abstract
         {
             Encoding enc;
             byte[] bom;
-            int posOffset = 0;
+            posOffset = 1;
 
             switch (_encoding)
             {

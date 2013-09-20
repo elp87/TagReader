@@ -53,12 +53,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AbstractTests\FrameTest.cs" />
+    <Compile Include="AbstractTests\TextFrameTest.cs" />
     <Compile Include="ExtendedHeaderTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FrameTest.cs" />
     <Compile Include="BitOperationTest.cs" />
+    <Compile Include="FrameFlagSetTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\elp87.TagReader\elp87.TagReader.csproj">

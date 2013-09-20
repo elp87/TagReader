@@ -118,8 +118,14 @@ namespace elp87.TagReader.id3v2
             if (((flagBytes[0] & 0x8F) != 0) || ((flagBytes[1] & 0xB0) != 0)) throw new Exceptions.NotUsableFlagException("Invalid flag field in FrameFlagSet. Undefined flags are set", "", DateTime.Now);
         }
         #endregion
+        #region Protected
+        protected int GetExtraDate(byte[] tagArray, int position, bool b)
+        {
+            return this.GetExtraDate(tagArray, position);
+        }
+        #endregion
         #endregion
 
-        
+
     }
 }
