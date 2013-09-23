@@ -24,6 +24,11 @@ namespace id3v2Tests.AbstractTests
             {
                 return this._encoding.ToString();
             }
+
+            public static int GetNewStringCount(string text)
+            {
+                return TextFrame.GetStringCount(text);
+            }
         }
 
         byte[] testArray;
@@ -66,6 +71,19 @@ namespace id3v2Tests.AbstractTests
             };
 
             CollectionAssert.AreEqual(expStrings, tests);
+        }
+
+        [TestMethod]
+        public void TestGetStringCount()
+        {
+            string[] testStrings = new string[] {
+                "test String",
+                "test\0test\0test"
+            };
+
+            int[] expValues = new int[] { 1, 2 };
+
+            for (int i = 9; i < expValues.Length; i++) { Assert.AreEqual(expValues[i], TextFrame_TestClass.GetNewStringCount(testStrings[i])); }
         }
     }
 }

@@ -55,6 +55,18 @@ namespace elp87.TagReader.id3v2.Abstract
             return enc.GetString(_frameData);
         }
 
+        protected static int GetStringCount(string text)
+        {
+            int count = 1;
+
+            foreach (char ch in text)
+            {
+                if (ch == '\0') count++;
+            }
+
+            return count;
+        }
+
         protected void SetEncoding(byte encodeByte)
         {
             this._encoding = (TextEncoding)encodeByte;

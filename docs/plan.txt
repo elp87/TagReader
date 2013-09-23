@@ -4,10 +4,10 @@
 			1.1.1	FlagUnsetException - complete
 			1.1.2	NotUsableFlagException - complete
 	1.2		Frame - complete
-	1.3		TextFrame - testing
+	1.3		TextFrame - complete
 			1.3.0	TextFrame - complete
 			1.3.1	enum TextEncoding - complete
-	1.4		TextInfoFrame
+	1.4		TextInfoFrame - complete
 	1.5		NumericStringFrame
 	1.6		SlashNumericStringFrame
 	1.7		OwnerIDFrame
