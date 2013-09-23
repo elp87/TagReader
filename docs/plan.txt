@@ -6,7 +6,7 @@
 	1.2		Frame - complete
 	1.3		TextFrame - testing
 			1.3.0	TextFrame - complete
-			1.3.1	enum TextEncoding - testing
+			1.3.1	enum TextEncoding - complete
 	1.4		TextInfoFrame
 	1.5		NumericStringFrame
 	1.6		SlashNumericStringFrame

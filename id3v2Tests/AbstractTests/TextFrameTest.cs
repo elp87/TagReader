@@ -18,7 +18,12 @@ namespace id3v2Tests.AbstractTests
             public string GetString_Test(byte[] data)
             {
                 return this.GetString(data);
-            }            
+            }
+
+            public string GetEncodingString()
+            {
+                return this._encoding.ToString();
+            }
         }
 
         byte[] testArray;
@@ -26,7 +31,7 @@ namespace id3v2Tests.AbstractTests
         TextFrame_TestClass test;
         public Abstract_TextFrameTest()
         {
-            testArray = new byte[] {0x03, 0x74, 0x69, 0x74, 0x6C, 0x65};
+            testArray = new byte[] { 0x03, 0x74, 0x69, 0x74, 0x6C, 0x65 };
             ffs = new FrameFlagSet(new byte[] { 0x00, 0x00 });
             test = new TextFrame_TestClass(ffs, testArray);
         }
@@ -39,6 +44,28 @@ namespace id3v2Tests.AbstractTests
             string actValue = test.GetString_Test(testArray);
 
             Assert.AreEqual(expValue, actValue);
+        }
+
+        [TestMethod]
+        public void TestEnumTextEncoding()
+        {
+            byte[][] testArrayEncode = new byte[][] { new byte[] { 0x00 }, new byte[] { 0x01 }, new byte[] { 0x02 }, new byte[] { 0x03 } };
+
+            string[] tests = new string[] {
+                new TextFrame_TestClass(ffs, testArrayEncode[0]).GetEncodingString(),
+                new TextFrame_TestClass(ffs, testArrayEncode[1]).GetEncodingString(),
+                new TextFrame_TestClass(ffs, testArrayEncode[2]).GetEncodingString(),
+                new TextFrame_TestClass(ffs, testArrayEncode[3]).GetEncodingString()
+            };
+
+            string[] expStrings = new string[] {
+                "ISO_8859_1",
+                "UTF16",
+                "UTF16_BE",
+                "UTF8"
+            };
+
+            CollectionAssert.AreEqual(expStrings, tests);
         }
     }
 }
