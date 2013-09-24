@@ -41,6 +41,7 @@
     <Compile Include="ByteArray.cs" />
     <Compile Include="id3v2\Abstract\Frame.cs" />
     <Compile Include="id3v2\Abstract\TextFrame.cs" />
+    <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\Frames\TextInfoFrame.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
     <Compile Include="id3v2\Exceptions\FrameTRCKException.cs" />

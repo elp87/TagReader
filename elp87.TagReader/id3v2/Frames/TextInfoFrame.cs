@@ -54,15 +54,8 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
         #endregion
 
-        #region Properties       
-
-        public string this[int index]
-        {
-            get
-            {
-                return _values[index];
-            }
-        }
+        #region Properties
+        public string this[int index] { get { return _values[index]; } }
         #endregion
     }
 }

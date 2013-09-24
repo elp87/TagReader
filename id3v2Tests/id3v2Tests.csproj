@@ -56,6 +56,7 @@
     <Compile Include="AbstractTests\FrameTest.cs" />
     <Compile Include="AbstractTests\TextFrameTest.cs" />
     <Compile Include="AbstractTests\TextInfoFrameTest.cs" />
+    <Compile Include="AbstractTests\Abstract_NumericStringFrameTest.cs" />
     <Compile Include="ExtendedHeaderTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
