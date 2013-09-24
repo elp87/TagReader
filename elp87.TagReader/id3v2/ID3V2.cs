@@ -57,6 +57,17 @@ namespace elp87.TagReader
 
             #region Methods
             #region Public
+            public byte[] GetTagArray()
+            {
+                if (this._byteArray.Length > 0)
+                {
+                    return (byte[])this._byteArray.Clone();
+                }
+                else
+                {
+                    throw new NullReferenceException("The tag array is empty");
+                }
+            }
             #endregion
 
             #region Private
