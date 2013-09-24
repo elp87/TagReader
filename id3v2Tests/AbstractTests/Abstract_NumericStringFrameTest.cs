@@ -8,11 +8,12 @@ namespace id3v2Tests.AbstractTests
     [TestClass]
     public class Abstract_NumericStringFrameTest
     {
+        FrameFlagSet ffs;
         NumericStringFrame test;
         byte[] byte182560;
         public Abstract_NumericStringFrameTest()
         {
-            FrameFlagSet ffs = new FrameFlagSet(new byte[] { 0x00, 0x00 });
+            ffs = new FrameFlagSet(new byte[] { 0x00, 0x00 });
             byte182560 = new byte[] { 0x31, 0x38, 0x32, 0x35, 0x36, 0x30 };
             test = new NumericStringFrame(ffs, byte182560);
         }
@@ -30,7 +31,7 @@ namespace id3v2Tests.AbstractTests
         {
             string expValue = "182560";
 
-            Assert.AreEqual(expValue, test.stringNumber);
+            Assert.AreEqual(expValue, test.numericString);
         }
 
         [TestMethod]
@@ -42,10 +43,19 @@ namespace id3v2Tests.AbstractTests
             PrivateObject target = new PrivateObject(typeof(NumericStringFrame));
             target.Invoke("ParseNumericString", (object)byte182560);
             int intValue = (int)target.GetProperty("number", new object[] { });
-            string stringValue = (string)target.GetProperty("stringNumber", new object[] { });
+            string stringValue = (string)target.GetProperty("numericString", new object[] { });
 
             Assert.AreEqual(expInt, intValue);
             Assert.AreEqual(expString, stringValue);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void TestFormatException()
+        {
+            byte[] testArray = new byte[] { 0x03, 0x74, 0x69, 0x74, 0x6C, 0x65 };
+
+            NumericStringFrame test1 = new NumericStringFrame(ffs, testArray);
         }
     }
 }

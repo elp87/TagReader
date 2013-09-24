@@ -1,6 +1,5 @@
 ﻿using elp87.TagReader.id3v2.Abstract;
 using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace elp87.TagReader.id3v2.Frames
@@ -9,7 +8,7 @@ namespace elp87.TagReader.id3v2.Frames
         : Frame
     {
         #region Fields
-        private string _stringNumber;
+        private string _numericString;
         private int _number;
         #endregion
 
@@ -24,7 +23,7 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Properties
-        public string stringNumber { get { return this._stringNumber; } }
+        public string numericString { get { return this._numericString; } }
 
         public int number { get { return this._number; } }
         #endregion
@@ -45,10 +44,10 @@ namespace elp87.TagReader.id3v2.Frames
             {
                 val = val.Substring(0, val.Length - 1);
             }
-            this._stringNumber = val;
+            this._numericString = val;
             try
             {
-                this._number = Convert.ToInt32(this._stringNumber);
+                this._number = Convert.ToInt32(this._numericString);
             }
             catch (FormatException ex)
             {
