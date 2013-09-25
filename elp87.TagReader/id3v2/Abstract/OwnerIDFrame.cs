@@ -7,8 +7,8 @@ namespace elp87.TagReader.id3v2.Abstract
         : Frame
     {
         #region Fields
-        private string _ownerID;
-        private byte[] _data;
+        protected string _ownerID;
+        protected byte[] _data;
         #endregion
 
         #region Constructors
@@ -35,7 +35,7 @@ namespace elp87.TagReader.id3v2.Abstract
         }
         #endregion
         #region Private
-        private void ParseFrame(byte[] frameData)
+        protected void ParseFrame(byte[] frameData)
         {
             const byte termByte = 0x00;
             int terminatorPos = Array.IndexOf(frameData, termByte);
