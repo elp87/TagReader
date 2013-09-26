@@ -11,7 +11,7 @@
 	1.5		NumericStringFrame - complete
 	1.6		SlashNumericStringFrame - complete
 	1.7		OwnerIDFrame - complete
-	1.8		UserDefinedFrame
+	1.8		UserDefinedFrame - complete
 	1.9		PositionFrame - complete
 	1.10	ITimeStampFrame
 	1.11	TimeStampFrame
