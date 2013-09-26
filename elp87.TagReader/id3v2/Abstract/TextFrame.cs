@@ -52,7 +52,7 @@ namespace elp87.TagReader.id3v2.Abstract
                 default:
                     throw new Exceptions.UnknownEncodingException();                    
             }
-            return enc.GetString(_frameData);
+            return enc.GetString(data);
         }
 
         protected static int GetStringCount(string text)

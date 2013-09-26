@@ -1,5 +1,6 @@
 ﻿using elp87.TagReader.id3v2;
 using elp87.TagReader.id3v2.Abstract;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace id3v2Tests.AbstractTests
@@ -11,9 +12,26 @@ namespace id3v2Tests.AbstractTests
         private class OwnerIDFrame_TestClass
             : OwnerIDFrame
         {
+            #region Constructors
             public OwnerIDFrame_TestClass(FrameFlagSet flags, byte[] frameData)
                 : base(flags, frameData)
-            { }
+            { } 
+            #endregion
+
+            #region Methods
+            protected override void ParseFrame(byte[] frameData)
+            {
+                base.ParseFrame(frameData);
+                this._data = this.ReadData(frameData, this._terminatorPos);
+            }
+
+            protected override byte[] ReadData(byte[] frameData, int position)
+            {
+                byte[] data = new byte[frameData.Length - position - 1];
+                Array.Copy(frameData, position + 1, data, 0, frameData.Length - position - 1);
+                return data;
+            } 
+            #endregion
         } 
         #endregion
 

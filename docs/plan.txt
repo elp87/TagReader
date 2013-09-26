@@ -10,16 +10,15 @@
 	1.4		TextInfoFrame - complete
 	1.5		NumericStringFrame - complete
 	1.6		SlashNumericStringFrame - complete
-	1.7		OwnerIDFrame
-	1.8		OwnerIDTextFrame
-	1.9 	UserDefinedFrame
-	1.10	PositionFrame - complete
-	1.11	ITimeStampFrame
-	1.12	TimeStampFrame
-	1.13	TimeStampTextFrame
-	1.14	LanguageTextFrame
-	1.15	LanguageImeStampTextFrame
-	1.16	TypeRefinementFrame (see TextFrames1)
+	1.7		OwnerIDFrame - complete
+	1.8		UserDefinedFrame
+	1.9		PositionFrame - complete
+	1.10	ITimeStampFrame
+	1.11	TimeStampFrame
+	1.12	TimeStampTextFrame
+	1.13	LanguageTextFrame
+	1.14	LanguageImeStampTextFrame
+	1.15	TypeRefinementFrame (see TextFrames1)
 2.	TextFrames
 	2.1		IdentificationFrameSet
 	2.2		PersonsFrameSet

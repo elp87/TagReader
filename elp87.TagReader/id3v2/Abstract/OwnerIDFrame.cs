@@ -9,6 +9,7 @@ namespace elp87.TagReader.id3v2.Abstract
         #region Fields
         protected string _ownerID;
         protected byte[] _data;
+        protected int _terminatorPos;
         #endregion
 
         #region Constructors
@@ -35,16 +36,22 @@ namespace elp87.TagReader.id3v2.Abstract
         }
         #endregion
         #region Private
-        protected void ParseFrame(byte[] frameData)
+        protected virtual void ParseFrame(byte[] frameData)
         {
             const byte termByte = 0x00;
-            int terminatorPos = Array.IndexOf(frameData, termByte);
-            this._data = new byte[frameData.Length - terminatorPos - 1];
+            _terminatorPos = Array.IndexOf(frameData, termByte);
+            this._ownerID = this.ReadOwnerID(frameData, _terminatorPos);         
+        }
+
+        protected string ReadOwnerID(byte[] frameData, int terminatorPos)
+        {
+            
             byte[] ownerIdByte = new byte[terminatorPos];
             Array.Copy(frameData, ownerIdByte, terminatorPos);
-            this._ownerID = Encoding.ASCII.GetString(ownerIdByte);            
-            Array.Copy(frameData, terminatorPos + 1, this._data, 0, frameData.Length - terminatorPos - 1);
+            return Encoding.ASCII.GetString(ownerIdByte);
         }
+
+        protected abstract byte[] ReadData(byte[] frameData, int position);
         #endregion
         #endregion
     }

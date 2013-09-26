@@ -43,6 +43,7 @@
     <Compile Include="id3v2\Abstract\OwnerIDFrame.cs" />
     <Compile Include="id3v2\Abstract\SlashNumericStringFrame.cs" />
     <Compile Include="id3v2\Abstract\TextFrame.cs" />
+    <Compile Include="id3v2\Abstract\UserDefinedFrame.cs" />
     <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\Frames\PositionFrame.cs" />
     <Compile Include="id3v2\Frames\TextInfoFrame.cs" />

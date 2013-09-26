@@ -15,9 +15,9 @@ namespace id3v2Tests.AbstractTests
                 : base(flags, frameData)
             { }
 
-            public string GetString_Test(byte[] data)
+            public string GetString_Test()
             {
-                return this.GetString(data);
+                return this.GetString(this._frameData);
             }
 
             public string GetEncodingString()
@@ -46,7 +46,7 @@ namespace id3v2Tests.AbstractTests
         {
             string expValue = "title";
 
-            string actValue = test.GetString_Test(testArray);
+            string actValue = test.GetString_Test();
 
             Assert.AreEqual(expValue, actValue);
         }
