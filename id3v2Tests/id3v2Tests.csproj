@@ -62,6 +62,7 @@
     <Compile Include="AbstractTests\Abstract_UserDefinedFrameTest.cs" />
     <Compile Include="AbstractTests\Abstract_TimeStampTest.cs" />
     <Compile Include="AbstractTests\Abstract_TimeStampFrameTest.cs" />
+    <Compile Include="AbstractTests\Abstract_LanguageTextFrameTest.cs" />
     <Compile Include="ExtendedHeaderTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />

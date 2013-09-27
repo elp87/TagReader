@@ -40,11 +40,14 @@
     <Compile Include="ByteOperation.cs" />
     <Compile Include="ByteArray.cs" />
     <Compile Include="id3v2\Abstract\Frame.cs" />
+    <Compile Include="id3v2\Exceptions\IncorrectLanguageException.cs" />
+    <Compile Include="id3v2\Abstract\LanguageTextFrame.cs" />
     <Compile Include="id3v2\Abstract\OwnerIDFrame.cs" />
     <Compile Include="id3v2\Abstract\SlashNumericStringFrame.cs" />
     <Compile Include="id3v2\Abstract\TextFrame.cs" />
     <Compile Include="id3v2\Abstract\TimeStamp.cs" />
     <Compile Include="id3v2\Abstract\TimeStampFrame.cs" />
+    <Compile Include="id3v2\Abstract\TimeStampTextFrame.cs" />
     <Compile Include="id3v2\Abstract\UserDefinedFrame.cs" />
     <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\Frames\PositionFrame.cs" />
