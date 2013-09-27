@@ -14,7 +14,7 @@
 	1.8		UserDefinedFrame - complete
 	1.9		PositionFrame - complete
 	1.10	TimeStamp - complete
-	1.11	TimeStampFrame
+	1.11	TimeStampFrame - complete
 	1.12	TimeStampTextFrame
 	1.13	LanguageTextFrame
 	1.14	LanguageImeStampTextFrame

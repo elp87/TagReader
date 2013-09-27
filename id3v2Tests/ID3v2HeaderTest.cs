@@ -1,7 +1,5 @@
 ﻿using elp87.TagReader;
 using elp87.TagReader.id3v2;
-using System;
-using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace id3v2Tests

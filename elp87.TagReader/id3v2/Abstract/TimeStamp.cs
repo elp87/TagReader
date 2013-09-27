@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace elp87.TagReader.id3v2.Abstract
+﻿namespace elp87.TagReader.id3v2.Abstract
 {
     public static class TimeStamp
     {
