@@ -1,18 +1,22 @@
-﻿namespace elp87.TagReader.id3v2.Abstract
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace elp87.TagReader.id3v2.Abstract
 {
-    public abstract class TimeStampTextFrame
-        : TextFrame
+    public abstract class LanguageTimeStampTextFrame
+        : LanguageTextFrame
     {
         #region Fields
         protected TimeStamp.TimeStampFormat _timeStampFormat; 
         #endregion
 
         #region Constructors
-        public TimeStampTextFrame()
+        public LanguageTimeStampTextFrame()
             : base()
         { }
 
-        public TimeStampTextFrame(FrameFlagSet flags, byte[] frameData)
+        public LanguageTimeStampTextFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         { } 
         #endregion

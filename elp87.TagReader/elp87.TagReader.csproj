@@ -40,6 +40,8 @@
     <Compile Include="ByteOperation.cs" />
     <Compile Include="ByteArray.cs" />
     <Compile Include="id3v2\Abstract\Frame.cs" />
+    <Compile Include="id3v2\Abstract\LanguageTimeStampTextFrame.cs" />
+    <Compile Include="id3v2\Abstract\TypeRefinementFrame.cs" />
     <Compile Include="id3v2\Exceptions\IncorrectLanguageException.cs" />
     <Compile Include="id3v2\Abstract\LanguageTextFrame.cs" />
     <Compile Include="id3v2\Abstract\OwnerIDFrame.cs" />

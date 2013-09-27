@@ -3,7 +3,7 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2.Abstract
 {
-    public class LanguageTextFrame
+    public abstract class LanguageTextFrame
         : TextFrame
     {
         #region Fields

@@ -1,6 +1,6 @@
 ﻿namespace elp87.TagReader.id3v2.Abstract
 {
-    public class TimeStampFrame
+    public abstract class TimeStampFrame
         : Frame
     {
         #region Fields
