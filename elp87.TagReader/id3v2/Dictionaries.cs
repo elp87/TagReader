@@ -5,18 +5,15 @@ namespace elp87.TagReader.id3v2
     public static class Dictionaries
     {
         public static Dictionary<string, FrameTypeInfo> frameIDs = new Dictionary<string, FrameTypeInfo>()
-        /*{
-            {"TALB", new FrameTypeInfo("TALB", "album", true)},
-            {"TDRC", new FrameTypeInfo("TDRC", "year", true)},
-            {"TIT2", new FrameTypeInfo("TIT2", "title", true)},
-            {"TPE1", new FrameTypeInfo("TPE1", "performer", true)},
-            {"TRCK", new FrameTypeInfo("TRCK", "trackNumber", true)},
-            {"UFID", new FrameTypeInfo("UFID", "Unique file identifier", false)}
-        }*/;
+        {
+            {"TIT1", new FrameTypeInfo("TIT1", "Content group description", true)},
+            {"TIT2", new FrameTypeInfo("TIT2", @"Title/Songname/Content description", true)},
+            {"TIT3", new FrameTypeInfo("TIT3", @"Subtitle/Description refinement", true)}
+        };        
 
-        public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>() 
-       /* { 
-            { "TYER", "TDRC" } 
-        }*/;
+        public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
+            /* { 
+                 { "TYER", "TDRC" } 
+             }*/;
     }
 }

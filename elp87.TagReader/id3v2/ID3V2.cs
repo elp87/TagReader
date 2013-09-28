@@ -1,4 +1,5 @@
-﻿using System;
+﻿using elp87.TagReader.id3v2.Frames;
+using System;
 using System.IO;
 
 namespace elp87.TagReader
@@ -24,12 +25,15 @@ namespace elp87.TagReader
             private string _trackNumber;
             private string _year;
             private Ufid _UFID;
+
+            private IdentificationFrameSet _identificationFrames;
             #endregion
 
             #region Constructors
             private ID3V2()
             {
                 _UFID = new Ufid();
+                _identificationFrames = new IdentificationFrameSet();
             }
             public ID3V2(string filename)
                 : this()
@@ -52,6 +56,8 @@ namespace elp87.TagReader
             public int trackNumber          { get { return getTrackNumber(_trackNumber); } set { _trackNumber = value.ToString(); } }            
             public string year              { get { return _year; } set { _year = value; } }
             public Ufid UFID                { get { return _UFID; } set { _UFID = value; } }
+
+            public IdentificationFrameSet identificationFrames { get { return _identificationFrames; } }
             #endregion
             #endregion
 

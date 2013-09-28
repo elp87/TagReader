@@ -18,7 +18,7 @@
 	1.12	TimeStampTextFrame - testing
 	1.13	LanguageTextFrame - complete
 	1.14	LanguageTimeStampTextFrame - testing
-	1.15	TypeRefinementFrame (see TextFrames1)
+	1.15	TypeRefinementFrame (see TextFrames1) - testing
 2.	TextFrames
 	2.1		IdentificationFrameSet
 	2.2		PersonsFrameSet
