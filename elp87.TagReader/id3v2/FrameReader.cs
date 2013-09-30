@@ -107,7 +107,8 @@ namespace elp87.TagReader.id3v2
         {            
             Type tagType = tag.GetType();
             string methodName = "Set" + _frame.id;
-            tagType.GetMethod(methodName).Invoke(tag, new object[] { _flagSet, _frameData });
+            tagType.GetMethod(methodName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .Invoke(tag, new object[] { _flagSet, _frameData });
         }
         #endregion
         #endregion
