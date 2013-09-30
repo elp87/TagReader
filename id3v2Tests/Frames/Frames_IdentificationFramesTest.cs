@@ -11,7 +11,7 @@ namespace id3v2Tests.Frames
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
         private const string _fileNameTIT1 = @"D:\TestAudio\TIT1.mp3";
         private const string _fileNameSvetSneg = @"D:\TestAudio\Свет-Снег.mp3";
-        
+
         [TestMethod]
         public void TestTIT1()
         {
@@ -52,6 +52,27 @@ namespace id3v2Tests.Frames
             MP3File testTIT3 = new MP3File(_fileNameSvetSneg);
 
             Assert.AreEqual(expTIT3, testTIT3.id3v2.identificationFrames.TIT3.ToString());
+        }
+
+        [TestMethod]
+        public void TestTALB()
+        {
+            string[] expValues = new string[] 
+            { 
+                "﻿I Was Here For A Moment, Then I Was Gone", "Саундтрек Моей Жизни", "﻿Mono / Pelican"
+            };
+
+            MP3File[] testFiles = new MP3File[] {
+                new MP3File(_fileNameOpening),
+                new MP3File(_fileNameIntro),
+                new MP3File(_fileNameTIT1)
+            };
+
+            Assert.AreEqual(expValues.Length, testFiles.Length);
+            for (int i = 0; i < testFiles.Length; i++)
+            {
+                Assert.AreEqual(expValues[i], testFiles[i].id3v2.identificationFrames.TALB.ToString());
+            }
         }
     }
 }
