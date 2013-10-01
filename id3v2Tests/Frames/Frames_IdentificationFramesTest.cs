@@ -85,5 +85,26 @@ namespace id3v2Tests.Frames
 
             Assert.AreEqual(expValue, test.id3v2.identificationFrames.TOAL.ToString());
         }
+
+        [TestMethod]
+        public void TestTRCK()
+        {
+            int[] expNumber = new int[] { 1, 1, 2 };
+            int[] expTotalNumber = new int[] { 1, 10, -1};
+
+            MP3File[] testFiles = new MP3File[]
+            {
+                new MP3File(_fileNameOpening),
+                new MP3File(_fileNameIntro),
+                new MP3File(_fileNameTIT1)
+            };
+
+            Assert.AreEqual(expNumber.Length, testFiles.Length);
+            for (int i = 0; i < testFiles.Length; i++)
+            {
+                Assert.AreEqual(expNumber[i], testFiles[i].id3v2.identificationFrames.TRCK.number);
+                Assert.AreEqual(expTotalNumber[i], testFiles[i].id3v2.identificationFrames.TRCK.totalNumber);
+            }
+        }
     }
 }
