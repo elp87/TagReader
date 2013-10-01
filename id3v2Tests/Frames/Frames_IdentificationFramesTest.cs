@@ -28,7 +28,7 @@ namespace id3v2Tests.Frames
         {
             string[] expValues = new string[] 
             { 
-                "﻿Opening", "Интро", "﻿Angel Tears (James Plotkin Remix)"	
+                "Opening", "Интро", "Angel Tears (James Plotkin Remix)"	
             };
 
             MP3File[] testFiles = new MP3File[]
@@ -60,7 +60,7 @@ namespace id3v2Tests.Frames
         {
             string[] expValues = new string[] 
             { 
-                "﻿I Was Here For A Moment, Then I Was Gone", "Саундтрек Моей Жизни", "﻿Mono / Pelican"
+                "I Was Here For A Moment, Then I Was Gone", "Саундтрек Моей Жизни", "Mono / Pelican"
             };
 
             MP3File[] testFiles = new MP3File[] {

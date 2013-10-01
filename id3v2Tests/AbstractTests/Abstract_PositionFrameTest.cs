@@ -75,5 +75,15 @@ namespace id3v2Tests.AbstractTests
 
             Assert.AreEqual(expNumber, number);
         }
+
+        [TestMethod]
+        public void TestUnicode()
+        {
+            byte[] byteArray = new byte[] { 0x01, 0xFF, 0xFE, 0x32, 0x00 };
+
+            PositionFrame test = new PositionFrame(ffs, byteArray);
+
+            Assert.AreEqual(2, test.number);
+        }
     }
 }

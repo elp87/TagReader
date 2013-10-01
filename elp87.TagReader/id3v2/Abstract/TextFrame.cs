@@ -39,6 +39,7 @@ namespace elp87.TagReader.id3v2.Abstract
                     Array.Copy(data, 0, bom, 0, 2);
                     enc = Encoding.Unicode;
                     posOffset += 2;
+                    data = this.RemoveBomFromData(data);
                     // или Encoding.BigEndianUnicode в зависимости от BOM
                     // TODO : Разобраться с BOM
                     break;
@@ -52,6 +53,13 @@ namespace elp87.TagReader.id3v2.Abstract
                     throw new Exceptions.UnknownEncodingException();                    
             }
             return enc.GetString(data);
+        }
+
+        protected byte[] RemoveBomFromData(byte[] dataWithBom)
+        {
+            byte[] withouBom = new byte[dataWithBom.Length - 2];
+            Array.Copy(dataWithBom, 2, withouBom, 0, withouBom.Length);
+            return withouBom;
         }
 
         protected static int GetStringCount(string text)

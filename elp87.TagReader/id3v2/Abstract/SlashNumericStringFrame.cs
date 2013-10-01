@@ -53,6 +53,7 @@ namespace elp87.TagReader.id3v2.Abstract
             if ((slashPos == -1) && (dotPos == -1))
             {
                 this._number = Convert.ToInt32(numericString);
+                
             }
             else
             {
