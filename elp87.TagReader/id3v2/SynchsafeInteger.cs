@@ -61,10 +61,11 @@ namespace elp87.TagReader.id3v2
         #region Public
         public override int ToInt()
         {
-            return (_synchsafeByte[3] & 0x7f) |
+            int val = (_synchsafeByte[3] & 0x7f) |
                 (_synchsafeByte[2] & 0x7f) << 7 |
                 (_synchsafeByte[1] & 0x7f) << 14 |
                 (_synchsafeByte[0] & 0x7f) << 21;
+            return val;
         }
         #endregion
 

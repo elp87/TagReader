@@ -43,7 +43,7 @@ namespace id3v2Tests
             Assert.AreEqual(expValue1, testSSInt1.ToInt());
             Assert.AreEqual(expValue2, testSSInt2.ToInt());
             Assert.AreEqual(expValue3, testSSInt3.ToInt());
-            Assert.AreEqual(expValue4, testSSInt4.ToInt());
+            Assert.AreEqual(expValue4, testSSInt4.ToInt());            
         }
 
         [TestMethod]

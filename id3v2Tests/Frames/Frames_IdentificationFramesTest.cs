@@ -10,6 +10,7 @@ namespace id3v2Tests.Frames
         private const string _fileNameOpening = @"D:\TestAudio\01 Opening.mp3";
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
         private const string _fileNameTIT1 = @"D:\TestAudio\TIT1.mp3";
+        private const string _fileNameTOAL = @"D:\TestAudio\TOAL_ed.mp3";
         private const string _fileNameSvetSneg = @"D:\TestAudio\Свет-Снег.mp3";
 
         [TestMethod]
@@ -73,6 +74,16 @@ namespace id3v2Tests.Frames
             {
                 Assert.AreEqual(expValues[i], testFiles[i].id3v2.identificationFrames.TALB.ToString());
             }
+        }
+
+        [TestMethod]
+        public void TestTOAL()
+        {
+            string expValue = "AN ENDLESS TOMORROW";
+
+            MP3File test = new MP3File(_fileNameTOAL);
+
+            Assert.AreEqual(expValue, test.id3v2.identificationFrames.TOAL.ToString());
         }
     }
 }
