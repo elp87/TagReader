@@ -12,7 +12,9 @@ namespace elp87.TagReader.id3v2
             {"TALB", new FrameTypeInfo("TALB", @"Album/Movie/Show title", true)},
             {"TOAL", new FrameTypeInfo("TOAL", @"Original album/movie/show title", true)},
             {"TRCK", new FrameTypeInfo("TRCK", @"Track number/Position in set", false)},
-            {"TPOS", new FrameTypeInfo("TPOS", @"Track number/Position in set", false)}
+            {"TPOS", new FrameTypeInfo("TPOS", @"Part of a set", false)},
+            {"TSST", new FrameTypeInfo("TSST", @"Set subtitle", true)},
+            {"TSRC", new FrameTypeInfo("TSRC", @"ISRC", true)}
         };        
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

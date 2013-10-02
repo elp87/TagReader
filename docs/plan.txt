@@ -20,7 +20,7 @@
 	1.14	LanguageTimeStampTextFrame - testing
 	1.15	TypeRefinementFrame (see TextFrames1) - testing
 2.	TextFrames
-	2.1		IdentificationFrameSet
+	2.1		IdentificationFrameSet - complete
 	2.2		PersonsFrameSet
 			2.2.0	PersonFrameSet
 			2.2.1	PersonMapItem

@@ -11,6 +11,7 @@ namespace id3v2Tests.Frames
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
         private const string _fileNameTIT1 = @"D:\TestAudio\TIT1.mp3";
         private const string _fileNameTOAL = @"D:\TestAudio\TOAL_ed.mp3";
+        private const string _fileNameTSRC = @"D:\TestAudio\TSRC.mp3";
         private const string _fileNameSvetSneg = @"D:\TestAudio\Свет-Снег.mp3";
 
         [TestMethod]
@@ -119,6 +120,16 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expNumber, test.id3v2.identificationFrames.TPOS.number);
             Assert.AreEqual(expTotalNumber, test.id3v2.identificationFrames.TPOS.totalNumber);
             Assert.AreEqual(expStringValue, test.id3v2.identificationFrames.TPOS.numericString);
+        }
+
+        [TestMethod]
+        public void TestTSRC()
+        {
+            string expTSRC = "GBUM70812435";
+
+            MP3File test = new MP3File(_fileNameTSRC);
+
+            Assert.AreEqual(expTSRC, test.id3v2.identificationFrames.TSRC.ToString());
         }
     }
 }

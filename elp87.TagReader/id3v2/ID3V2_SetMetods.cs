@@ -47,6 +47,18 @@ namespace elp87.TagReader.id3v2
             PositionFrame frame = new PositionFrame(ffs, data);
             this._identificationFrames.TPOS = frame;
         }
+
+        private void SetTSST(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._identificationFrames.TSST = frame;
+        }
+
+        private void SetTSRC(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._identificationFrames.TSRC = frame;
+        }
     }
     
 }
