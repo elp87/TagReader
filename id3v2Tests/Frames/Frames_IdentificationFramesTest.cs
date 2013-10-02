@@ -106,5 +106,19 @@ namespace id3v2Tests.Frames
                 Assert.AreEqual(expTotalNumber[i], testFiles[i].id3v2.identificationFrames.TRCK.totalNumber);
             }
         }
+
+        [TestMethod]
+        public void TestTPOS()
+        {
+            int expNumber = 6;
+            int expTotalNumber = 12;
+            string expStringValue = @"06/12";
+
+            MP3File test = new MP3File(_fileNameTOAL);
+
+            Assert.AreEqual(expNumber, test.id3v2.identificationFrames.TPOS.number);
+            Assert.AreEqual(expTotalNumber, test.id3v2.identificationFrames.TPOS.totalNumber);
+            Assert.AreEqual(expStringValue, test.id3v2.identificationFrames.TPOS.numericString);
+        }
     }
 }
