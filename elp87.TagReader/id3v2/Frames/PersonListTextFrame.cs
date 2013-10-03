@@ -50,6 +50,7 @@ namespace elp87.TagReader.id3v2.Frames
             return this._persons[index];
         }
         #endregion
+
         #region Private
         public void AddData(FrameFlagSet flags, byte[] byteArray)
         {

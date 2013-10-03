@@ -27,6 +27,7 @@ namespace elp87.TagReader
             private Ufid _UFID;
 
             private IdentificationFrameSet _identificationFrames;
+            private PersonsFrameSet _personsFrames;
             #endregion
 
             #region Constructors
@@ -57,7 +58,8 @@ namespace elp87.TagReader
             public string year              { get { return _year; } set { _year = value; } }
             public Ufid UFID                { get { return _UFID; } set { _UFID = value; } }
 
-            public IdentificationFrameSet identificationFrames { get { return _identificationFrames; } }
+            public IdentificationFrameSet   identificationFrames    { get { return _identificationFrames; } }
+            public PersonsFrameSet          personsFrames           { get { return _personsFrames; } }
             #endregion
             #endregion
 

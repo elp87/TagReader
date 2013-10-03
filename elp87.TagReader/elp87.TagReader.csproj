@@ -54,6 +54,7 @@
     <Compile Include="id3v2\Frames\IdentificationFrameSet.cs" />
     <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\Frames\PersonListTextFrame.cs" />
+    <Compile Include="id3v2\Frames\PersonsFrameSet.cs" />
     <Compile Include="id3v2\Frames\PositionFrame.cs" />
     <Compile Include="id3v2\Frames\TextInfoFrame.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
