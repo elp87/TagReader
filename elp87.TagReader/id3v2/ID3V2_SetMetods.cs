@@ -4,6 +4,7 @@ namespace elp87.TagReader.id3v2
 {
     public partial class ID3V2
     {
+        // Identification frames
         private void SetTIT1(FrameFlagSet ffs, byte[] data)
         {
             TextInfoFrame frame = new TextInfoFrame(ffs, data);
@@ -56,6 +57,31 @@ namespace elp87.TagReader.id3v2
         {
             TextInfoFrame frame = new TextInfoFrame(ffs, data);
             this._identificationFrames.TSRC = frame;
+        }
+
+        // Involved persons frames
+        private void SetTPE1(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TPE1 = frame;
+        }
+
+        private void SetTPE2(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TPE2 = frame;
+        }
+        
+        private void SetTPE3(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TPE3 = frame;
+        }
+        
+        private void SetTPE4(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TPE4 = frame;
         }
     }
     

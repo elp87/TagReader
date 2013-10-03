@@ -35,6 +35,7 @@ namespace elp87.TagReader
             {
                 _UFID = new Ufid();
                 _identificationFrames = new IdentificationFrameSet();
+                _personsFrames = new PersonsFrameSet();
             }
             public ID3V2(string filename)
                 : this()

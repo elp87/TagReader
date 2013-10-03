@@ -66,6 +66,7 @@
     <Compile Include="ExtendedHeaderTest.cs" />
     <Compile Include="Frames\Frames_IdentificationFramesTest.cs" />
     <Compile Include="Frames\Frames_PersonListTextFrameTest.cs" />
+    <Compile Include="Frames\Frames_PersonsFrameSetTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

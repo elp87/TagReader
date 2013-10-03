@@ -14,7 +14,12 @@ namespace elp87.TagReader.id3v2
             {"TRCK", new FrameTypeInfo("TRCK", @"Track number/Position in set", false)},
             {"TPOS", new FrameTypeInfo("TPOS", @"Part of a set", false)},
             {"TSST", new FrameTypeInfo("TSST", @"Set subtitle", true)},
-            {"TSRC", new FrameTypeInfo("TSRC", @"ISRC", true)}
+            {"TSRC", new FrameTypeInfo("TSRC", @"ISRC", true)},
+
+            {"TPE1", new FrameTypeInfo("TPE1", @"Lead artist/Lead performer/Soloist/Performing group", true)},
+            {"TPE2", new FrameTypeInfo("TPE2", @"Band/Orchestra/Accompaniment", true)},
+            {"TPE3", new FrameTypeInfo("TPE3", @"Conductor", true)},
+            {"TPE4", new FrameTypeInfo("TPE4", @"Interpreted, remixed, or otherwise modified by", true)},
         };        
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
