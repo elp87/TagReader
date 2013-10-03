@@ -1,9 +1,4 @@
-﻿using elp87.TagReader.id3v2.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace elp87.TagReader.id3v2.Frames
+﻿namespace elp87.TagReader.id3v2.Frames
 {
     public class IdentificationFrameSet
     {

@@ -1,6 +1,4 @@
 ﻿using elp87.TagReader.id3v2.Frames;
-using System;
-using System.Text;
 
 namespace elp87.TagReader.id3v2
 {
