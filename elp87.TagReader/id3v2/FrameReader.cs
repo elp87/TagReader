@@ -46,7 +46,7 @@ namespace elp87.TagReader.id3v2
 
             GetIdentificator(tagArray, _id);
             AdjustTagID();
-            GetFrameSize(tagArray, size);
+            GetFrameSize(tagArray, size, tag.header.tagVersion);
             if (FindId())
             {
                 GetFlagsField(tagArray);
@@ -84,10 +84,12 @@ namespace elp87.TagReader.id3v2
             return _frameIDs.TryGetValue(this.id, out _frame);
         }
 
-        private void GetFrameSize(byte[] tag, byte[] size)
+        private void GetFrameSize(byte[] tag, byte[] size, int tagVersion)
         {
             Array.Copy(tag, _pointPosition, size, 0, 4);
-            _frameSize = new SynchsafeInteger(size).ToInt();
+            if (tagVersion == 4) { _frameSize = new SynchsafeInteger(size).ToInt(); }
+            if (tagVersion == 3) { _frameSize = BitConverter.ToInt32(ByteArray.Reverse(size), 0); }
+            if (tagVersion != 3 && tagVersion != 4) { throw new Exceptions.UnsupportedTagVersionException(); }
             _pointPosition += 4;
         }
 
