@@ -37,5 +37,35 @@ namespace id3v2Tests.Frames
                 Assert.AreEqual(expValue[i], testFiles[i].id3v2.personsFrames.TPE1.ToString());
             }
         }
+
+        [TestMethod]
+        public void TestTPE2()
+        {
+            string expValue = "MOLECUL";
+
+            MP3File test = new MP3File(_fileNameSvetSneg);
+
+            Assert.AreEqual(expValue, test.id3v2.personsFrames.TPE2.ToString());
+        }
+
+        [TestMethod]
+        public void TestTPE3()
+        {
+            string expValue =  "MOLECUL";
+
+            MP3File test = new MP3File(_fileNameSvetSneg);
+
+            Assert.AreEqual(expValue, test.id3v2.personsFrames.TPE3.ToString());
+        }
+
+        [TestMethod]
+        public void TestTPE4()
+        {
+            string expValue = "FEDE AGUDO";
+
+            MP3File test = new MP3File(_fileNameTOAL);
+
+            Assert.AreEqual(expValue, test.id3v2.personsFrames.TPE4.ToString());
+        }
     }
 }
