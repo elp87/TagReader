@@ -11,6 +11,8 @@ namespace id3v2Tests.Frames
         private const string _fileNameTIT1 = @"D:\TestAudio\TIT1.mp3";
         private const string _fileNameTOAL = @"D:\TestAudio\TOAL.mp3";
         private const string _fileNameTSRC = @"D:\TestAudio\TSRC.mp3";
+        private const string _fileNameTIPL = @"D:\TestAudio\TIPL.mp3";
+        private const string _fileNameTENC = @"D:\TestAudio\TENC.mp3";
         private const string _fileNameSvetSneg = @"D:\TestAudio\Свет-Снег.mp3";
 
         [TestMethod]
@@ -139,6 +141,37 @@ namespace id3v2Tests.Frames
             MP3File test = new MP3File(_fileNameSvetSneg);
 
             Assert.AreEqual(expValue, test.id3v2.personsFrames.TCOM.ToString());
+        }
+
+        [TestMethod]
+        public void TestTIPL()
+        {
+            string[] expRoles = new string[]
+            {
+                "producer", "mastering"
+            };
+            string[] expPersons = new string[]
+            {
+                "producerName", "masteringName"
+            };
+
+            MP3File test = new MP3File(_fileNameTIPL);
+
+            for (int i = 0; i < expRoles.Length; i++)
+            {
+                Assert.AreEqual(expRoles[i], test.id3v2.personsFrames.TIPL.GetValue(i).role);
+                Assert.AreEqual(expPersons[i], test.id3v2.personsFrames.TIPL.GetValue(i).person);
+            }
+        }
+
+        [TestMethod]
+        public void TestTENC()
+        {
+            string expValue = @"Jamendo : http://www.jamendo.com | LAME";
+
+            MP3File test = new MP3File(_fileNameTENC);
+
+            Assert.AreEqual(expValue, test.id3v2.personsFrames.TENC.ToString());
         }
     }
 }
