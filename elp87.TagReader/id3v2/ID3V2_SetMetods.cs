@@ -83,6 +83,30 @@ namespace elp87.TagReader.id3v2
             TextInfoFrame frame = new TextInfoFrame(ffs, data);
             this._personsFrames.TPE4 = frame;
         }
+
+        private void SetTOPE(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TOPE = frame;
+        }
+
+        private void SetTEXT(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TEXT = frame;
+        }
+
+        private void SetTOLY(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TOLY = frame;
+        }
+
+        private void SetTCOM(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._personsFrames.TCOM = frame;
+        }
     }
     
 }

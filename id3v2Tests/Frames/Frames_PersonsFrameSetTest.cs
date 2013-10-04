@@ -66,5 +66,79 @@ namespace id3v2Tests.Frames
 
             Assert.AreEqual(expValue, test.id3v2.personsFrames.TPE4.ToString());
         }
+
+        [TestMethod]
+        public void TestTOPE()
+        {
+            string[] expValue = new string[] 
+            { 
+                "ENUMA ELISH", "MOLECUL"
+            };
+
+            MP3File[] testFiles = new MP3File[]
+            {
+                new MP3File(_fileNameTOAL),
+                new MP3File(_fileNameSvetSneg)
+            };
+
+            Assert.AreEqual(expValue.Length, testFiles.Length);
+            for (int i = 0; i < testFiles.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], testFiles[i].id3v2.personsFrames.TOPE.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void TestTEXT()
+        {
+            string[] expValue = new string[]
+            {
+                "ENUMA ELISH", "MOLECUL"
+            };
+
+            MP3File[] testFiles = new MP3File[]
+            {
+                new MP3File(_fileNameTOAL),
+                new MP3File(_fileNameSvetSneg)
+            };
+
+            Assert.AreEqual(expValue.Length, testFiles.Length);
+            for (int i = 0; i < testFiles.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], testFiles[i].id3v2.personsFrames.TEXT.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void TestTOLY()
+        {
+            string[] expValue = new string[]
+            {
+                "Federico Agudo Calderón 50456599G , Diego Millán Ruíz 33531313G , David Imbernon Alcántara 50462594L , Oriana Daleina Castillo Matute X9367817D, Daniel Cabal Fernández 09428917K", 
+                "MOLECUL"
+            };
+
+            MP3File[] testFiles = new MP3File[]
+            {
+                new MP3File(_fileNameTOAL),
+                new MP3File(_fileNameSvetSneg)
+            };
+
+            Assert.AreEqual(expValue.Length, testFiles.Length);
+            for (int i = 0; i < testFiles.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], testFiles[i].id3v2.personsFrames.TOLY.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void TestTCOM()
+        {
+            string expValue = "MOLECUL";
+
+            MP3File test = new MP3File(_fileNameSvetSneg);
+
+            Assert.AreEqual(expValue, test.id3v2.personsFrames.TCOM.ToString());
+        }
     }
 }
