@@ -6,10 +6,13 @@ namespace elp87.TagReader.id3v2.Frames
         : TextFrame
     {
         #region Fields
-        private string[] _values;
+        protected string[] _values;
         #endregion
 
         #region Constructors
+        protected TextInfoFrame()
+        { }
+
         public TextInfoFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
