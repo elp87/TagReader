@@ -26,7 +26,10 @@ namespace elp87.TagReader.id3v2
             {"TCOM", new FrameTypeInfo("TCOM", @"Composer", true)},
             {"TMCL", new FrameTypeInfo("TMCL", @"Musician credits list", true)},
             {"TIPL", new FrameTypeInfo("TIPL", @"Involved people list", true)},
-            {"TENC", new FrameTypeInfo("TENC", @"Encoded by", true)}
+            {"TENC", new FrameTypeInfo("TENC", @"Encoded by", true)},
+
+            {"TBPM", new FrameTypeInfo("TBPM", @"BPM", true)},
+            {"TLEN", new FrameTypeInfo("TLEN", @"Length", true)},
         };        
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

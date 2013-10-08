@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace id3v2Tests.Frames
 {
     [TestClass]
-    public class Frames_IdentificationFramesTest
+    public class Frames_IdentificationFrameSetTest
     {
         private const string _fileNameOpening = @"D:\TestAudio\01 Opening.mp3";
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";

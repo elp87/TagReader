@@ -131,6 +131,19 @@ namespace elp87.TagReader.id3v2
             TextInfoFrame frame = new TextInfoFrame(ffs, data);
             this._personsFrames.TENC = frame;
         }
+
+        // Derived and subjective properties frames
+        private void SetTBPM(FrameFlagSet ffs, byte[] data)
+        {
+            NumericStringFrame frame = new NumericStringFrame(ffs, data);
+            this._deliveredFrames.TBPM = frame;
+        }
+
+        private void SetTLEN(FrameFlagSet ffs, byte[] data)
+        {
+            NumericStringFrame frame = new NumericStringFrame(ffs, data);
+            this._deliveredFrames.TLEN = frame;
+        }
     }
     
 }

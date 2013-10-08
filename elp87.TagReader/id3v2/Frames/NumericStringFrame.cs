@@ -5,7 +5,7 @@ using System.Text;
 namespace elp87.TagReader.id3v2.Frames
 {
     public class NumericStringFrame
-        : Frame
+        : TextFrame
     {
         #region Fields
         private string _numericString;
@@ -18,7 +18,7 @@ namespace elp87.TagReader.id3v2.Frames
         public NumericStringFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
-            this.ParseNumericString(frameData);
+            this.ParseNumericString();
         }
         #endregion
 
@@ -37,9 +37,9 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Private
-        private void ParseNumericString(byte[] frameData)
+        private void ParseNumericString()
         {
-            string val = Encoding.ASCII.GetString(frameData);
+            string val = Encoding.ASCII.GetString(this._frameData);
             while (val[val.Length - 1] == '\0')
             {
                 val = val.Substring(0, val.Length - 1);
