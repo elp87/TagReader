@@ -17,14 +17,8 @@ namespace elp87.TagReader
             private Header _header;
             private ExtHeader _extHeader;
             private byte[] _byteArray;
-            private int _pointPosition;
+            private int _pointPosition;           
             
-            private string _album;
-            private string _performer;
-            private string _title;
-            private string _trackNumber;
-            private string _year;
-            private Ufid _UFID;
 
             private IdentificationFrameSet _identificationFrames;
             private PersonsFrameSet _personsFrames;
@@ -33,8 +27,7 @@ namespace elp87.TagReader
 
             #region Constructors
             private ID3V2()
-            {
-                _UFID = new Ufid();
+            {               
                 _identificationFrames = new IdentificationFrameSet();
                 _personsFrames = new PersonsFrameSet();
                 _deliveredFrames = new DeliveredFrameSet();
@@ -53,14 +46,6 @@ namespace elp87.TagReader
             public ExtHeader extHeader { get { return _extHeader; } }
             
             #region TagProperties
-            public string album             { get { return _album; } set { _album = value; } }            
-            public string performer         { get { return _performer; } set { _performer = value; } }
-            public string title             { get { return _title; } set { _title = value; } }
-            public string trackPosition     { get { return _trackNumber; } set { _trackNumber = value; } }
-            public int trackNumber          { get { return getTrackNumber(_trackNumber); } set { _trackNumber = value.ToString(); } }            
-            public string year              { get { return _year; } set { _year = value; } }
-            public Ufid UFID                { get { return _UFID; } set { _UFID = value; } }
-
             public IdentificationFrameSet   identificationFrames    { get { return _identificationFrames; } }
             public PersonsFrameSet          personsFrames           { get { return _personsFrames; } }
             public DeliveredFrameSet        deliveredFrames         { get { return _deliveredFrames; } }
@@ -109,9 +94,6 @@ namespace elp87.TagReader
                 }
             }
 
-            
-
-
             private void GetTagByteArray(byte[] file, int headerPosition)
             {
                 int tagSize = this._header.tagSize;
@@ -127,32 +109,6 @@ namespace elp87.TagReader
             {
                 return ByteArray.FindSubArray(byteArray, _ID3HeaderMask);
             }
-
-            
-            
-            #region Getters and Setters
-            private int getTrackNumber(string value)
-            {
-                if (value == "") return -1;
-                int slashPos = value.IndexOf('/');
-                int dotPos = value.IndexOf('.');
-                if ((slashPos == -1) && (dotPos == -1))
-                {
-                    return Convert.ToInt32(value);
-                }
-                else
-                {
-                    if (slashPos != -1) return Convert.ToInt32(value.Substring(0, slashPos));
-                    if (dotPos != -1) return Convert.ToInt32(value.Substring(dotPos + 1));
-                }
-                throw new Exceptions.FrameTRCKException("Cant parse frame value", "Frame value - " + value, DateTime.Now);
-            }
-            #endregion
-            #endregion
-
-
-            #region Static
-
             #endregion
             #endregion
 
