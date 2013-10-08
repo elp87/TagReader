@@ -144,6 +144,18 @@ namespace elp87.TagReader.id3v2
             NumericStringFrame frame = new NumericStringFrame(ffs, data);
             this._deliveredFrames.TLEN = frame;
         }
+
+        private void SetTKEY(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._deliveredFrames.TKEY = frame;
+        }
+
+        private void SetTLAN(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._deliveredFrames.TLAN = frame;
+        }
     }
     
 }

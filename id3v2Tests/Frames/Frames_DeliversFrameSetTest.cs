@@ -9,6 +9,8 @@ namespace id3v2Tests.Frames
     {
         private const string _fileNameTBPM = @"D:\TestAudio\TBPM.mp3";
         private const string _fileNameTOAL = @"D:\TestAudio\TOAL.mp3";
+        private const string _fileNameTKEY = @"D:\TestAudio\TKEY.mp3";
+        private const string _fileNameTLAN = @"D:\TestAudio\TLAN.mp3";
 
         [TestMethod]
         public void TestTBPM()
@@ -28,6 +30,26 @@ namespace id3v2Tests.Frames
             MP3File test = new MP3File(_fileNameTOAL);
 
             Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TLEN.number);
+        }
+
+        [TestMethod]
+        public void TestTKEY()
+        {
+            string expValue = "Dbm";
+
+            MP3File test = new MP3File(_fileNameTKEY);
+
+            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TKEY.ToString());
+        }
+
+        [TestMethod]
+        public void TestTLAN()
+        {
+            string expValue = "eng";
+
+            MP3File test = new MP3File(_fileNameTLAN);
+
+            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TLAN.ToString());
         }
     }
 }

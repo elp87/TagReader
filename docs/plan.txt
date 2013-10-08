@@ -21,25 +21,25 @@
 	1.15	TypeRefinementFrame (see TextFrames1) - testing
 2.	TextFrames
 	2.1		IdentificationFrameSet - complete
-	2.2		PersonsFrameSet
-			2.2.0	PersonFrameSet
-			2.2.1	PersonMapItem
-			2.2.2	PersonListTextFrame
+	2.2		PersonsFrameSet - complete
+			2.2.0	PersonFrameSet - complete
+			2.2.1	PersonMapItem - complete
+			2.2.2	PersonListTextFrame - complete
 	2.3		DeliveredFrameSet
 			2.3.0	DeliveredFrameSet
-			2.3.1	ContentTypeFrame
-					2.3.1.0 ContentTyprFrame
-					2.3.1.1	Genres
+			2.3.1	ContentTypeFrame - complete
+					2.3.1.0 ContentTyprFrame - complete
+					2.3.1.1	Genres - complete
 			2.3.2	FileTypeFrame
 					2.3.2.0	FileTypeFrame
 					2.3.2.1	fileType
 			2.3.3	MediaTypeFrame
 					2.3.3.0	MediaTypeFrame
 					2.3.3.1 mediaType
-			2.3.4	LicensesFrameSet
-			2.3.5	OtherFrameSet
-					2.3.5.0 OtherFrameSet
-					2.3.5.1	UserDefinedTextFrame
+	2.4	LicensesFrameSet
+	2.5	OtherFrameSet
+			2.5.0 OtherFrameSet
+			2.5.1 UserDefinedTextFrame
 3.	URLs
 	3.1		UrlFrame
 	3.2		UserDefinedUrlFrame

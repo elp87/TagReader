@@ -30,7 +30,9 @@ namespace elp87.TagReader.id3v2
 
             {"TBPM", new FrameTypeInfo("TBPM", @"BPM", true)},
             {"TLEN", new FrameTypeInfo("TLEN", @"Length", true)},
-        };        
+            {"TKEY", new FrameTypeInfo("TKEY", @"Initial key", true)},
+            {"TLAN", new FrameTypeInfo("TLAN", @"Language", true)}
+        };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
             /* { 
