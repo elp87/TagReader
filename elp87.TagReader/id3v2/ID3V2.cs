@@ -28,6 +28,7 @@ namespace elp87.TagReader
 
             private IdentificationFrameSet _identificationFrames;
             private PersonsFrameSet _personsFrames;
+            private DeliveredFrameSet _deliveredFrames;
             #endregion
 
             #region Constructors
@@ -36,6 +37,7 @@ namespace elp87.TagReader
                 _UFID = new Ufid();
                 _identificationFrames = new IdentificationFrameSet();
                 _personsFrames = new PersonsFrameSet();
+                _deliveredFrames = new DeliveredFrameSet();
             }
             public ID3V2(string filename)
                 : this()
@@ -61,6 +63,7 @@ namespace elp87.TagReader
 
             public IdentificationFrameSet   identificationFrames    { get { return _identificationFrames; } }
             public PersonsFrameSet          personsFrames           { get { return _personsFrames; } }
+            public DeliveredFrameSet        deliveredFrames         { get { return _deliveredFrames; } }
             #endregion
             #endregion
 
