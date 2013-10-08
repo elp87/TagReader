@@ -11,6 +11,11 @@ namespace id3v2Tests.Frames
         private const string _fileNameTOAL = @"D:\TestAudio\TOAL.mp3";
         private const string _fileNameTKEY = @"D:\TestAudio\TKEY.mp3";
         private const string _fileNameTLAN = @"D:\TestAudio\TLAN.mp3";
+        private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
+        private const string _fileNameSample = @"D:\TestAudio\sample.mp3";
+        private const string _fileNameTENC = @"D:\TestAudio\TENC.mp3";
+        private const string _fileNameTIT1 = @"D:\TestAudio\TIT1.mp3";
+        private const string _fileNameTSRC = @"D:\TestAudio\TSRC.mp3";
 
         [TestMethod]
         public void TestTBPM()
@@ -50,6 +55,51 @@ namespace id3v2Tests.Frames
             MP3File test = new MP3File(_fileNameTLAN);
 
             Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TLAN.ToString());
+        }
+
+        [TestMethod]
+        public void TestTCON()
+        {
+            string[] expValue = new string[]
+            {
+                "MetalCore", "Other", "Other", "255", "Post-rock", "Metal", "Power Metal", "Thrash Metal"
+            };
+
+            MP3File[] test = new MP3File[]
+            {
+                new MP3File(_fileNameIntro),
+                new MP3File(_fileNameSample),
+                new MP3File(_fileNameTBPM),
+                new MP3File(_fileNameTENC),
+                new MP3File(_fileNameTIT1),
+                new MP3File(_fileNameTLAN),
+                new MP3File(_fileNameTOAL),
+                new MP3File(_fileNameTSRC)
+            };
+
+            Assert.AreEqual(expValue.Length, test.Length);
+            for (int i = 0; i < expValue.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], test[i].id3v2.deliveredFrames.TCON.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void TestTMED()
+        {
+            string[] expValue = new string[] { "CD (Lossless)", "CD (CD)" };
+
+            MP3File[] test = new MP3File[] 
+            {
+                new MP3File(_fileNameTLAN),
+                new MP3File(_fileNameTOAL),
+            };
+
+            Assert.AreEqual(expValue.Length, test.Length);
+            for (int i = 0; i < expValue.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], test[i].id3v2.deliveredFrames.TMED.ToString());
+            }
         }
     }
 }

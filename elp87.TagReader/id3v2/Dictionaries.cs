@@ -31,7 +31,11 @@ namespace elp87.TagReader.id3v2
             {"TBPM", new FrameTypeInfo("TBPM", @"BPM", true)},
             {"TLEN", new FrameTypeInfo("TLEN", @"Length", true)},
             {"TKEY", new FrameTypeInfo("TKEY", @"Initial key", true)},
-            {"TLAN", new FrameTypeInfo("TLAN", @"Language", true)}
+            {"TLAN", new FrameTypeInfo("TLAN", @"Language", true)},
+            {"TCON", new FrameTypeInfo("TCON", @"Content type", true)},
+            {"TFLT", new FrameTypeInfo("TFLT", @"File type", true)},
+            {"TMED", new FrameTypeInfo("TMED", @"Media type", true)},
+            {"TMOO", new FrameTypeInfo("TMOO", @"Mood", true)}
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
