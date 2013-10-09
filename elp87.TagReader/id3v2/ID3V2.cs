@@ -17,12 +17,12 @@ namespace elp87.TagReader
             private Header _header;
             private ExtHeader _extHeader;
             private byte[] _byteArray;
-            private int _pointPosition;           
-            
+            private int _pointPosition;
 
             private IdentificationFrameSet _identificationFrames;
             private PersonsFrameSet _personsFrames;
             private DeliveredFrameSet _deliveredFrames;
+            private LicensesFrameSet _licensesFrames;
             #endregion
 
             #region Constructors
@@ -31,6 +31,7 @@ namespace elp87.TagReader
                 _identificationFrames = new IdentificationFrameSet();
                 _personsFrames = new PersonsFrameSet();
                 _deliveredFrames = new DeliveredFrameSet();
+                _licensesFrames = new LicensesFrameSet();
             }
             public ID3V2(string filename)
                 : this()
@@ -49,6 +50,7 @@ namespace elp87.TagReader
             public IdentificationFrameSet   identificationFrames    { get { return _identificationFrames; } }
             public PersonsFrameSet          personsFrames           { get { return _personsFrames; } }
             public DeliveredFrameSet        deliveredFrames         { get { return _deliveredFrames; } }
+            public LicensesFrameSet         licensesFrames          { get { return _licensesFrames; } }
             #endregion
             #endregion
 
