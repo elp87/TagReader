@@ -180,6 +180,43 @@ namespace elp87.TagReader.id3v2
             TextInfoFrame frame = new TextInfoFrame(ffs, data);
             this._deliveredFrames.TMOO = frame;
         }
+
+        // Rights and license frames
+        private void SetTCOP(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TCOP = frame;
+        }
+
+        private void SetTPRO(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TPRO = frame;
+        }
+
+        private void SetTPUB(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TPUB = frame;
+        }
+
+        private void SetTOWN(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TOWN = frame;
+        }
+
+        private void SetTRSN(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TRSN = frame;
+        }
+
+        private void SetTRSO(FrameFlagSet ffs, byte[] data)
+        {
+            TextInfoFrame frame = new TextInfoFrame(ffs, data);
+            this._licensesFrames.TRSO = frame;
+        }
     }
     
 }

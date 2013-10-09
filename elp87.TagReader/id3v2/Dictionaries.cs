@@ -35,7 +35,14 @@ namespace elp87.TagReader.id3v2
             {"TCON", new FrameTypeInfo("TCON", @"Content type", true)},
             {"TFLT", new FrameTypeInfo("TFLT", @"File type", true)},
             {"TMED", new FrameTypeInfo("TMED", @"Media type", true)},
-            {"TMOO", new FrameTypeInfo("TMOO", @"Mood", true)}
+            {"TMOO", new FrameTypeInfo("TMOO", @"Mood", true)},
+
+            {"TCOP", new FrameTypeInfo("TCOP", @"Copyright message", true)},
+            {"TPRO", new FrameTypeInfo("TPRO", @"Produced notice", true)},
+            {"TPUB", new FrameTypeInfo("TPUB", @"Publisher", true)},
+            {"TOWN", new FrameTypeInfo("TOWN", @"File owner/licensee", true)},
+            {"TRSN", new FrameTypeInfo("TRSN", @"Internet radio station name", true)},
+            {"TRSO", new FrameTypeInfo("TRSO", @"Internet radio station owner", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

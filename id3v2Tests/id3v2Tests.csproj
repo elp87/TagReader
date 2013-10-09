@@ -69,6 +69,7 @@
     <Compile Include="Frames\Frames_PersonsFrameSetTest.cs" />
     <Compile Include="Frames\Frames_ContentTypeFrameTest.cs" />
     <Compile Include="Frames\Frames_DeliversFrameSetTest.cs" />
+    <Compile Include="Frames\Frames_LicensesFrameSetTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
