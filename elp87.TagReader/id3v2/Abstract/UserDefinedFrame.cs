@@ -32,9 +32,19 @@ namespace elp87.TagReader.id3v2.Abstract
         private int ParseTerminatorPos(byte[] frameData)
         {
             int position;
-            const byte termByte = 0x00;
-            position = Array.IndexOf(frameData, termByte);
-            if (frameData[position + 1] == termByte) { position++; }
+            
+            if (this._encoding == TextEncoding.UTF16 || this._encoding == TextEncoding.UTF16_BE)
+            {
+                byte[] termByteArray = new byte[] { 0x00, 0x00 };
+                position = ByteArray.FindSubArray(frameData, termByteArray);
+            }
+            else
+            {
+                byte termByte = 0x00;
+                position = Array.IndexOf(frameData, termByte);
+            }
+
+            while (frameData[position + 1] == 0x00) { position++; }
             return position;
         } 
 
@@ -47,9 +57,12 @@ namespace elp87.TagReader.id3v2.Abstract
 
         protected string ParseDescription(byte[] frameData)
         {
+            char _UTF16NullChar = System.Text.Encoding.Unicode.GetString(new byte[] { 0x00 }).ToCharArray()[0];
             byte[] descData = new byte[this._terminatorPos];
             Array.Copy(frameData, descData, descData.Length);
             string desc = this.GetString(descData);
+            if (desc[desc.Length - 1] == _UTF16NullChar)
+                { desc = desc.Substring(0, desc.Length - 1); }
             return desc;
         }
 
