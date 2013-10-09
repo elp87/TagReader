@@ -70,6 +70,7 @@
     <Compile Include="Frames\Frames_ContentTypeFrameTest.cs" />
     <Compile Include="Frames\Frames_DeliversFrameSetTest.cs" />
     <Compile Include="Frames\Frames_LicensesFrameSetTest.cs" />
+    <Compile Include="Frames\Frames_UserDefinedTextFrameTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
