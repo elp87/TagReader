@@ -12,6 +12,7 @@ namespace id3v2Tests.Frames
         private const string _fileNameTENC = @"D:\TestAudio\TENC.mp3";
         private const string _fileNameTLAN = @"D:\TestAudio\TLAN.mp3";
         private const string _fileNameTSOT = @"D:\TestAudio\TSOT.mp3";
+        private const string _fileNameTSRC = @"D:\TestAudio\TSRC.mp3";
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
 
         [TestMethod]
@@ -30,7 +31,7 @@ namespace id3v2Tests.Frames
             int expValue = 2009;
 
             MP3File test = new MP3File(_fileNameIntro);
-            
+
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TDRC.Year);
         }
 
@@ -74,6 +75,42 @@ namespace id3v2Tests.Frames
             MP3File test = new MP3File(_fileNameTSOT);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TSOT.ToString());
+        }
+
+        [TestMethod]
+        public void TestTXXX()
+        {
+            string[][] expDescription = new string[][]
+            { 
+                new string[] {"CDDB Disc ID", "Encoder", "replaygain_track_gain", "replaygain_track_peak", "replaygain_album_gain", "replaygain_album_peak", "Rip date", "Source", 
+                    "Ripping tool", "Release type", @"Catalog #"},
+                new string[] {"catalog",  }
+
+            };
+            string[][] expValue = new string[][]
+            {
+                new string[] {"5F083508", "Lame 3.97", "+4.98 dB", "0.381683", "-10.01 dB", "1", "2010-06-09", "CD (LP)", "dBpoweramp", "Normal release", @"n/a"},
+                new string[] {"0602517737280"}
+            };
+
+            MP3File[] test = new MP3File[]
+            {
+                new MP3File(_fileNameTLAN),
+                new MP3File(_fileNameTSRC)
+            };
+
+            Assert.AreEqual(expDescription.Length, test.Length);
+            Assert.AreEqual(expValue.Length, test.Length);
+            for (int i = 0; i < test.Length; i++)
+            {
+                Assert.AreEqual(expDescription[i].Length, test[i].Id3v2.OtherFrames.TXXX.Length);
+                Assert.AreEqual(expValue[i].Length, test[i].Id3v2.OtherFrames.TXXX.Length);
+                for (int j = 0; j < test[i].Id3v2.OtherFrames.TXXX.Length; j++)
+                {
+                    Assert.AreEqual(expDescription[i][j], test[i].Id3v2.OtherFrames.TXXX[j].Description);
+                    Assert.AreEqual(expValue[i][j], test[i].Id3v2.OtherFrames.TXXX[j].Value);
+                }
+            }
         }
     }
 }

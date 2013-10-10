@@ -55,6 +55,8 @@ namespace elp87.TagReader.id3v2
             {"TSOA", new FrameTypeInfo("TSOA", @"Album sort order", true)},
             {"TSOP", new FrameTypeInfo("TSOP", @"Performer sort order", true)},
             {"TSOT", new FrameTypeInfo("TSOT", @"Title sort order", true)},
+
+            {"TXXX", new FrameTypeInfo("TXXX", @"User defined text information", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
