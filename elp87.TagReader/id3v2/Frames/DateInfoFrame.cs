@@ -24,6 +24,7 @@ namespace elp87.TagReader.id3v2.Frames
 
         #region Properties
         public DateTime Date { get { return this._date; } }
+        public int Year { get { return this._date.Year; } }
         #endregion
 
         #region Methods
