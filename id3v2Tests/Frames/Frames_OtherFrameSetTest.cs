@@ -10,6 +10,8 @@ namespace id3v2Tests.Frames
     {
         private const string _fileNameTOFN = @"D:\TestAudio\TOFN.mp3";
         private const string _fileNameTENC = @"D:\TestAudio\TENC.mp3";
+        private const string _fileNameTLAN = @"D:\TestAudio\TLAN.mp3";
+        private const string _fileNameTSOT = @"D:\TestAudio\TSOT.mp3";
         private const string _fileNameIntro = @"D:\TestAudio\01. Интро.mp3";
 
         [TestMethod]
@@ -23,7 +25,7 @@ namespace id3v2Tests.Frames
         }
 
         [TestMethod]
-        public void TDRC()
+        public void TestTDRC()
         {
             int expValue = 2009;
 
@@ -52,6 +54,26 @@ namespace id3v2Tests.Frames
 
             Assert.AreEqual(expDate, test.Id3v2.OtherFrames.TDTG.Date);
             Assert.AreEqual(expYear, test.Id3v2.OtherFrames.TDTG.Year);
+        }
+
+        [TestMethod]
+        public void TestTSSE()
+        {
+            string expValue = "-V=\"2\"";
+
+            MP3File test = new MP3File(_fileNameTLAN);
+
+            Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TSSE.ToString());
+        }
+
+        [TestMethod]
+        public void TestTSOT()
+        {
+            string expValue = "SortOrder";
+
+            MP3File test = new MP3File(_fileNameTSOT);
+
+            Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TSOT.ToString());
         }
     }
 }
