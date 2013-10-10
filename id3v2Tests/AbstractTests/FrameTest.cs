@@ -20,14 +20,14 @@ namespace id3v2Tests.AbstractTests
                 {
                     return new bool[]
                     {
-                        this.flags.tagAlterPreservation,
-                        this.flags.fileAlterPreservation,
-                        this.flags.readOnly,
-                        this.flags.groupingIdentity,
-                        this.flags.compression,
-                        this.flags.encryption,
-                        this.flags.unsynchronisation,
-                        this.flags.dataLengthIndicator
+                        this.flags.TagAlterPreservation,
+                        this.flags.FileAlterPreservation,
+                        this.flags.ReadOnly,
+                        this.flags.GroupingIdentity,
+                        this.flags.Compression,
+                        this.flags.Encryption,
+                        this.flags.Unsynchronisation,
+                        this.flags.DataLengthIndicator
                     };
                 }
             }            

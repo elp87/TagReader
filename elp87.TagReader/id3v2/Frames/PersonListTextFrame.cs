@@ -43,6 +43,16 @@ namespace elp87.TagReader.id3v2.Frames
         }
         #endregion
 
+        #region Properties
+        public int ListCount
+        {
+            get
+            {
+                return this._persons.Length;
+            }
+        }
+        #endregion
+
         #region Methods
         #region Public
         public PersonMapItem GetValue(int index)
@@ -97,14 +107,6 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
         #endregion
 
-        #region Properties
-        public int ListCount
-        {
-            get
-            {
-                return this._persons.Length;
-            }
-        }
-        #endregion
+        
     }
 }

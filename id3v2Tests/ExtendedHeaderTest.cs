@@ -17,10 +17,10 @@ namespace id3v2Tests
 
             MP3File testFileExtHeader = new MP3File(_filenameExtHeaderCRC);
 
-            Assert.AreEqual(expSize, testFileExtHeader.id3v2.extHeader.size);
-            Assert.AreEqual(false, testFileExtHeader.id3v2.extHeader.isUpdate);
-            Assert.AreEqual(true, testFileExtHeader.id3v2.extHeader.isCRC);
-            Assert.AreEqual(false, testFileExtHeader.id3v2.extHeader.isRestrictions);
+            Assert.AreEqual(expSize, testFileExtHeader.Id3v2.ExtHeader.Size);
+            Assert.AreEqual(false, testFileExtHeader.Id3v2.ExtHeader.IsUpdate);
+            Assert.AreEqual(true, testFileExtHeader.Id3v2.ExtHeader.IsCRC);
+            Assert.AreEqual(false, testFileExtHeader.Id3v2.ExtHeader.IsRestrictions);
 
         }
 
@@ -31,25 +31,25 @@ namespace id3v2Tests
 
             MP3File testFileExtHeader = new MP3File(_filenameExtHeaderCRC);
 
-            Assert.AreEqual(expInt, testFileExtHeader.id3v2.extHeader.CRC);
+            Assert.AreEqual(expInt, testFileExtHeader.Id3v2.ExtHeader.CRC);
         }
 
         [TestMethod]
         public void TestCombExtHeader()
         {
-            elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction expTagSize = elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction.NoMore128KBTagSize;
-            elp87.TagReader.id3v2.ExtHeader.TextEncodingRestriction expTextEncod = elp87.TagReader.id3v2.ExtHeader.TextEncodingRestriction.NoRestrictions;
-            elp87.TagReader.id3v2.ExtHeader.TextFieldsSizeRestriction expTextSizeRestriction = elp87.TagReader.id3v2.ExtHeader.TextFieldsSizeRestriction.NoLonger1024Char;
-            elp87.TagReader.id3v2.ExtHeader.ImageEncodingRestriction expImageEncodeRestriction = elp87.TagReader.id3v2.ExtHeader.ImageEncodingRestriction.PngOrJpegOnly;
-            elp87.TagReader.id3v2.ExtHeader.ImageSizeRestriction expImageSizeRestriction = elp87.TagReader.id3v2.ExtHeader.ImageSizeRestriction.Smaller256Pixel;
+            elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions expTagSize = elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions.NoMore128KBTagSize;
+            elp87.TagReader.id3v2.ExtHeader.TextEncodingRestrictions expTextEncod = elp87.TagReader.id3v2.ExtHeader.TextEncodingRestrictions.NoRestrictions;
+            elp87.TagReader.id3v2.ExtHeader.TextFieldsSizeRestrictions expTextSizeRestriction = elp87.TagReader.id3v2.ExtHeader.TextFieldsSizeRestrictions.NoLonger1024Char;
+            elp87.TagReader.id3v2.ExtHeader.ImageEncodingRestrictions expImageEncodeRestriction = elp87.TagReader.id3v2.ExtHeader.ImageEncodingRestrictions.PngOrJpegOnly;
+            elp87.TagReader.id3v2.ExtHeader.ImageSizeRestrictions expImageSizeRestriction = elp87.TagReader.id3v2.ExtHeader.ImageSizeRestrictions.Smaller256Pixel;
 
             MP3File testFileCombExtHeader = new MP3File(_filenameExtHeaderComb);
 
-            Assert.AreEqual(expTagSize, testFileCombExtHeader.id3v2.extHeader.tagSizeRestriction);
-            Assert.AreEqual(expTextEncod, testFileCombExtHeader.id3v2.extHeader.textEncodingRestriction);
-            Assert.AreEqual(expTextSizeRestriction, testFileCombExtHeader.id3v2.extHeader.textFieldsSizeRestriction);
-            Assert.AreEqual(expImageEncodeRestriction, testFileCombExtHeader.id3v2.extHeader.imageEncodingRestriction);
-            Assert.AreEqual(expImageSizeRestriction, testFileCombExtHeader.id3v2.extHeader.imageSizeRestriction);
+            Assert.AreEqual(expTagSize, testFileCombExtHeader.Id3v2.ExtHeader.TagSizeRestriction);
+            Assert.AreEqual(expTextEncod, testFileCombExtHeader.Id3v2.ExtHeader.TextEncodingRestriction);
+            Assert.AreEqual(expTextSizeRestriction, testFileCombExtHeader.Id3v2.ExtHeader.TextFieldsSizeRestriction);
+            Assert.AreEqual(expImageEncodeRestriction, testFileCombExtHeader.Id3v2.ExtHeader.ImageEncodingRestriction);
+            Assert.AreEqual(expImageSizeRestriction, testFileCombExtHeader.Id3v2.ExtHeader.ImageSizeRestriction);
         }
 
         [TestMethod]
@@ -58,8 +58,8 @@ namespace id3v2Tests
             int expValue1MB = 0;
             int expValue128 = 1;
 
-            elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction restrict1MB = elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction.NoMore1MBTagSize;
-            elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction restrict128 = elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction.NoMore128KBTagSize;
+            elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions restrict1MB = elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions.NoMore1MBTagSize;
+            elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions restrict128 = elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions.NoMore128KBTagSize;
 
             Assert.AreEqual(expValue1MB, (int)restrict1MB);
             Assert.AreEqual(expValue128, (int)restrict128);
@@ -67,9 +67,9 @@ namespace id3v2Tests
         [TestMethod]
         public void TestGetTagSizeRestrictionFromInt()
         {
-            elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction expRestrict = elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction.NoMore128KBTagSize;
+            elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions expRestrict = elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions.NoMore128KBTagSize;
 
-            elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction restrict = (elp87.TagReader.id3v2.ExtHeader.TagSizeRestriction)1;
+            elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions restrict = (elp87.TagReader.id3v2.ExtHeader.TagSizeRestrictions)1;
             Assert.AreEqual(expRestrict, restrict);
         }
     }

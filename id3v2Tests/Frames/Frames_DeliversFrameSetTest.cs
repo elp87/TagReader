@@ -24,7 +24,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTBPM);
 
-            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TBPM.number);
+            Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TBPM.Number);
         }
 
         [TestMethod]
@@ -34,7 +34,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTOAL);
 
-            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TLEN.number);
+            Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TLEN.Number);
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTKEY);
 
-            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TKEY.ToString());
+            Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TKEY.ToString());
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTLAN);
 
-            Assert.AreEqual(expValue, test.id3v2.deliveredFrames.TLAN.ToString());
+            Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TLAN.ToString());
         }
 
         [TestMethod]
@@ -80,7 +80,7 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expValue.Length, test.Length);
             for (int i = 0; i < expValue.Length; i++)
             {
-                Assert.AreEqual(expValue[i], test[i].id3v2.deliveredFrames.TCON.ToString());
+                Assert.AreEqual(expValue[i], test[i].Id3v2.DeliveredFrames.TCON.ToString());
             }
         }
 
@@ -98,7 +98,7 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expValue.Length, test.Length);
             for (int i = 0; i < expValue.Length; i++)
             {
-                Assert.AreEqual(expValue[i], test[i].id3v2.deliveredFrames.TMED.ToString());
+                Assert.AreEqual(expValue[i], test[i].Id3v2.DeliveredFrames.TMED.ToString());
             }
         }
     }

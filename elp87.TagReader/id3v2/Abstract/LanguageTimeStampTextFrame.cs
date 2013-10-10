@@ -22,7 +22,7 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properties
-        TimeStamp.TimeStampFormat timeStampFormat { get { return this._timeStampFormat; } }
+        TimeStamp.TimeStampFormat TimeStampFormat { get { return this._timeStampFormat; } }
         #endregion
 
         #region Methods

@@ -24,7 +24,7 @@ namespace id3v2Tests.AbstractTests
             FrameFlagSet ffs = new FrameFlagSet(new byte[] { 0x00, 0x00 });
             LanguageTextFrame_TestClass test = new LanguageTextFrame_TestClass(ffs, testArray);
 
-            Assert.AreEqual(expLanguage, test.language);
+            Assert.AreEqual(expLanguage, test.Language);
         }
     }
 }

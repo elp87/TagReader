@@ -18,8 +18,8 @@ namespace id3v2Tests
                 0x00, 0x05, 0x00, 0x00, 0x00, 0x28, 0x31, 0x32, 0x29
             };
 
-            Assert.AreEqual(expLength, testFile.id3v2.GetTagArray().Length);
-            CollectionAssert.AreEqual(expArray, testFile.id3v2.GetTagArray());
+            Assert.AreEqual(expLength, testFile.Id3v2.GetTagArray().Length);
+            CollectionAssert.AreEqual(expArray, testFile.Id3v2.GetTagArray());
         }
     }
 }

@@ -29,9 +29,9 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properties
-        public string numericString { get { return this._numericString; } }
-        public int number           { get { return this._number; } }
-        public int totalNumber      { get { return this._totalNumber; } }
+        public string NumericString { get { return this._numericString; } }
+        public int Number           { get { return this._number; } }
+        public int TotalNumber      { get { return this._totalNumber; } }
         #endregion
 
         #region Methods

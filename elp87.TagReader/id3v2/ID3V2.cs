@@ -23,6 +23,7 @@ namespace elp87.TagReader
             private PersonsFrameSet _personsFrames;
             private DeliveredFrameSet _deliveredFrames;
             private LicensesFrameSet _licensesFrames;
+            private OtherFrameSet _otherFrames;
             #endregion
 
             #region Constructors
@@ -32,6 +33,7 @@ namespace elp87.TagReader
                 _personsFrames = new PersonsFrameSet();
                 _deliveredFrames = new DeliveredFrameSet();
                 _licensesFrames = new LicensesFrameSet();
+                _otherFrames = new OtherFrameSet();
             }
             public ID3V2(string filename)
                 : this()
@@ -43,14 +45,15 @@ namespace elp87.TagReader
             #endregion
 
             #region Properties
-            public Header header { get { return _header; } }
-            public ExtHeader extHeader { get { return _extHeader; } }
+            public Header Header { get { return _header; } }
+            public ExtHeader ExtHeader { get { return _extHeader; } }
             
             #region TagProperties
-            public IdentificationFrameSet   identificationFrames    { get { return _identificationFrames; } }
-            public PersonsFrameSet          personsFrames           { get { return _personsFrames; } }
-            public DeliveredFrameSet        deliveredFrames         { get { return _deliveredFrames; } }
-            public LicensesFrameSet         licensesFrames          { get { return _licensesFrames; } }
+            public IdentificationFrameSet   IdentificationFrames    { get { return _identificationFrames; } }
+            public PersonsFrameSet          PersonsFrames           { get { return _personsFrames; } }
+            public DeliveredFrameSet        DeliveredFrames         { get { return _deliveredFrames; } }
+            public LicensesFrameSet         LicensesFrames          { get { return _licensesFrames; } }
+            public OtherFrameSet OtherFrames { get { return _otherFrames; } }
             #endregion
             #endregion
 
@@ -78,27 +81,27 @@ namespace elp87.TagReader
                 _header = new Header();
 
                 _header.ReadHeader(file, headerPosition);
-                _byteArray = new byte[this.header.tagSize + 10];
+                _byteArray = new byte[this.Header.TagSize + 10];
                 this.GetTagByteArray(file, headerPosition);
 
                 _pointPosition += 10;
-                if (this._header.flagField.extendedHeader)
+                if (this._header.FlagFields.ExtendedHeader)
                 {
                     this._extHeader = new ExtHeader();
                     _extHeader.ReadExtHeader(_byteArray, _pointPosition);
-                    _pointPosition += this._extHeader.size;
+                    _pointPosition += this._extHeader.Size;
                 }
-                while (this._header.tagSize > _pointPosition)
+                while (this._header.TagSize > _pointPosition)
                 {
                     FrameReader frame = new FrameReader();
                     frame.ReadFrame(this, _byteArray, _pointPosition);
-                    _pointPosition += frame.frameSize + 10;
+                    _pointPosition += frame.FrameSize + 10;
                 }
             }
 
             private void GetTagByteArray(byte[] file, int headerPosition)
             {
-                int tagSize = this._header.tagSize;
+                int tagSize = this._header.TagSize;
                 Array.Copy(file, headerPosition, _byteArray, 0, tagSize + 10);
             }
 

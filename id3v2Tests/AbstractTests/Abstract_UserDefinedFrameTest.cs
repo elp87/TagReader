@@ -43,8 +43,8 @@ namespace id3v2Tests.AbstractTests
             string expDescription = "major_brand";
             string expValue = "M4A ";
 
-            Assert.AreEqual(expDescription, test.description);
-            Assert.AreEqual(expValue, test.value);
+            Assert.AreEqual(expDescription, test.Description);
+            Assert.AreEqual(expValue, test.Value);
         }
     }
     

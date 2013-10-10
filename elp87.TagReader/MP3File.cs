@@ -15,7 +15,7 @@ namespace elp87.TagReader
             _id3v2 = new ID3V2(filename);
         }
 
-        public ID3V2 id3v2
+        public ID3V2 Id3v2
         {
             get
             {

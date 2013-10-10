@@ -20,20 +20,20 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properies
-        public bool tagAlterPreservation { get; set; }
-        public bool fileAlterPreservation { get; set; }
-        public bool readOnly { get; set; }
-        public bool groupingIdentity { get; set; }
-        public bool compression { get; set; }
-        public bool encryption { get; set; }
-        public bool unsynchronisation { get; set; }
-        public bool dataLengthIndicator { get; set; }
+        public bool TagAlterPreservation { get; set; }
+        public bool FileAlterPreservation { get; set; }
+        public bool ReadOnly { get; set; }
+        public bool GroupingIdentity { get; set; }
+        public bool Compression { get; set; }
+        public bool Encryption { get; set; }
+        public bool Unsynchronisation { get; set; }
+        public bool DataLengthIndicator { get; set; }
 
-        public byte grouping
+        public byte Grouping
         {
             get
             {
-                if (this.groupingIdentity)
+                if (this.GroupingIdentity)
                 {
                     return _grouping;
                 }
@@ -43,11 +43,11 @@ namespace elp87.TagReader.id3v2
                 }
             }
         }
-        public byte encryptMethod
+        public byte EncryptMethod
         {
             get
             {
-                if (this.encryption)
+                if (this.Encryption)
                 {
                     return _encryptMethod;
                 }
@@ -57,11 +57,11 @@ namespace elp87.TagReader.id3v2
                 }
             }
         }
-        public int dataLength
+        public int DataLength
         {
             get
             {
-                if (this.dataLengthIndicator)
+                if (this.DataLengthIndicator)
                 {
                     return _dataLength;
                 }
@@ -78,17 +78,17 @@ namespace elp87.TagReader.id3v2
         internal int GetExtraDate(byte[] tagArray, int position)
         {
             int offset = 0;
-            if (this.groupingIdentity)
+            if (this.GroupingIdentity)
             {
                 this._grouping = tagArray[position + offset];
                 offset++;
             }
-            if (this.encryption)
+            if (this.Encryption)
             {
                 this._encryptMethod = tagArray[position + offset];
                 offset++;
             }
-            if (this.dataLengthIndicator)
+            if (this.DataLengthIndicator)
             {
                 byte[] lengthByte = new byte[4];
                 Array.Copy(tagArray, position + offset, lengthByte, 0, 4);
@@ -103,15 +103,15 @@ namespace elp87.TagReader.id3v2
         #region Private
         private void ParseFlags(byte[] flagBytes)
         {
-            this.tagAlterPreservation = ByteOperation.GetBit(flagBytes[0], 6);
-            this.fileAlterPreservation = ByteOperation.GetBit(flagBytes[0], 5);
-            this.readOnly = ByteOperation.GetBit(flagBytes[0], 4);
+            this.TagAlterPreservation = ByteOperation.GetBit(flagBytes[0], 6);
+            this.FileAlterPreservation = ByteOperation.GetBit(flagBytes[0], 5);
+            this.ReadOnly = ByteOperation.GetBit(flagBytes[0], 4);
 
-            this.groupingIdentity = ByteOperation.GetBit(flagBytes[1], 6);
-            this.compression = ByteOperation.GetBit(flagBytes[1], 3);
-            this.encryption = ByteOperation.GetBit(flagBytes[1], 2);
-            this.unsynchronisation = ByteOperation.GetBit(flagBytes[1], 1);
-            this.dataLengthIndicator = ByteOperation.GetBit(flagBytes[1], 0);
+            this.GroupingIdentity = ByteOperation.GetBit(flagBytes[1], 6);
+            this.Compression = ByteOperation.GetBit(flagBytes[1], 3);
+            this.Encryption = ByteOperation.GetBit(flagBytes[1], 2);
+            this.Unsynchronisation = ByteOperation.GetBit(flagBytes[1], 1);
+            this.DataLengthIndicator = ByteOperation.GetBit(flagBytes[1], 0);
 
             if (((flagBytes[0] & 0x8F) != 0) || ((flagBytes[1] & 0xB0) != 0)) throw new Exceptions.NotUsableFlagException("Invalid flag field in FrameFlagSet. Undefined flags are set", "", DateTime.Now);
         }

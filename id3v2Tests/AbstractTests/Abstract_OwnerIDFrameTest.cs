@@ -60,7 +60,7 @@ namespace id3v2Tests.AbstractTests
         {
             string expID = "http://www.cddb.com/id3/taginfo1.html";
 
-            Assert.AreEqual(expID, test.ownerID);
+            Assert.AreEqual(expID, test.OwnerID);
         }
 
         [TestMethod]

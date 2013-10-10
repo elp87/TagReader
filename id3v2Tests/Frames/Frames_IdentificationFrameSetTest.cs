@@ -21,7 +21,7 @@ namespace id3v2Tests.Frames
 
             MP3File testTIT1 = new MP3File(_fileNameTIT1);
 
-            Assert.AreEqual(expTIT1, testTIT1.id3v2.identificationFrames.TIT1.ToString());
+            Assert.AreEqual(expTIT1, testTIT1.Id3v2.IdentificationFrames.TIT1.ToString());
         }
 
         [TestMethod]
@@ -42,7 +42,7 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expValues.Length, testFiles.Length);
             for (int i = 0; i < testFiles.Length; i++)
             {
-                Assert.AreEqual(expValues[i], testFiles[i].id3v2.identificationFrames.TIT2.ToString());
+                Assert.AreEqual(expValues[i], testFiles[i].Id3v2.IdentificationFrames.TIT2.ToString());
             }
         }
 
@@ -53,7 +53,7 @@ namespace id3v2Tests.Frames
 
             MP3File testTIT3 = new MP3File(_fileNameSvetSneg);
 
-            Assert.AreEqual(expTIT3, testTIT3.id3v2.identificationFrames.TIT3.ToString());
+            Assert.AreEqual(expTIT3, testTIT3.Id3v2.IdentificationFrames.TIT3.ToString());
         }
 
         [TestMethod]
@@ -73,7 +73,7 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expValues.Length, testFiles.Length);
             for (int i = 0; i < testFiles.Length; i++)
             {
-                Assert.AreEqual(expValues[i], testFiles[i].id3v2.identificationFrames.TALB.ToString());
+                Assert.AreEqual(expValues[i], testFiles[i].Id3v2.IdentificationFrames.TALB.ToString());
             }
         }
 
@@ -84,7 +84,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTOAL);
 
-            Assert.AreEqual(expValue, test.id3v2.identificationFrames.TOAL.ToString());
+            Assert.AreEqual(expValue, test.Id3v2.IdentificationFrames.TOAL.ToString());
         }
 
         [TestMethod]
@@ -103,8 +103,8 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expNumber.Length, testFiles.Length);
             for (int i = 0; i < testFiles.Length; i++)
             {
-                Assert.AreEqual(expNumber[i], testFiles[i].id3v2.identificationFrames.TRCK.number);
-                Assert.AreEqual(expTotalNumber[i], testFiles[i].id3v2.identificationFrames.TRCK.totalNumber);
+                Assert.AreEqual(expNumber[i], testFiles[i].Id3v2.IdentificationFrames.TRCK.Number);
+                Assert.AreEqual(expTotalNumber[i], testFiles[i].Id3v2.IdentificationFrames.TRCK.TotalNumber);
             }
         }
 
@@ -117,9 +117,9 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTOAL);
 
-            Assert.AreEqual(expNumber, test.id3v2.identificationFrames.TPOS.number);
-            Assert.AreEqual(expTotalNumber, test.id3v2.identificationFrames.TPOS.totalNumber);
-            Assert.AreEqual(expStringValue, test.id3v2.identificationFrames.TPOS.numericString);
+            Assert.AreEqual(expNumber, test.Id3v2.IdentificationFrames.TPOS.Number);
+            Assert.AreEqual(expTotalNumber, test.Id3v2.IdentificationFrames.TPOS.TotalNumber);
+            Assert.AreEqual(expStringValue, test.Id3v2.IdentificationFrames.TPOS.NumericString);
         }
 
         [TestMethod]
@@ -129,7 +129,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTSRC);
 
-            Assert.AreEqual(expTSRC, test.id3v2.identificationFrames.TSRC.ToString());
+            Assert.AreEqual(expTSRC, test.Id3v2.IdentificationFrames.TSRC.ToString());
         }
     }
 }

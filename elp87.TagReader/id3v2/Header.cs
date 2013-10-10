@@ -29,15 +29,15 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properties
-        public byte[] header { get { return _header; } }
+        public byte[] HeaderArray { get { return _header; } }
 
-        public int tagVersion { get { return _tagVersion; } }
+        public int TagVersion { get { return _tagVersion; } }
 
-        public int tagRevision { get { return _tagRevVersion; } }
+        public int TagRevision { get { return _tagRevVersion; } }
 
-        public FlagField flagField { get { return _flagField; } }
+        public FlagField FlagFields { get { return _flagField; } }
 
-        public int tagSize { get { return _tagSize; } }
+        public int TagSize { get { return _tagSize; } }
         #endregion
 
         #region Methods
@@ -89,10 +89,10 @@ namespace elp87.TagReader.id3v2
                 _footer = footer;
             }
 
-            public bool unsunc { get { return _unsync; } }
-            public bool extendedHeader { get { return _extendedHeader; } }
-            public bool experimentalIndicator { get { return _experimental; } }
-            public bool footer { get { return _footer; } }
+            public bool Unsunc { get { return _unsync; } }
+            public bool ExtendedHeader { get { return _extendedHeader; } }
+            public bool ExperimentalIndicator { get { return _experimental; } }
+            public bool Footer { get { return _footer; } }
         }
         #endregion
     }

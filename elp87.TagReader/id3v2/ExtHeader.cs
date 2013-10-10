@@ -10,26 +10,26 @@ namespace elp87.TagReader.id3v2
         private bool _isCRC;
         private bool _isRestrictions;
         private int _CRC;
-        private TagSizeRestriction _tagSizeRestriction;
-        private TextEncodingRestriction _textEncodingRestriction;
-        private TextFieldsSizeRestriction _textFieldsSizeRestriction;
-        private ImageEncodingRestriction _imageEncodingRestriction;
-        private ImageSizeRestriction _imageSizeRestriction;
+        private TagSizeRestrictions _tagSizeRestriction;
+        private TextEncodingRestrictions _textEncodingRestriction;
+        private TextFieldsSizeRestrictions _textFieldsSizeRestriction;
+        private ImageEncodingRestrictions _imageEncodingRestriction;
+        private ImageSizeRestrictions _imageSizeRestriction;
         #endregion
 
         #region Properties
-        public int size { get; set; }
-        public bool isUpdate { get { return _isUpdate; } }
-        public bool isCRC { get { return _isCRC; } }
-        public bool isRestrictions { get { return _isRestrictions; } }
+        public int Size { get; set; }
+        public bool IsUpdate { get { return _isUpdate; } }
+        public bool IsCRC { get { return _isCRC; } }
+        public bool IsRestrictions { get { return _isRestrictions; } }
 
         public int CRC { get { return _CRC; } }
 
-        public TagSizeRestriction tagSizeRestriction { get { return _tagSizeRestriction; } }
-        public TextEncodingRestriction textEncodingRestriction { get { return _textEncodingRestriction; } }
-        public TextFieldsSizeRestriction textFieldsSizeRestriction { get { return _textFieldsSizeRestriction; } }
-        public ImageEncodingRestriction imageEncodingRestriction { get { return _imageEncodingRestriction; } }
-        public ImageSizeRestriction imageSizeRestriction { get { return _imageSizeRestriction; } }
+        public TagSizeRestrictions TagSizeRestriction { get { return _tagSizeRestriction; } }
+        public TextEncodingRestrictions TextEncodingRestriction { get { return _textEncodingRestriction; } }
+        public TextFieldsSizeRestrictions TextFieldsSizeRestriction { get { return _textFieldsSizeRestriction; } }
+        public ImageEncodingRestrictions ImageEncodingRestriction { get { return _imageEncodingRestriction; } }
+        public ImageSizeRestrictions ImageSizeRestriction { get { return _imageSizeRestriction; } }
         #endregion
 
         #region Methods
@@ -46,7 +46,7 @@ namespace elp87.TagReader.id3v2
         {
 
 
-            this.size = this.GetSize(byteArray, pointPosition);
+            this.Size = this.GetSize(byteArray, pointPosition);
             pointPosition += 4; // Сдвиг после размера
             pointPosition += 1; // 0x01 - Кол-во байт флага
             this.ParseFlagField(byteArray[pointPosition]);
@@ -93,40 +93,40 @@ namespace elp87.TagReader.id3v2
             this._imageSizeRestriction = GetImageSizeRestriction(RestrictionByte);
         }
 
-        private TagSizeRestriction GetTagSizeRestrict(byte RestrictionByte)
+        private TagSizeRestrictions GetTagSizeRestrict(byte RestrictionByte)
         {
             int tagSizeFlagValue = (RestrictionByte & 0xC0) >> 6;
-            return (TagSizeRestriction)tagSizeFlagValue;             
+            return (TagSizeRestrictions)tagSizeFlagValue;             
         }
 
-        private TextEncodingRestriction GetTextEncodingRestriction(byte RestrictionByte)
+        private TextEncodingRestrictions GetTextEncodingRestriction(byte RestrictionByte)
         {
             int textEncodingFlagValue = (RestrictionByte & 0x20) >> 5;
-            return (TextEncodingRestriction)textEncodingFlagValue;
+            return (TextEncodingRestrictions)textEncodingFlagValue;
         }
 
-        private TextFieldsSizeRestriction GetTextFieldsSizeRestriction(byte RestrictionByte)
+        private TextFieldsSizeRestrictions GetTextFieldsSizeRestriction(byte RestrictionByte)
         {
             int textFieldSizeFlagValue = (RestrictionByte & 0x18) >> 3;
-            return (TextFieldsSizeRestriction)textFieldSizeFlagValue;
+            return (TextFieldsSizeRestrictions)textFieldSizeFlagValue;
         }
 
-        private ImageEncodingRestriction GetImageEncodingRestriction(byte RestrictionByte)
+        private ImageEncodingRestrictions GetImageEncodingRestriction(byte RestrictionByte)
         {
             int imageEncodingFlagValue = (RestrictionByte & 0x04) >> 2;
-            return (ImageEncodingRestriction)imageEncodingFlagValue;
+            return (ImageEncodingRestrictions)imageEncodingFlagValue;
         }
 
-        private ImageSizeRestriction GetImageSizeRestriction(byte RestrictionByte)
+        private ImageSizeRestrictions GetImageSizeRestriction(byte RestrictionByte)
         {
             int imageSizeFlagValue = (RestrictionByte & 0x03);
-            return (ImageSizeRestriction)imageSizeFlagValue;
+            return (ImageSizeRestrictions)imageSizeFlagValue;
         }
         #endregion
         #endregion
 
         #region Enums
-        public enum TagSizeRestriction
+        public enum TagSizeRestrictions
         {
             NoMore1MBTagSize = 0,
             NoMore128KBTagSize = 1,
@@ -134,13 +134,13 @@ namespace elp87.TagReader.id3v2
             NoMore4KBTagSize = 3
         }
 
-        public enum TextEncodingRestriction
+        public enum TextEncodingRestrictions
         {
             NoRestrictions = 0,
             ISO_8859_Or_UTF8_Only
         }
 
-        public enum TextFieldsSizeRestriction
+        public enum TextFieldsSizeRestrictions
         {
             NoRestrictions = 0,
             NoLonger1024Char = 1,
@@ -148,13 +148,13 @@ namespace elp87.TagReader.id3v2
             NoLonger30Char = 3
         }
 
-        public enum ImageEncodingRestriction
+        public enum ImageEncodingRestrictions
         {
             NoRestrictions = 0,
             PngOrJpegOnly = 1
         }
 
-        public enum ImageSizeRestriction
+        public enum ImageSizeRestrictions
         {
             NoRestrictions = 0,
             Smaller256Pixel = 1,

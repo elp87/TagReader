@@ -30,9 +30,9 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properties
-        public string id { get { return _identificator; } }
+        public string Id { get { return _identificator; } }
 
-        public int frameSize { get { return _frameSize; } }
+        public int FrameSize { get { return _frameSize; } }
         #endregion
 
         #region Methods
@@ -46,7 +46,7 @@ namespace elp87.TagReader.id3v2
 
             GetIdentificator(tagArray, _id);
             AdjustTagID();
-            GetFrameSize(tagArray, size, tag.header.tagVersion);
+            GetFrameSize(tagArray, size, tag.Header.TagVersion);
             if (FindId())
             {
                 GetFlagsField(tagArray);
@@ -57,7 +57,7 @@ namespace elp87.TagReader.id3v2
             }
             else
             {
-                _pointPosition += this.frameSize;
+                _pointPosition += this.FrameSize;
             }
         }        
         #endregion
@@ -81,7 +81,7 @@ namespace elp87.TagReader.id3v2
 
         private bool FindId()
         {
-            return _frameIDs.TryGetValue(this.id, out _frame);
+            return _frameIDs.TryGetValue(this.Id, out _frame);
         }
 
         private void GetFrameSize(byte[] tag, byte[] size, int tagVersion)
@@ -108,7 +108,7 @@ namespace elp87.TagReader.id3v2
         private void SetValueIntoTag(ID3V2 tag)
         {            
             Type tagType = tag.GetType();
-            string methodName = "Set" + _frame.id;
+            string methodName = "Set" + _frame.Id;
             tagType.GetMethod(methodName, System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .Invoke(tag, new object[] { _flagSet, _frameData });
         }

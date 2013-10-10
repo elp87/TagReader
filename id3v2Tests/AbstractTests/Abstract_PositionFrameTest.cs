@@ -31,9 +31,9 @@ namespace id3v2Tests.AbstractTests
 
             test = new PositionFrame(ffs, byte01_15_slash);
 
-            Assert.AreEqual(expNumericString, test.numericString);
-            Assert.AreEqual(expNumber, test.number);
-            Assert.AreEqual(expTotalNumber, test.totalNumber);
+            Assert.AreEqual(expNumericString, test.NumericString);
+            Assert.AreEqual(expNumber, test.Number);
+            Assert.AreEqual(expTotalNumber, test.TotalNumber);
         }
 
         [TestMethod]
@@ -45,9 +45,9 @@ namespace id3v2Tests.AbstractTests
 
             test = new PositionFrame(ffs, byte1_07_dot);
 
-            Assert.AreEqual(expNumericString, test.numericString);
-            Assert.AreEqual(expNumber, test.number);
-            Assert.AreEqual(expTotalNumber, test.totalNumber);
+            Assert.AreEqual(expNumericString, test.NumericString);
+            Assert.AreEqual(expNumber, test.Number);
+            Assert.AreEqual(expTotalNumber, test.TotalNumber);
         }
 
         [TestMethod]
@@ -59,9 +59,9 @@ namespace id3v2Tests.AbstractTests
 
             test = new PositionFrame(ffs, byte01);
 
-            Assert.AreEqual(expNumericString, test.numericString);
-            Assert.AreEqual(expNumber, test.number);
-            Assert.AreEqual(expTotalNumber, test.totalNumber);
+            Assert.AreEqual(expNumericString, test.NumericString);
+            Assert.AreEqual(expNumber, test.Number);
+            Assert.AreEqual(expTotalNumber, test.TotalNumber);
         }
 
         [TestMethod]
@@ -71,7 +71,7 @@ namespace id3v2Tests.AbstractTests
 
             PrivateObject target = new PrivateObject(typeof(PositionFrame));
             target.Invoke("ParseNumericString", new object[] { "01" });
-            int number = (int)target.GetProperty("number");
+            int number = (int)target.GetProperty("Number");
 
             Assert.AreEqual(expNumber, number);
         }
@@ -83,7 +83,7 @@ namespace id3v2Tests.AbstractTests
 
             PositionFrame test = new PositionFrame(ffs, byteArray);
 
-            Assert.AreEqual(2, test.number);
+            Assert.AreEqual(2, test.Number);
         }
     }
 }

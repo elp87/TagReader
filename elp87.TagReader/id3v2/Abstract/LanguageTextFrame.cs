@@ -23,7 +23,7 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properties
-        public string language
+        public string Language
         {
             get
             {

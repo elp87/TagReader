@@ -24,8 +24,8 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properies
-        public string description   { get { return this._description; } }
-        public string value         { get { return this._value; } }
+        public string Description   { get { return this._description; } }
+        public string Value         { get { return this._value; } }
         #endregion
 
         #region Methods

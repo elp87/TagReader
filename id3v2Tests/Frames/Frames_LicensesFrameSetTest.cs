@@ -18,7 +18,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTENC);
 
-            Assert.AreEqual(expValue, test.id3v2.licensesFrames.TCOP.ToString());
+            Assert.AreEqual(expValue, test.Id3v2.LicensesFrames.TCOP.ToString());
         }
 
         [TestMethod]
@@ -35,7 +35,7 @@ namespace id3v2Tests.Frames
             Assert.AreEqual(expValue.Length, test.Length);
             for (int i = 0; i < expValue.Length; i++)
             {
-                Assert.AreEqual(expValue[i], test[i].id3v2.licensesFrames.TPUB.ToString());
+                Assert.AreEqual(expValue[i], test[i].Id3v2.LicensesFrames.TPUB.ToString());
             }
         }
 
@@ -46,7 +46,7 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTOAL);
 
-            Assert.AreEqual(expValue, test.id3v2.licensesFrames.TOWN.ToString());
+            Assert.AreEqual(expValue, test.Id3v2.LicensesFrames.TOWN.ToString());
         }
     }
 }

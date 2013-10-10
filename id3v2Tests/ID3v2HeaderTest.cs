@@ -22,8 +22,8 @@ namespace id3v2Tests
             byte[] expHeader04 = { 0x49, 0x44, 0x33, 0x04, 0x00, 0x00, 0x00, 0x02, 0x4E, 0x1E };
             for (int i = 0; i < 10; i++)
             {
-                Assert.AreEqual(expHeader03[i], testFile03.id3v2.header.header[i]);
-                Assert.AreEqual(expHeader04[i], testFile04.id3v2.header.header[i]);
+                Assert.AreEqual(expHeader03[i], testFile03.Id3v2.Header.HeaderArray[i]);
+                Assert.AreEqual(expHeader04[i], testFile04.Id3v2.Header.HeaderArray[i]);
             }
         }
 
@@ -32,8 +32,8 @@ namespace id3v2Tests
         {
             int _expVersion03 = 3;
             int _expVersion04 = 4;
-            Assert.AreEqual(_expVersion03, testFile03.id3v2.header.tagVersion);
-            Assert.AreEqual(_expVersion04, testFile04.id3v2.header.tagVersion);
+            Assert.AreEqual(_expVersion03, testFile03.Id3v2.Header.TagVersion);
+            Assert.AreEqual(_expVersion04, testFile04.Id3v2.Header.TagVersion);
         }
 
         [TestMethod]
@@ -41,8 +41,8 @@ namespace id3v2Tests
         {
             int _expSize03 = 155537;
             int _expSize04 = 42782;
-            Assert.AreEqual(_expSize03, testFile03.id3v2.header.tagSize);
-            Assert.AreEqual(_expSize04, testFile04.id3v2.header.tagSize);
+            Assert.AreEqual(_expSize03, testFile03.Id3v2.Header.TagSize);
+            Assert.AreEqual(_expSize04, testFile04.Id3v2.Header.TagSize);
         }
 
         [TestMethod]
@@ -51,13 +51,13 @@ namespace id3v2Tests
             Header.FlagField flag = new Header.FlagField(0x80);
             Header.FlagField _expFlag = new Header.FlagField(false, false, false, false);
             bool expSync = true;
-            Assert.AreEqual(expSync, flag.unsunc);
-            Assert.AreEqual(false, flag.experimentalIndicator);
+            Assert.AreEqual(expSync, flag.Unsunc);
+            Assert.AreEqual(false, flag.ExperimentalIndicator);
 
-            Assert.AreEqual(_expFlag.unsunc, testFile04.id3v2.header.flagField.unsunc);
-            Assert.AreEqual(_expFlag.extendedHeader, testFile04.id3v2.header.flagField.extendedHeader);
-            Assert.AreEqual(_expFlag.experimentalIndicator, testFile04.id3v2.header.flagField.experimentalIndicator);
-            Assert.AreEqual(_expFlag.footer, testFile04.id3v2.header.flagField.footer);
+            Assert.AreEqual(_expFlag.Unsunc, testFile04.Id3v2.Header.FlagFields.Unsunc);
+            Assert.AreEqual(_expFlag.ExtendedHeader, testFile04.Id3v2.Header.FlagFields.ExtendedHeader);
+            Assert.AreEqual(_expFlag.ExperimentalIndicator, testFile04.Id3v2.Header.FlagFields.ExperimentalIndicator);
+            Assert.AreEqual(_expFlag.Footer, testFile04.Id3v2.Header.FlagFields.Footer);
         }
 
         [TestMethod]

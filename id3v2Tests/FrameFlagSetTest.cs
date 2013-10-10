@@ -19,14 +19,14 @@ namespace id3v2Tests
                 {
                     return new bool[]
                     {
-                        this.tagAlterPreservation,
-                        this.fileAlterPreservation,
-                        this.readOnly,
-                        this.groupingIdentity,
-                        this.compression,
-                        this.encryption,
-                        this.unsynchronisation,
-                        this.dataLengthIndicator
+                        this.TagAlterPreservation,
+                        this.FileAlterPreservation,
+                        this.ReadOnly,
+                        this.GroupingIdentity,
+                        this.Compression,
+                        this.Encryption,
+                        this.Unsynchronisation,
+                        this.DataLengthIndicator
                     };
                 }
             }
@@ -66,14 +66,14 @@ namespace id3v2Tests
 
             byte expGroupID = 0x4C;
 
-            Assert.AreEqual(expGroupID, ffs_00_40.grouping);
+            Assert.AreEqual(expGroupID, ffs_00_40.Grouping);
         }
 
         [TestMethod]
         [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.FlagUnsetException))]
         public void TestFlagUnsetException()
         {
-            int i = ffs_00_00.dataLength;
+            int i = ffs_00_00.DataLength;
         }
 
         [TestMethod]

@@ -25,7 +25,7 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properies
-        public string ownerID { get { return this._ownerID; } }
+        public string OwnerID { get { return this._ownerID; } }
         #endregion
 
         #region Methods
