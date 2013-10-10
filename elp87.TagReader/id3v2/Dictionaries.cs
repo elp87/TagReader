@@ -43,6 +43,9 @@ namespace elp87.TagReader.id3v2
             {"TOWN", new FrameTypeInfo("TOWN", @"File owner/licensee", true)},
             {"TRSN", new FrameTypeInfo("TRSN", @"Internet radio station name", true)},
             {"TRSO", new FrameTypeInfo("TRSO", @"Internet radio station owner", true)},
+
+            {"TOFN", new FrameTypeInfo("TOFN", @"Original filename", true)},
+            {"TDLY", new FrameTypeInfo("TDLY", @"Playlist delay", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
