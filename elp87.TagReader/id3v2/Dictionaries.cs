@@ -46,6 +46,11 @@ namespace elp87.TagReader.id3v2
 
             {"TOFN", new FrameTypeInfo("TOFN", @"Original filename", true)},
             {"TDLY", new FrameTypeInfo("TDLY", @"Playlist delay", true)},
+            {"TDEN", new FrameTypeInfo("TDEN", @"Encoding time", true)},
+            {"TDOR", new FrameTypeInfo("TDOR", @"Original release time", true)},
+            {"TDRC", new FrameTypeInfo("TDRC", @"Recording time", true)},
+            {"TDRL", new FrameTypeInfo("TDRL", @"Release time", true)},
+            {"TDTG", new FrameTypeInfo("TDTG", @"Tagging time", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

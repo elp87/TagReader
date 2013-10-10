@@ -230,6 +230,36 @@ namespace elp87.TagReader.id3v2
             NumericStringFrame frame = new NumericStringFrame(ffs, data);
             this._otherFrames.TDLY = frame;
         }
+
+        private void SetTDEN(FrameFlagSet ffs, byte[] data)
+        {
+            DateInfoFrame frame = new DateInfoFrame(ffs, data);
+            this._otherFrames.TDEN = frame;
+        }
+
+        private void SetTDOR(FrameFlagSet ffs, byte[] data)
+        {
+            DateInfoFrame frame = new DateInfoFrame(ffs, data);
+            this._otherFrames.TDOR = frame;
+        }
+
+        private void SetTDRC(FrameFlagSet ffs, byte[] data)
+        {
+            DateInfoFrame frame = new DateInfoFrame(ffs, data);
+            this._otherFrames.TDRC = frame;
+        }
+
+        private void SetTDRL(FrameFlagSet ffs, byte[] data)
+        {
+            DateInfoFrame frame = new DateInfoFrame(ffs, data);
+            this._otherFrames.TDRL = frame;
+        }
+
+        private void SetTDTG(FrameFlagSet ffs, byte[] data)
+        {
+            DateInfoFrame frame = new DateInfoFrame(ffs, data);
+            this._otherFrames.TDTG = frame;
+        }
     }
     
 }
