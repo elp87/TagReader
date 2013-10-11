@@ -71,7 +71,9 @@
     <Compile Include="id3v2\FrameReader.cs" />
     <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
     <Compile Include="id3v2\FrameFlagSet.cs" />
+    <Compile Include="id3v2\Frames\UrlFrame.cs" />
     <Compile Include="id3v2\Frames\UserDefinedTextFrame.cs" />
+    <Compile Include="id3v2\Frames\UserDefinedUrlFrame.cs" />
     <Compile Include="id3v2\FrameTypeInfo.cs" />
     <Compile Include="id3v2\Header.cs" />
     <Compile Include="id3v2\ID3V2.cs" />

@@ -61,6 +61,7 @@ namespace elp87.TagReader.id3v2.Abstract
             byte[] descData = new byte[this._terminatorPos];
             Array.Copy(frameData, descData, descData.Length);
             string desc = this.GetString(descData);
+            if (desc == "") return "";
             if (desc[desc.Length - 1] == _UTF16NullChar)
                 { desc = desc.Substring(0, desc.Length - 1); }
             return desc;

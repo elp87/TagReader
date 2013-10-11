@@ -73,6 +73,7 @@
     <Compile Include="Frames\Frames_UserDefinedTextFrameTest.cs" />
     <Compile Include="Frames\Frames_DateInfoFrameTest.cs" />
     <Compile Include="Frames\Frames_OtherFrameSetTest.cs" />
+    <Compile Include="Frames\Frames_UrlFrameTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
