@@ -50,6 +50,7 @@
     <Compile Include="id3v2\Abstract\TimeStampFrame.cs" />
     <Compile Include="id3v2\Abstract\TimeStampTextFrame.cs" />
     <Compile Include="id3v2\Abstract\UserDefinedFrame.cs" />
+    <Compile Include="id3v2\FrameSet\UrlFrameSet.cs" />
     <Compile Include="id3v2\Frames\ContentTypeFrame.cs" />
     <Compile Include="id3v2\Frames\DateInfoFrame.cs" />
     <Compile Include="id3v2\FrameSet\DeliveredFrameSet.cs" />

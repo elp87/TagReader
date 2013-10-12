@@ -24,6 +24,7 @@ namespace elp87.TagReader
             private DeliveredFrameSet _deliveredFrames;
             private LicensesFrameSet _licensesFrames;
             private OtherFrameSet _otherFrames;
+            private UrlFrameSet _urlFrames;
             #endregion
 
             #region Constructors
@@ -34,6 +35,7 @@ namespace elp87.TagReader
                 _deliveredFrames = new DeliveredFrameSet();
                 _licensesFrames = new LicensesFrameSet();
                 _otherFrames = new OtherFrameSet();
+                _urlFrames = new UrlFrameSet();
             }
             public ID3V2(string filename)
                 : this()
@@ -53,7 +55,8 @@ namespace elp87.TagReader
             public PersonsFrameSet          PersonsFrames           { get { return _personsFrames; } }
             public DeliveredFrameSet        DeliveredFrames         { get { return _deliveredFrames; } }
             public LicensesFrameSet         LicensesFrames          { get { return _licensesFrames; } }
-            public OtherFrameSet OtherFrames { get { return _otherFrames; } }
+            public OtherFrameSet            OtherFrames             { get { return _otherFrames; } }
+            public UrlFrameSet              UrlFrames               { get { return _urlFrames; } }
             #endregion
             #endregion
 
