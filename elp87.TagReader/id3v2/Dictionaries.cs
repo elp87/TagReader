@@ -57,6 +57,17 @@ namespace elp87.TagReader.id3v2
             {"TSOT", new FrameTypeInfo("TSOT", @"Title sort order", true)},
 
             {"TXXX", new FrameTypeInfo("TXXX", @"User defined text information", true)},
+
+            {"WCOM", new FrameTypeInfo("WCOM", @"Commercial information", true)},
+            {"WCOP", new FrameTypeInfo("WCOP", @"Copyright/Legal information", true)},
+            {"WOAF", new FrameTypeInfo("WOAF", @"Official audio file webpage", true)},
+            {"WOAR", new FrameTypeInfo("WOAR", @"Official artist/performer webpage", true)},
+            {"WOAS", new FrameTypeInfo("WOAS", @"Official audio source webpage", true)},
+            {"WORS", new FrameTypeInfo("WORS", @"Official Internet radio station homepage", true)},
+            {"WPAY", new FrameTypeInfo("WPAY", @"Payment", true)},
+            {"WPUB", new FrameTypeInfo("WPUB", @"Publishers official webpage", true)},
+
+            {"WXXX", new FrameTypeInfo("WXXX", @"User defined URL link", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

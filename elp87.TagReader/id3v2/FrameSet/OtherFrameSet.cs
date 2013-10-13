@@ -37,7 +37,7 @@
         public UserDefinedTextFrame[] TXXX { get { return this._TXXX; } set { this._TXXX = value; } }
         #endregion
 
-        #region Properties
+        #region Methods
         internal void AddTXXX(UserDefinedTextFrame frame)
         {
             if ( _TXXX == null || _TXXX.Length == 0 )

@@ -290,6 +290,61 @@ namespace elp87.TagReader.id3v2
             UserDefinedTextFrame frame = new UserDefinedTextFrame(ffs, data);
             this._otherFrames.AddTXXX(frame);
         }
+
+        // URL link frames
+        private void SetWCOM(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.AddWCOM(frame);
+        }
+
+        private void SetWCOP(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WCOP = frame;
+        }
+
+        private void SetWOAF(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WOAF = frame;
+        }
+
+        private void SetWOAR(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.AddWOAR(frame);
+        }
+
+        private void SetWOAS(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WOAS = frame;
+        }
+
+        private void SetWORS(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WORS = frame;
+        }
+
+        private void SetWPAY(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WPAY = frame;
+        }
+
+        private void SetWPUB(FrameFlagSet ffs, byte[] data)
+        {
+            UrlFrame frame = new UrlFrame(ffs, data);
+            this.UrlFrames.WPUB = frame;
+        }
+
+        private void SetWXXX(FrameFlagSet ffs, byte[] data)
+        {
+            UserDefinedUrlFrame frame = new UserDefinedUrlFrame(ffs, data);
+            this.UrlFrames.AddWXXX(frame);
+        }
     }
     
 }
