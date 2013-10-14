@@ -65,8 +65,7 @@
                 _WOAR[_WOAR.Length - 1] = frame;
             } 
         }
-        #endregion       
-    
+
         internal void AddWXXX(UserDefinedUrlFrame frame)
         {
             if (_WXXX == null || _WXXX.Length == 0)
@@ -83,5 +82,6 @@
                 _WXXX[_WXXX.Length - 1] = frame;
             }
         }
+        #endregion        
     }
 }
