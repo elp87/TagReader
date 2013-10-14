@@ -25,6 +25,8 @@ namespace elp87.TagReader
             private LicensesFrameSet _licensesFrames;
             private OtherFrameSet _otherFrames;
             private UrlFrameSet _urlFrames;
+
+            private UniqueFileIdentifierFrame[] _UFID;
             #endregion
 
             #region Constructors
@@ -51,12 +53,14 @@ namespace elp87.TagReader
             public ExtHeader ExtHeader { get { return _extHeader; } }
             
             #region TagProperties
-            public IdentificationFrameSet   IdentificationFrames    { get { return _identificationFrames; } }
-            public PersonsFrameSet          PersonsFrames           { get { return _personsFrames; } }
-            public DeliveredFrameSet        DeliveredFrames         { get { return _deliveredFrames; } }
-            public LicensesFrameSet         LicensesFrames          { get { return _licensesFrames; } }
-            public OtherFrameSet            OtherFrames             { get { return _otherFrames; } }
-            public UrlFrameSet              UrlFrames               { get { return _urlFrames; } }
+            public IdentificationFrameSet      IdentificationFrames    { get { return _identificationFrames; } }
+            public PersonsFrameSet             PersonsFrames           { get { return _personsFrames; } }
+            public DeliveredFrameSet           DeliveredFrames         { get { return _deliveredFrames; } }
+            public LicensesFrameSet            LicensesFrames          { get { return _licensesFrames; } }
+            public OtherFrameSet               OtherFrames             { get { return _otherFrames; } }
+            public UrlFrameSet                 UrlFrames               { get { return _urlFrames; } }
+
+            public UniqueFileIdentifierFrame[] UFID                    { get { return _UFID; } }
             #endregion
             #endregion
 

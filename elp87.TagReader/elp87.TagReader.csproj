@@ -56,6 +56,7 @@
     <Compile Include="id3v2\FrameSet\DeliveredFrameSet.cs" />
     <Compile Include="id3v2\FrameSet\IdentificationFrameSet.cs" />
     <Compile Include="id3v2\FrameSet\LicensesFrameSet.cs" />
+    <Compile Include="id3v2\Exceptions\InvalidUfidDataException.cs" />
     <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\FrameSet\OtherFrameSet.cs" />
     <Compile Include="id3v2\Frames\PersonListTextFrame.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="id3v2\FrameReader.cs" />
     <Compile Include="id3v2\Exceptions\NotUsableFlagException.cs" />
     <Compile Include="id3v2\FrameFlagSet.cs" />
+    <Compile Include="id3v2\Frames\UniqueFileIdentifierFrame.cs" />
     <Compile Include="id3v2\Frames\UrlFrame.cs" />
     <Compile Include="id3v2\Frames\UserDefinedTextFrame.cs" />
     <Compile Include="id3v2\Frames\UserDefinedUrlFrame.cs" />

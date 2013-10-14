@@ -68,6 +68,8 @@ namespace elp87.TagReader.id3v2
             {"WPUB", new FrameTypeInfo("WPUB", @"Publishers official webpage", true)},
 
             {"WXXX", new FrameTypeInfo("WXXX", @"User defined URL link", true)},
+
+            {"UFID", new FrameTypeInfo("UFID", @"Unique file identifier", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

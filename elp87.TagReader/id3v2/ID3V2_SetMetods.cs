@@ -345,6 +345,25 @@ namespace elp87.TagReader.id3v2
             UserDefinedUrlFrame frame = new UserDefinedUrlFrame(ffs, data);
             this.UrlFrames.AddWXXX(frame);
         }
+
+        // Other frames
+        private void SetUFID(FrameFlagSet ffs, byte[] data)
+        {
+            UniqueFileIdentifierFrame frame = new UniqueFileIdentifierFrame(ffs, data);
+            if (this._UFID == null || this.UFID.Length == 0)
+            {
+                this._UFID = new UniqueFileIdentifierFrame[1];
+                this._UFID[0] = frame;
+            }
+            else
+            {
+                UniqueFileIdentifierFrame[] temp = new UniqueFileIdentifierFrame[_UFID.Length];
+                for (int i = 0; i < _UFID.Length; i++) { temp[i] = _UFID[i]; }
+                _UFID = new UniqueFileIdentifierFrame[temp.Length + 1];
+                for (int i = 0; i < temp.Length; i++) { _UFID[i] = temp[i]; }
+                _UFID[_UFID.Length - 1] = frame;
+            }
+        }
     }
     
 }
