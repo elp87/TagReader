@@ -364,6 +364,12 @@ namespace elp87.TagReader.id3v2
                 _UFID[_UFID.Length - 1] = frame;
             }
         }
+
+        private void SetMCDI(FrameFlagSet ffs, byte[] data)
+        {
+            MusicIdFrame frame = new MusicIdFrame(ffs, data);
+            this._MCDI = frame;
+        }
     }
     
 }

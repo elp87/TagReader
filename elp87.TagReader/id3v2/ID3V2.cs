@@ -27,6 +27,7 @@ namespace elp87.TagReader
             private UrlFrameSet _urlFrames;
 
             private UniqueFileIdentifierFrame[] _UFID;
+            private MusicIdFrame _MCDI;
             #endregion
 
             #region Constructors
@@ -61,6 +62,7 @@ namespace elp87.TagReader
             public UrlFrameSet                 UrlFrames               { get { return _urlFrames; } }
 
             public UniqueFileIdentifierFrame[] UFID                    { get { return _UFID; } }
+            public MusicIdFrame                MCDI                    { get { return _MCDI; } }
             #endregion
             #endregion
 

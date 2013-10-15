@@ -70,6 +70,7 @@ namespace elp87.TagReader.id3v2
             {"WXXX", new FrameTypeInfo("WXXX", @"User defined URL link", true)},
 
             {"UFID", new FrameTypeInfo("UFID", @"Unique file identifier", true)},
+            {"MCDI", new FrameTypeInfo("MCDI", @"Music CD identifier", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

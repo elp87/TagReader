@@ -57,6 +57,7 @@
     <Compile Include="id3v2\FrameSet\IdentificationFrameSet.cs" />
     <Compile Include="id3v2\FrameSet\LicensesFrameSet.cs" />
     <Compile Include="id3v2\Exceptions\InvalidUfidDataException.cs" />
+    <Compile Include="id3v2\Frames\MusicIdFrame.cs" />
     <Compile Include="id3v2\Frames\NumericStringFrame.cs" />
     <Compile Include="id3v2\FrameSet\OtherFrameSet.cs" />
     <Compile Include="id3v2\Frames\PersonListTextFrame.cs" />
