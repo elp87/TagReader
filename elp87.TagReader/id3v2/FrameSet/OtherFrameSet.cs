@@ -42,16 +42,11 @@
         {
             if ( _TXXX == null || _TXXX.Length == 0 )
             {
-                _TXXX = new UserDefinedTextFrame[1];
-                _TXXX[0] = frame;
+                _TXXX = new UserDefinedTextFrame[] { frame };
             }
             else
             {
-                UserDefinedTextFrame[] temp = new UserDefinedTextFrame[_TXXX.Length];
-                for (int i = 0; i < _TXXX.Length; i++) { temp[i] = _TXXX[i]; }
-                _TXXX = new UserDefinedTextFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _TXXX[i] = temp[i]; }
-                _TXXX[_TXXX.Length - 1] = frame;
+                _TXXX = Generic.Add(_TXXX, frame);
             }
         } 
         #endregion

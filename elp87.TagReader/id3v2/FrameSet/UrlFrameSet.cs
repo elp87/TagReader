@@ -36,16 +36,11 @@
         {
             if ( _WCOM == null || _WCOM.Length == 0 )
             {
-                _WCOM = new UrlFrame[1];
-                _WCOM[0] = frame;
+                _WCOM = new UrlFrame[] { frame };
             }
             else
             {
-                UrlFrame[] temp = new UrlFrame[_WCOM.Length];
-                for (int i = 0; i < _WCOM.Length; i++) { temp[i] = _WCOM[i]; }
-                _WCOM = new UrlFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _WCOM[i] = temp[i]; }
-                _WCOM[_WCOM.Length - 1] = frame;
+                _WCOM = Generic.Add(_WCOM, frame);
             }         
         }
 
@@ -53,16 +48,11 @@
         {
             if (_WOAR == null || _WOAR.Length == 0)
             {
-                _WOAR = new UrlFrame[1];
-                _WOAR[0] = frame;
+                _WOAR = new UrlFrame[] { frame };
             }
             else
             {
-                UrlFrame[] temp = new UrlFrame[_WOAR.Length];
-                for (int i = 0; i < _WOAR.Length; i++) { temp[i] = _WCOM[i]; }
-                _WOAR = new UrlFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _WOAR[i] = temp[i]; }
-                _WOAR[_WOAR.Length - 1] = frame;
+                _WOAR = Generic.Add(_WOAR, frame);
             } 
         }
 
@@ -70,16 +60,11 @@
         {
             if (_WXXX == null || _WXXX.Length == 0)
             {
-                _WXXX = new UserDefinedUrlFrame[1];
-                _WXXX[0] = frame;
+                _WXXX = new UserDefinedUrlFrame[] { frame };
             }
             else
             {
-                UserDefinedUrlFrame[] temp = new UserDefinedUrlFrame[_WXXX.Length];
-                for (int i = 0; i < _WXXX.Length; i++) { temp[i] = _WXXX[i]; }
-                _WXXX = new UserDefinedUrlFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _WXXX[i] = temp[i]; }
-                _WXXX[_WXXX.Length - 1] = frame;
+                _WXXX = Generic.Add(_WXXX, frame);
             }
         }
         #endregion        

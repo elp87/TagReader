@@ -352,16 +352,11 @@ namespace elp87.TagReader.id3v2
             UniqueFileIdentifierFrame frame = new UniqueFileIdentifierFrame(ffs, data);
             if (this._UFID == null || this._UFID.Length == 0)
             {
-                this._UFID = new UniqueFileIdentifierFrame[1];
-                this._UFID[0] = frame;
+                this._UFID = new UniqueFileIdentifierFrame[] { frame };
             }
             else
             {
-                UniqueFileIdentifierFrame[] temp = new UniqueFileIdentifierFrame[_UFID.Length];
-                for (int i = 0; i < _UFID.Length; i++) { temp[i] = _UFID[i]; }
-                _UFID = new UniqueFileIdentifierFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _UFID[i] = temp[i]; }
-                _UFID[_UFID.Length - 1] = frame;
+                this._UFID = Generic.Add(this._UFID, frame);                
             }
         }
 
@@ -380,11 +375,7 @@ namespace elp87.TagReader.id3v2
             }
             else
             {
-                UnsunchTextFrame[] temp = new UnsunchTextFrame[_USLT.Length];
-                for (int i = 0; i < _USLT.Length; i++) { temp[i] = _USLT[i]; }
-                _USLT = new UnsunchTextFrame[temp.Length + 1];
-                for (int i = 0; i < temp.Length; i++) { _USLT[i] = temp[i]; }
-                _USLT[_USLT.Length - 1] = frame;
+                this._USLT = Generic.Add(this._USLT, frame);
             }
         }
     }

@@ -20,6 +20,7 @@ namespace id3v2Tests.Frames
             MP3File test = new MP3File(_fileNameUSLT);
 
             Assert.AreEqual(expValue[0].Length, test.Id3v2.USLT[0].GetLyrics()[0].Length);
+            CollectionAssert.AreEqual(expValue, test.Id3v2.USLT[0].GetLyrics());
         }
     }
 }

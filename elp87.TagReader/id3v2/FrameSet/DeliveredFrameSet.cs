@@ -19,7 +19,7 @@
         }
         #endregion
 
-        #region Fields
+        #region Properties
         public NumericStringFrame TBPM { get { return this._TBPM; } set { this._TBPM = value; } }
         public NumericStringFrame TLEN { get { return this._TLEN; } set { this._TLEN = value; } }
         public TextInfoFrame      TKEY { get { return this._TKEY; } set { this._TKEY = value; } }
