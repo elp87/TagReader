@@ -8,7 +8,7 @@ namespace elp87.TagReader.id3v2.Frames
     {
         #region Fields
         private string _description;
-        private string[] _lyrics;
+        private string _lyrics;
         private byte[] _frameBody;                
         #endregion
 
@@ -27,20 +27,16 @@ namespace elp87.TagReader.id3v2.Frames
             Array.Copy(this._frameBody, descArray, terminatorPosition);
             Array.Copy(this._frameBody, terminatorPosition + 1, lyricArray, 0, lyricArray.Length);
             this._description = this.GetString(descArray);
-            string fullLyric = this.GetString(lyricArray);
-            this._lyrics = this.ReadLyrics(fullLyric);
+            this._lyrics = this.GetString(lyricArray);            
         }        
         #endregion
 
         #region Properties
         public string Description { get { return this._description; } }
+        public string Lyrics      { get { return this._lyrics; } }
         #endregion
 
-        #region Methods
-        public string[] GetLyrics()
-        {
-            return (string[])this._lyrics.Clone();
-        }
+        #region Methods        
 
         private byte[] ReadFrameBody()
         {
@@ -48,28 +44,7 @@ namespace elp87.TagReader.id3v2.Frames
             Array.Copy(this._frameData, 3, frameBody, 0, frameBody.Length);
             return frameBody;
         }
-
-        private string[] ReadLyrics(string lyricsString)
-        {            
-            int stringCount = UnsunchTextFrame.GetStringCount(lyricsString);
-            string[] lyricsArray = new string[stringCount];
-
-            for (int i = 0; i < stringCount; i++)
-            {
-                int newStrinPos = lyricsString.IndexOf('\0');
-                if (newStrinPos != -1)
-                {
-                    lyricsArray[i] = lyricsString.Substring(0, newStrinPos);
-                    lyricsString = lyricsString.Substring(newStrinPos + 1);
-                }
-                else
-                {
-                    lyricsArray[i] = lyricsString;
-                }
-            }
-            return lyricsArray;
-        }
-
+        
         private int ParseTerminatorPos(byte[] frameData)
         {
             int position;
