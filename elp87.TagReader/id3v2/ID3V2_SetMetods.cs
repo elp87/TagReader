@@ -378,6 +378,19 @@ namespace elp87.TagReader.id3v2
                 this._USLT = Generic.Add(this._USLT, frame);
             }
         }
+
+        private void SetCOMM(FrameFlagSet ffs, byte[] data)
+        {
+            UnsunchTextFrame frame = new UnsunchTextFrame(ffs, data);
+            if (this._COMM == null || this._COMM.Length == 0)
+            {
+                this._COMM = new UnsunchTextFrame[] { frame };
+            }
+            else
+            {
+                this._COMM = Generic.Add(this._COMM, frame);
+            }
+        }
     }
     
 }

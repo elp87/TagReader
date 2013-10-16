@@ -73,6 +73,7 @@ namespace elp87.TagReader.id3v2
             {"MCDI", new FrameTypeInfo("MCDI", @"Music CD identifier", true)},
 
             {"USLT", new FrameTypeInfo("USLT", @"Unsynchronised lyrics/text transcription", true)},
+            {"COMM", new FrameTypeInfo("COMM", @"Comments", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

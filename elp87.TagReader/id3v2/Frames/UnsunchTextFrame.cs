@@ -8,7 +8,7 @@ namespace elp87.TagReader.id3v2.Frames
     {
         #region Fields
         private string _description;
-        private string _lyrics;
+        private string _textValue;
         private byte[] _frameBody;                
         #endregion
 
@@ -27,13 +27,13 @@ namespace elp87.TagReader.id3v2.Frames
             Array.Copy(this._frameBody, descArray, terminatorPosition);
             Array.Copy(this._frameBody, terminatorPosition + 1, lyricArray, 0, lyricArray.Length);
             this._description = this.GetString(descArray);
-            this._lyrics = this.GetString(lyricArray);            
+            this._textValue = this.GetString(lyricArray);            
         }        
         #endregion
 
         #region Properties
         public string Description { get { return this._description; } }
-        public string Lyrics      { get { return this._lyrics; } }
+        public string Value      { get { return this._textValue; } }
         #endregion
 
         #region Methods        

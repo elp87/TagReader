@@ -17,8 +17,8 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameUSLT);
 
-            Assert.AreEqual(expValue.Length, test.Id3v2.USLT[0].Lyrics.Length);
-            Assert.AreEqual(expValue, test.Id3v2.USLT[0].Lyrics);
+            Assert.AreEqual(expValue.Length, test.Id3v2.USLT[0].Value.Length);
+            Assert.AreEqual(expValue, test.Id3v2.USLT[0].Value);
         }
 
         [TestMethod]
@@ -28,7 +28,13 @@ namespace id3v2Tests.Frames
 
             MP3File test = new MP3File(_fileNameTOAL);
 
-            Assert.AreEqual(expValue, test.Id3v2.USLT[0].Lyrics);
+            Assert.AreEqual(expValue, test.Id3v2.USLT[0].Value);
+        }
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
+            MP3File test = new MP3File(@"D:\music\google.Play\Korn\The Paradigm Shift\01 Prey For Me.mp3");
         }
     }
 }

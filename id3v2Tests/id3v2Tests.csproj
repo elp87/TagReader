@@ -78,6 +78,7 @@
     <Compile Include="Frames\Frames_UfidFrameTest.cs" />
     <Compile Include="Frames\MusicIdFrameTest.cs" />
     <Compile Include="Frames\Frames_UnsunchTextFrameTest.cs" />
+    <Compile Include="Frames\Frames_CommentsTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
