@@ -28,6 +28,7 @@ namespace elp87.TagReader
 
             private UniqueFileIdentifierFrame[] _UFID;
             private MusicIdFrame _MCDI;
+            private UnsunchTextFrame[] _USLT;
             #endregion
 
             #region Constructors
@@ -63,6 +64,8 @@ namespace elp87.TagReader
 
             public UniqueFileIdentifierFrame[] UFID                    { get { return _UFID; } }
             public MusicIdFrame                MCDI                    { get { return _MCDI; } }
+
+            public UnsunchTextFrame[]          USLT                    { get { return _USLT; } }
             #endregion
             #endregion
 

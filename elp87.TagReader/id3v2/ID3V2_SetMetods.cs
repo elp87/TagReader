@@ -350,7 +350,7 @@ namespace elp87.TagReader.id3v2
         private void SetUFID(FrameFlagSet ffs, byte[] data)
         {
             UniqueFileIdentifierFrame frame = new UniqueFileIdentifierFrame(ffs, data);
-            if (this._UFID == null || this.UFID.Length == 0)
+            if (this._UFID == null || this._UFID.Length == 0)
             {
                 this._UFID = new UniqueFileIdentifierFrame[1];
                 this._UFID[0] = frame;
@@ -369,6 +369,23 @@ namespace elp87.TagReader.id3v2
         {
             MusicIdFrame frame = new MusicIdFrame(ffs, data);
             this._MCDI = frame;
+        }
+
+        private void SetUSLT(FrameFlagSet ffs, byte[] data)
+        {
+            UnsunchTextFrame frame = new UnsunchTextFrame(ffs, data);
+            if (this._USLT == null || this._USLT.Length == 0)
+            {
+                this._USLT = new UnsunchTextFrame[] { frame };
+            }
+            else
+            {
+                UnsunchTextFrame[] temp = new UnsunchTextFrame[_USLT.Length];
+                for (int i = 0; i < _USLT.Length; i++) { temp[i] = _USLT[i]; }
+                _USLT = new UnsunchTextFrame[temp.Length + 1];
+                for (int i = 0; i < temp.Length; i++) { _USLT[i] = temp[i]; }
+                _USLT[_USLT.Length - 1] = frame;
+            }
         }
     }
     

@@ -71,6 +71,8 @@ namespace elp87.TagReader.id3v2
 
             {"UFID", new FrameTypeInfo("UFID", @"Unique file identifier", true)},
             {"MCDI", new FrameTypeInfo("MCDI", @"Music CD identifier", true)},
+
+            {"USLT", new FrameTypeInfo("USLT", @"Unsynchronised lyrics/text transcription", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()
