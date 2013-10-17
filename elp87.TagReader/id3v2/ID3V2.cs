@@ -30,6 +30,7 @@ namespace elp87.TagReader
             private MusicIdFrame _MCDI;
             private UnsunchTextFrame[] _USLT;
             private UnsunchTextFrame[] _COMM;
+            private AttachedPictureFrame[] _APIC;
             #endregion
 
             #region Constructors
@@ -68,6 +69,7 @@ namespace elp87.TagReader
 
             public UnsunchTextFrame[]          USLT                    { get { return _USLT; } }
             public UnsunchTextFrame[]          COMM                    { get { return _COMM; } }
+            public AttachedPictureFrame[]      APIC                    { get { return _APIC; } }
             #endregion
             #endregion
 

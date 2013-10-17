@@ -74,6 +74,8 @@ namespace elp87.TagReader.id3v2
 
             {"USLT", new FrameTypeInfo("USLT", @"Unsynchronised lyrics/text transcription", true)},
             {"COMM", new FrameTypeInfo("COMM", @"Comments", true)},
+
+            {"APIC", new FrameTypeInfo("APIC", @"Attached picture", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

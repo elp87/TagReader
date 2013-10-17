@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -79,6 +80,7 @@
     <Compile Include="Frames\MusicIdFrameTest.cs" />
     <Compile Include="Frames\Frames_UnsunchTextFrameTest.cs" />
     <Compile Include="Frames\Frames_CommentsTest.cs" />
+    <Compile Include="Frames\Frames_AttachedPictureFrameTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +94,11 @@
       <Project>{0a3f973e-899f-4a2b-ae55-a64741eafdfa}</Project>
       <Name>elp87.TagReader</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\output.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

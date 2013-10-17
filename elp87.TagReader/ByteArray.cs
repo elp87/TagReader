@@ -1,8 +1,10 @@
-﻿
-namespace elp87.TagReader
+﻿namespace elp87.TagReader
 {
     public static class ByteArray
     {
+        public const byte Terminator = 0x00;
+        public static readonly byte[] TerminatorArray = new byte[] { 0x00, 0x00 };
+
         public static int FindSubArray(byte[] byteArray, byte[] mask)
         {
             int index = -1;
