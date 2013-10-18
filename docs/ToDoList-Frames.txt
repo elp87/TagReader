@@ -1,0 +1,38 @@
+To support:
+ AENC Audio encryption - not supported
+ ASPI Audio seek point index - not supported
+ COMR Commercial frame - not supported
+ ENCR Encryption method registration - not supported
+ EQU2 Equalisation (2) - not supported
+ ETCO Event timing codes - not supported
+ GEOB General encapsulated object - not supported
+ GRID Group identification registration - not supported 
+ LINK Linked information - not supported
+ MLLT MPEG location lookup table - not supported
+ OWNE Ownership frame - not supported
+ PCNT Play counter - not supported
+ POPM Popularimeter - not supported
+ POSS Position synchronisation frame - not supported
+ RBUF Recommended buffer size - not supported
+ RVA2 Relative volume adjustment (2) - not supported
+ RVRB Reverb - not supported
+ SEEK Seek frame - not supported
+ SIGN Signature frame - not supported
+ SYLT Synchronised lyric/text - not supported
+ SYTC Synchronised tempo codes - not supported
+ USER Terms of use - not supported
+ 
+To test:
+ TDOR Original release time - supported, untested
+ TFLT File type - supported, untested
+ TMCL Musician credits list - supported, untested
+ TMOO Mood - supported, untested
+ TPRO Produced notice - supported, untested
+ TRSN Internet radio station name - supported, untested
+ TRSO Internet radio station owner - supported, untested
+ TSOA Album sort order - supported, untested
+ TSOP Performer sort order - supported, untested
+ TSSE Software/Hardware and settings used for encoding - supported, untested
+ TSST Set subtitle - supported, untested
+ WORS Official Internet radio station homepage - supported, untested
+ WPAY Payment - supported, untested
