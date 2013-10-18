@@ -4,8 +4,11 @@ namespace elp87.TagReader
 {
     public class MP3File
     {
-        private ID3V2 _id3v2;
+        #region Fields
+        private ID3V2 _id3v2; 
+        #endregion
 
+        #region Constructors
         public MP3File()
         {
         }
@@ -13,14 +16,47 @@ namespace elp87.TagReader
         public MP3File(string filename)
         {
             _id3v2 = new ID3V2(filename);
+        } 
+        #endregion
+
+        #region Properties
+        public ID3V2 Id3v2 { get { return _id3v2; } }
+
+        public string Performer
+        {
+            get 
+            {
+                if (_id3v2 == null || _id3v2.PersonsFrames.TPE1 == null) { return ""; }
+                else { return _id3v2.PersonsFrames.TPE1.ToString(); }
+            }
         }
 
-        public ID3V2 Id3v2
+        public string Album
         {
             get
             {
-                return _id3v2;
+                if (_id3v2 == null || _id3v2.IdentificationFrames.TALB == null) { return ""; }
+                else { return _id3v2.IdentificationFrames.TALB.ToString(); }
             }
         }
+
+        public string Title
+        {
+            get
+            {
+                if (_id3v2 == null || _id3v2.IdentificationFrames.TIT2 == null) { return ""; }
+                else { return _id3v2.IdentificationFrames.TIT2.ToString(); }
+            }
+        }
+
+        public string Year
+        {
+            get
+            {
+                if (_id3v2 == null || _id3v2.OtherFrames.TDRC == null) { return ""; }
+                else { return _id3v2.OtherFrames.TDRC.Year.ToString(); }
+            }
+        }
+        #endregion
     }
 }
