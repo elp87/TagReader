@@ -30,11 +30,5 @@ namespace id3v2Tests.Frames
 
             Assert.AreEqual(expValue, test.Id3v2.USLT[0].Value);
         }
-
-        [TestMethod]
-        public void MyTestMethod()
-        {
-            MP3File test = new MP3File(@"D:\music\google.Play\Korn\The Paradigm Shift\01 Prey For Me.mp3");
-        }
     }
 }

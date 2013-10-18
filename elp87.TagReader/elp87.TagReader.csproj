@@ -65,6 +65,7 @@
     <Compile Include="id3v2\Frames\PersonListTextFrame.cs" />
     <Compile Include="id3v2\FrameSet\PersonsFrameSet.cs" />
     <Compile Include="id3v2\Frames\PositionFrame.cs" />
+    <Compile Include="id3v2\Frames\PrivateFrame.cs" />
     <Compile Include="id3v2\Frames\TextInfoFrame.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
     <Compile Include="id3v2\Exceptions\FrameTRCKException.cs" />

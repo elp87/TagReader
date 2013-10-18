@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace id3v2Tests.Frames
 {
     [TestClass]
-    public class MusicIdFrameTest
+    public class Frames_MusicIdFrameTest
     {
         private const string _fileNameMCDI = @"D:\TestAudio\MCDI.mp3";
 

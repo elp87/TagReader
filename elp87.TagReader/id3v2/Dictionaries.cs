@@ -76,6 +76,7 @@ namespace elp87.TagReader.id3v2
             {"COMM", new FrameTypeInfo("COMM", @"Comments", true)},
 
             {"APIC", new FrameTypeInfo("APIC", @"Attached picture", true)},
+            {"PRIV", new FrameTypeInfo("PRIV", @"Private frame", true)},
         };
 
         public static Dictionary<string, string> conformityFrame3To4 = new Dictionary<string, string>()

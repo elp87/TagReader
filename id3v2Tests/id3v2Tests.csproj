@@ -77,10 +77,11 @@
     <Compile Include="Frames\Frames_UrlFrameTest.cs" />
     <Compile Include="Frames\Frames_UrlFrameSetTest.cs" />
     <Compile Include="Frames\Frames_UfidFrameTest.cs" />
-    <Compile Include="Frames\MusicIdFrameTest.cs" />
+    <Compile Include="Frames\Frames_MusicIdFrameTest.cs" />
     <Compile Include="Frames\Frames_UnsunchTextFrameTest.cs" />
     <Compile Include="Frames\Frames_CommentsTest.cs" />
     <Compile Include="Frames\Frames_AttachedPictureFrameTest.cs" />
+    <Compile Include="Frames\Frames_PrivateFrameTest.cs" />
     <Compile Include="ID3v2HeaderTest.cs" />
     <Compile Include="SynchSafeTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

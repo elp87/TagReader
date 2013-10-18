@@ -404,6 +404,19 @@ namespace elp87.TagReader.id3v2
                 this._APIC = Generic.Add(this._APIC, frame);
             }
         }
+
+        private void SetPRIV(FrameFlagSet ffs, byte[] data)
+        {
+            PrivateFrame frame = new PrivateFrame(ffs, data);
+            if (this._PRIV == null || this._PRIV.Length == 0)
+            {
+                this._PRIV = new PrivateFrame[] { frame };
+            }
+            else
+            {
+                this._PRIV = Generic.Add(this._PRIV, frame);
+            }
+        }
     }
     
 }
