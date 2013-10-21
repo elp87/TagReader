@@ -89,6 +89,7 @@
     <Compile Include="FrameFlagSetTest.cs" />
     <Compile Include="TagTest.cs" />
     <Compile Include="GenericTest.cs" />
+    <Compile Include="ByteArrayTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\elp87.TagReader\elp87.TagReader.csproj">

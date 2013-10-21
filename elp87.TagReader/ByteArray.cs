@@ -14,14 +14,16 @@
             for (int i = 0; i < arrayLength; i++)
             {
                 if (byteArray[i] == mask[0])
-                {
+                {                    
                     int equityFullness = 1;
                     index = i;
-                    for (int j = 1; j < maskLength; j++)
+                    while (equityFullness > 0)
                     {
-                        if (byteArray[i + j] == mask[j]) { equityFullness++; }
-                        if (equityFullness == maskLength) { return index; }                        
-                    }
+                        if (i + equityFullness >= arrayLength) { return -1; }
+                        if (byteArray[i + equityFullness] == mask[equityFullness]) { equityFullness++; }
+                        else { equityFullness = -1; }
+                        if (equityFullness == maskLength) { return index; }
+                    }                    
                 }
             }
             return -1;
