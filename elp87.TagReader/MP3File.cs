@@ -5,7 +5,8 @@ namespace elp87.TagReader
     public class MP3File
     {
         #region Fields
-        private ID3V2 _id3v2; 
+        private ID3V2 _id3v2;
+        private string _filename;
         #endregion
 
         #region Constructors
@@ -15,8 +16,9 @@ namespace elp87.TagReader
 
         public MP3File(string filename)
         {
+            this._filename = filename;
             _id3v2 = new ID3V2(filename);
-        } 
+        }
         #endregion
 
         #region Properties
@@ -24,7 +26,7 @@ namespace elp87.TagReader
 
         public string Performer
         {
-            get 
+            get
             {
                 if (_id3v2 == null || _id3v2.PersonsFrames.TPE1 == null) { return ""; }
                 else { return _id3v2.PersonsFrames.TPE1.ToString(); }
@@ -55,6 +57,24 @@ namespace elp87.TagReader
             {
                 if (_id3v2 == null || _id3v2.OtherFrames.TDRC == null) { return ""; }
                 else { return _id3v2.OtherFrames.TDRC.Year.ToString(); }
+            }
+        }
+
+        public string Filename
+        {
+            get
+            {
+                if (_filename == null) { return ""; }
+                else { return _filename; }
+            }
+        }
+
+        public int Size
+        {
+            get
+            {
+                if (_id3v2 == null) { return 0; }
+                else { return _id3v2.GetFileSize(); }
             }
         }
         #endregion

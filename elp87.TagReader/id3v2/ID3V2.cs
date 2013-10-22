@@ -14,6 +14,7 @@ namespace elp87.TagReader
 
             #region Fields
             private string filename;
+            private int _fileSize;
             private Header _header;
             private ExtHeader _extHeader;
             private byte[] _byteArray;
@@ -90,10 +91,18 @@ namespace elp87.TagReader
             }
             #endregion
 
+            #region Internal
+            internal int GetFileSize()
+            {
+                return this._fileSize;
+            }
+            #endregion
+
             #region Private
             private void ReadTag()
             {
                 byte[] file = this.LoadFile();
+                _fileSize = file.Length;
                 int headerPosition = this.FindHeader(file);
                 if (headerPosition == -1) throw new Exceptions.NoID3V2TagException("No ID3v2 Tag in file", "Id3v2 tag is not found", DateTime.Now);
                 _header = new Header();

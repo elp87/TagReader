@@ -6,11 +6,13 @@ namespace id3v2Tests
     [TestClass]
     public class TagTest
     {
+        string filename0 = @"D:\TestAudio\sample.MP3";
+        string filename1 = @"D:\TestAudio\UFID.MP3";
+
         [TestMethod]
         public void TestGetTagArray()
-        {
-            string filename = @"D:\TestAudio\sample.MP3";
-            MP3File testFile = new MP3File(filename);
+        {            
+            MP3File testFile = new MP3File(filename0);
 
             int expLength = 25;
             byte[] expArray = new byte[] {
@@ -20,6 +22,35 @@ namespace id3v2Tests
 
             Assert.AreEqual(expLength, testFile.Id3v2.GetTagArray().Length);
             CollectionAssert.AreEqual(expArray, testFile.Id3v2.GetTagArray());
+        }
+
+        [TestMethod]
+        public void TestFileSize()
+        {
+            int[] expValue = new int[] {16743, 28524731, 0};
+            
+            MP3File[] testFile = new MP3File[]
+                {
+                    new MP3File(filename0),
+                    new MP3File(filename1),
+                    new MP3File()
+
+                };
+            Assert.AreEqual(expValue.Length, testFile.Length);
+            for (int i = 0; i < expValue.Length; i++)
+            {
+                Assert.AreEqual(expValue[i], testFile[i].Size);
+            }
+        }
+
+        [TestMethod]
+        public void TestFilenameNull()
+        {
+            string expValue = "";
+
+            MP3File test = new MP3File();
+
+            Assert.AreEqual(expValue, test.Filename);
         }
     }
 }
