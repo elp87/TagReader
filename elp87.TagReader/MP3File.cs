@@ -2,6 +2,9 @@
 
 namespace elp87.TagReader
 {
+    /// <summary>
+    /// This class provides reading mp3 files info.
+    /// </summary>
     public class MP3File
     {
         #region Fields
@@ -10,10 +13,17 @@ namespace elp87.TagReader
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="MP3File"/> that is empty.
+        /// </summary>
         public MP3File()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="MP3File"/> and read file.
+        /// </summary>
+        /// <param name="filename">The file to open for reading.</param>
         public MP3File(string filename)
         {
             this._filename = filename;
@@ -22,8 +32,23 @@ namespace elp87.TagReader
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Returns id3v2 tag information.
+        /// </summary>
         public ID3V2 Id3v2 { get { return _id3v2; } }
 
+        /// <summary>
+        /// Returns performer or artist of this instance
+        /// </summary>
+        /// <remarks>
+        /// <para>If instance of <see cref="P:elp87.TagReader.MP3File.Id3v2"/> is empty or it has no artists, this property returns "".</para>
+        /// <para>This property returns only first performer if there are several. For full array of performers use Id3v2.PersonsFrames.TPE1.</para>
+        /// <code lang="C#">
+        /// MP3File file = new MP3File(filename);
+        /// string[] performers = file.Id3v2.PersonsFrames.TPE1.GetValues();
+        /// </code>
+        /// </remarks>
+        /// <seealso cref="P:elp87.TagReader.id3v2.Frames.PersonsFrameSet.TPE1"/>
         public string Performer
         {
             get
@@ -33,6 +58,18 @@ namespace elp87.TagReader
             }
         }
 
+        /// <summary>
+        /// Returns Album/Movie/Show title of this instance.
+        /// </summary>
+        /// <remarks>
+        /// <para>If instance of <see cref="P:elp87.TagReader.MP3File.Id3v2"/> is empty or it has no album titles, this property returns "".</para>
+        /// <para>This property returns only first title if there ara several. For full array of titles use Id3v2.IdentificationFrames.TALB.</para>
+        /// <code lang="C#">
+        /// MP3File file = new MP3File(filename);
+        /// string[] albumTitles = file.Id3v2.IdentificationFrames.TALB.GetValues();
+        /// </code>
+        /// </remarks>
+        /// <seealso cref="P:elp87.TagReader.id3v2.Frames.IdentificationFrameSet.TALB"/>
         public string Album
         {
             get
@@ -42,6 +79,18 @@ namespace elp87.TagReader
             }
         }
 
+        /// <summary>
+        /// Returns title of this instance
+        /// </summary>
+        /// <remarks>
+        /// <para>If instance of <see cref="P:elp87.TagReader.MP3File.Id3v2"/> is empty or it has no titles, this property returns "".</para>
+        /// <para>This property returns only first title if there ara several. For full array of titles use Id3v2.IdentificationFrames.TIT2.</para>
+        /// <code lang="C#">
+        /// MP3File file = new MP3File(filename);
+        /// string[] titles = file.Id3v2.IdentificationFrames.TIT2.GetValues();
+        /// </code>
+        /// </remarks>
+        /// <seealso cref="P:elp87.TagReader.id3v2.Frames.IdentificationFrameSet.TIT2"/>
         public string Title
         {
             get
@@ -51,6 +100,18 @@ namespace elp87.TagReader
             }
         }
 
+        /// <summary>
+        /// Returns year of recording of this instance
+        /// </summary>
+        /// <remarks>
+        /// <para>If instance of <see cref="P:elp87.TagReader.MP3File.Id3v2"/> is empty or it has no recording date, this property returns "".</para>
+        /// <para>For full date in <see cref="T:System.DateTime"/> use Id3v2.OtherFrames.TDRC.Date.</para>
+        /// <code lang="C#">
+        /// MP3File file = new MP3File(filename);
+        /// DateTime recordingDate = file.Id3v2.OtherFrames.TDRC.Date;
+        /// </code>
+        /// </remarks>
+        /// <seealso cref="P:elp87.TagReader.id3v2.Frames.OtherFrameSet.TDRC"/>
         public string Year
         {
             get
@@ -60,6 +121,12 @@ namespace elp87.TagReader
             }
         }
 
+        /// <summary>
+        /// Returns full file name of this instance
+        /// </summary>
+        /// <remarks>
+        /// <para>If this instance of <see cref="MP3File"/> is empty, this property returns "". </para>
+        /// </remarks>
         public string Filename
         {
             get
@@ -69,6 +136,12 @@ namespace elp87.TagReader
             }
         }
 
+        /// <summary>
+        /// Returns size of file in bytes.
+        /// </summary>
+        /// <remarks>
+        /// <para>If instance of <see cref="P:elp87.TagReader.MP3File.Id3v2"/> is empty, this property returns 0</para>
+        /// </remarks>
         public int Size
         {
             get
