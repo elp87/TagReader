@@ -36,8 +36,8 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Methods
-        #region Public
-        public void ReadFrame(ID3V2 tag, byte[] tagArray, int pointPosition)
+        #region Internal
+        internal void ReadFrame(ID3V2 tag, byte[] tagArray, int pointPosition)
         {
             _pointPosition = pointPosition;
             byte[] _id = new byte[4];

@@ -41,8 +41,8 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Methods
-        #region Public
-        public void ReadHeader(byte[] file, int headerPosition)
+        #region Internal
+        internal void ReadHeader(byte[] file, int headerPosition)
         {
             _header = new byte[_headerLenght];
             Array.Copy(file, headerPosition, _header, 0, _headerLenght);
