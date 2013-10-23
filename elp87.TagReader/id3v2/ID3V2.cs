@@ -6,6 +6,9 @@ namespace elp87.TagReader
 {
     namespace id3v2
     {
+        /// <summary>
+        /// This class provides reading id3v2 tags from mp3 files.
+        /// </summary>
         public partial class ID3V2
         {
             #region Constants
@@ -45,6 +48,11 @@ namespace elp87.TagReader
                 _otherFrames = new OtherFrameSet();
                 _urlFrames = new UrlFrameSet();
             }
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="elp87.TagReader.id3v2.ID3V2"/> class and reads tags from file.
+            /// </summary>
+            /// <param name="filename">The file to open for reading.</param>
             public ID3V2(string filename)
                 : this()
             {
@@ -55,28 +63,85 @@ namespace elp87.TagReader
             #endregion
 
             #region Properties
+            /// <summary>
+            /// Gets id3v2 header.
+            /// </summary>
             public Header Header { get { return _header; } }
+
+            /// <summary>
+            /// Gets id3v2 extended header. If it is no extended header in tag, this property returns null
+            /// </summary>
             public ExtHeader ExtHeader { get { return _extHeader; } }
             
             #region TagProperties
+            /// <summary>
+            /// Gets identification frames
+            /// </summary>
             public IdentificationFrameSet      IdentificationFrames    { get { return _identificationFrames; } }
+            
+            /// <summary>
+            /// Gets involved persons frames
+            /// </summary>
             public PersonsFrameSet             PersonsFrames           { get { return _personsFrames; } }
+            
+            /// <summary>
+            /// Gets derived and subjective properties frames
+            /// </summary>
             public DeliveredFrameSet           DeliveredFrames         { get { return _deliveredFrames; } }
+            
+            /// <summary>
+            /// Gets rights and license frames
+            /// </summary>
             public LicensesFrameSet            LicensesFrames          { get { return _licensesFrames; } }
+            
+            /// <summary>
+            /// Gets Other text frames and User defined text information frames
+            /// </summary>
             public OtherFrameSet               OtherFrames             { get { return _otherFrames; } }
+            
+            /// <summary>
+            /// Gets URL link frames
+            /// </summary>
             public UrlFrameSet                 UrlFrames               { get { return _urlFrames; } }
 
+            /// <summary>
+            /// Gets unique file identifier frames
+            /// </summary>
             public UniqueFileIdentifierFrame[] UFID                    { get { return _UFID; } }
+            
+            /// <summary>
+            /// Gets Music CD identifier frames
+            /// </summary>
             public MusicIdFrame                MCDI                    { get { return _MCDI; } }
 
+            /// <summary>
+            /// Gets unsynchronised lyrics/text transcription frames
+            /// </summary>
             public UnsunchTextFrame[]          USLT                    { get { return _USLT; } }
+            
+            /// <summary>
+            /// Gets comment frames
+            /// </summary>
             public UnsunchTextFrame[]          COMM                    { get { return _COMM; } }
+            
+            /// <summary>
+            /// Gets attached picture frames
+            /// </summary>
             public AttachedPictureFrame[]      APIC                    { get { return _APIC; } }
+            
+            /// <summary>
+            /// Gets private frames
+            /// </summary>
             public PrivateFrame[]              PRIV                    { get { return _PRIV; } }
             #endregion
             #endregion
 
             #region Methods
+            /// <summary>
+            /// Returns byte array of id3v2 tag.
+            /// </summary>
+            /// <returns>Byte array of id3v2 tag.</returns>
+            /// <exception cref="System.NullReferenceException">The tag is empty</exception>
             #region Public
             public byte[] GetTagArray()
             {

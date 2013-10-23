@@ -2,6 +2,12 @@
 
 namespace elp87.TagReader.id3v2
 {
+    /// <summary>
+    /// This class provides information from id3v2 extended header
+    /// </summary>
+    /// <remarks>
+    /// In current version it is supported only id3v2.4 extended header
+    /// </remarks>
     public class ExtHeader
     {
         // TODO: ExtHeader work with id3v2.4 only. Make for 2.3
@@ -18,17 +24,54 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets and sets extended header size
+        /// </summary>
         public int Size { get; set; }
+
+        /// <summary>
+        /// Gets whether the "Tag is an update" flag is set
+        /// </summary>
         public bool IsUpdate { get { return _isUpdate; } }
+
+        /// <summary>
+        /// Gets whether the "CRC data present" flag is set
+        /// </summary>
         public bool IsCRC { get { return _isCRC; } }
+
+        /// <summary>
+        /// Gets whether the "Tag restrictions" flag is set
+        /// </summary>
         public bool IsRestrictions { get { return _isRestrictions; } }
 
+        /// <summary>
+        /// Gets the CRC value
+        /// </summary>
         public int CRC { get { return _CRC; } }
 
+        /// <summary>
+        /// Gets tag size restrictions
+        /// </summary>
         public TagSizeRestrictions TagSizeRestriction { get { return _tagSizeRestriction; } }
+
+        /// <summary>
+        /// Gets text encoding restrictions
+        /// </summary>
         public TextEncodingRestrictions TextEncodingRestriction { get { return _textEncodingRestriction; } }
+
+        /// <summary>
+        /// Gets text fields size restrictions
+        /// </summary>
         public TextFieldsSizeRestrictions TextFieldsSizeRestriction { get { return _textFieldsSizeRestriction; } }
+
+        /// <summary>
+        /// Gets image encoding restrictions
+        /// </summary>
         public ImageEncodingRestrictions ImageEncodingRestriction { get { return _imageEncodingRestriction; } }
+
+        /// <summary>
+        /// Gets image size restrictions
+        /// </summary>
         public ImageSizeRestrictions ImageSizeRestriction { get { return _imageSizeRestriction; } }
         #endregion
 
@@ -44,8 +87,6 @@ namespace elp87.TagReader.id3v2
 
         internal void ReadExtHeader(byte[] byteArray, int pointPosition)
         {
-
-
             this.Size = this.GetSize(byteArray, pointPosition);
             pointPosition += 4; // Сдвиг после размера
             pointPosition += 1; // 0x01 - Кол-во байт флага
@@ -126,39 +167,74 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Enums
+        /// <summary>
+        /// Specifies identifiers to indicate tag size restrictions
+        /// </summary>
         public enum TagSizeRestrictions
         {
+            /// <summary> No more than 128 frames and 1 MB total tag size.</summary>
             NoMore1MBTagSize = 0,
+            /// <summary> No more than 64 frames and 128 KB total tag size. </summary>
             NoMore128KBTagSize = 1,
+            /// <summary> No more than 32 frames and 40 KB total tag size. </summary>
             NoMore40KBTagSize = 2,
+            /// <summary> No more than 32 frames and 4 KB total tag size. </summary>
             NoMore4KBTagSize = 3
         }
 
+        /// <summary>
+        /// Specifies identifiers to indicate text encoding restrictions
+        /// </summary>
         public enum TextEncodingRestrictions
         {
+            /// <summary> No restrictions. </summary>
             NoRestrictions = 0,
+            /// <summary> Strings are only encoded with ISO-8859-1 [ISO-8859-1] or UTF-8 [UTF-8]. </summary>
             ISO_8859_Or_UTF8_Only
         }
 
+        /// <summary>
+        /// Specifies identifiers to indicate text fields size restrictions
+        /// </summary>
+        /// <remarks>
+        /// Note that nothing is said about how many bytes is used to represent those characters, since it is encoding dependent. 
+        /// If a text frame consists of more than one string, the sum of the strungs is restricted as stated.
+        /// </remarks>
         public enum TextFieldsSizeRestrictions
         {
+            /// <summary> No restrictions </summary>
             NoRestrictions = 0,
+            /// <summary> No string is longer than 1024 characters. </summary>
             NoLonger1024Char = 1,
+            /// <summary> No string is longer than 128 characters. </summary>
             NoLonger128Char = 2,
+            /// <summary> No string is longer than 30 characters. </summary>
             NoLonger30Char = 3
         }
 
+        /// <summary>
+        /// Specifies identifiers to indicate image encoding restrictions
+        /// </summary>
         public enum ImageEncodingRestrictions
         {
+            /// <summary> No restrictions </summary>
             NoRestrictions = 0,
+            /// <summary> Images are encoded only with PNG [PNG] or JPEG [JFIF]. </summary>
             PngOrJpegOnly = 1
         }
 
+        /// <summary>
+        /// Specifies identifiers to indicate image size restrictions
+        /// </summary>
         public enum ImageSizeRestrictions
         {
+            /// <summary> No restrictions. </summary>
             NoRestrictions = 0,
+            /// <summary> All images are 256x256 pixels or smaller. </summary>
             Smaller256Pixel = 1,
+            /// <summary> All images are 64x64 pixels or smaller. </summary>
             Smaller64Pixel = 2,
+            /// <summary> All images are exactly 64x64 pixels, unless required otherwise. </summary>
             Exactly64Pixel = 3
         }
         #endregion

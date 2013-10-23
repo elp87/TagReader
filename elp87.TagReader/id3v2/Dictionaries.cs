@@ -2,9 +2,15 @@
 
 namespace elp87.TagReader.id3v2
 {
+    /// <summary>
+    /// Provides dictionaries for work with id3v2 tags
+    /// </summary>
     public static class Dictionaries
     {
-        internal static Dictionary<string, FrameTypeInfo> frameIDs = new Dictionary<string, FrameTypeInfo>()
+        /// <summary>
+        /// Dictionary of supported frame types
+        /// </summary>
+        public static Dictionary<string, FrameTypeInfo> frameIDs = new Dictionary<string, FrameTypeInfo>()
         {
             {"TIT1", new FrameTypeInfo("TIT1", "Content group description")},
             {"TIT2", new FrameTypeInfo("TIT2", @"Title/Songname/Content description")},
