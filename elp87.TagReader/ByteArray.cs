@@ -76,7 +76,37 @@
         /// Returns reverse copy of byte-array.
         /// </summary>
         /// <param name="byteArray">Original array.</param>
-        /// <returns></returns>
+        /// <returns>Reverse copy of byte-array</returns>
+        /// <remarks>
+        /// This method returns new instance of <see cref="System.Byte"/> array, it does not reverse original instance as <see cref="M:System.Array.Reverse(System.Array)"/>
+        /// </remarks>
+        /// <example>
+        /// <code lang="C#">
+        /// using elp87.TagReader;
+        /// using System;
+        ///
+        /// namespace Example
+        /// {
+        ///     class Program
+        ///     {
+        ///         static void Main(string[] args)
+        ///         {
+        ///             byte[] array = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        ///             byte[] reverse = ByteArray.Reverse(array);
+        ///
+        ///             foreach (byte b in reverse)
+        ///             {
+        ///                 Console.Write("{0}, ", b);
+        ///             }
+        ///         }
+        ///     }
+        /// }
+        /// // The example displays the following output:
+        /// // 9, 8, 7, 6, 5, 4, 3, 2, 1, 0,
+        /// </code>
+        /// </example>
+        /// <seealso cref="M:System.Array.Reverse(System.Array)"/>
+        /// <seealso cref="O:System.Array.Reverse"/>
         public static byte[] Reverse(byte[] byteArray)
         {
             int length = byteArray.Length;
