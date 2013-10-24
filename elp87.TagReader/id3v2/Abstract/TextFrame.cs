@@ -3,16 +3,30 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2.Abstract
 {
+    /// <summary>
+    /// This abstract base class provides general functionality for all frames that contain text information with text encoding
+    /// </summary>
     public abstract class TextFrame : Frame
     {
         #region Fields
+        /// <summary>
+        /// Encoding of text information fields
+        /// </summary>
         protected TextEncoding _encoding;
         private int posOffset;
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Inheritable constructor for <see cref="elp87.TagReader.id3v2.Abstract.TextFrame"/> class
+        /// </summary>
         public TextFrame() : base() { }
 
+        /// <summary>
+        /// Main inheritable constructor for <see cref="elp87.TagReader.id3v2.Abstract.TextFrame"/> class.
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding drame header and header extra data.</param>
         public TextFrame(FrameFlagSet flags, byte[] frameData) 
         {
             this._flags = flags;
@@ -23,6 +37,11 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Returns string from byte array according current text encoding
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         protected string GetString(byte[] data)
         {
             Encoding enc;
@@ -55,6 +74,11 @@ namespace elp87.TagReader.id3v2.Abstract
             return enc.GetString(data);
         }
 
+        /// <summary>
+        /// Returns byte array without byte order mark for <see cref="elp87.TagReader.id3v2.Abstract.TextFrame.TextEncoding.UTF16"/>
+        /// </summary>
+        /// <param name="dataWithBom">Byte array contained byte order mark</param>
+        /// <returns>Byte array without byte order mark</returns>
         protected byte[] RemoveBomFromData(byte[] dataWithBom)
         {
             byte[] withouBom = new byte[dataWithBom.Length - 2];
@@ -62,6 +86,11 @@ namespace elp87.TagReader.id3v2.Abstract
             return withouBom;
         }
 
+        /// <summary>
+        /// Returns count of strings contained in general string 
+        /// </summary>
+        /// <param name="text">General string</param>
+        /// <returns>Cunt of strings</returns>
         protected static int GetStringCount(string text)
         {
             int count = 1;
@@ -74,6 +103,10 @@ namespace elp87.TagReader.id3v2.Abstract
             return count;
         }
 
+        /// <summary>
+        /// Sets encoding in accordance with text encoding byte
+        /// </summary>
+        /// <param name="encodeByte"></param>
         protected void SetEncoding(byte encodeByte)
         {
             this._encoding = (TextEncoding)encodeByte;
@@ -81,11 +114,20 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Enum
+        /// <summary>
+        /// Specifies text encodings for text frames
+        /// </summary>
         protected enum TextEncoding : byte
         {
+            /// <summary> ISO-8859-1.Terminated with $00. </summary>
             ISO_8859_1  = 0x00,
+            /// <summary> UTF-16 encoded Unicode with BOM. Terminated with $00 00. </summary>
             UTF16       = 0x01,
+            /// <summary> UTF-16BE encoded Unicode without BOM. Terminated with $00 00. </summary>
             UTF16_BE    = 0x02,
+            /// <summary>
+            /// UTF-8 encoded Unicode. Terminated with $00.
+            /// </summary>
             UTF8        = 0x03
         }
         #endregion
