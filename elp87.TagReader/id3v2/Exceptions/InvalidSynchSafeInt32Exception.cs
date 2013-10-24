@@ -2,7 +2,7 @@
 
 namespace elp87.TagReader.id3v2.Exceptions
 {
-    class InvalidSynchSafeInt32Exception : Exception
+    public class InvalidSynchSafeInt32Exception : Exception
     {
         public DateTime ErrorTimeStamp { get; set; }
         public string CauseOfError { get; set; }

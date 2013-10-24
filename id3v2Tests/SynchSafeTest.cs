@@ -74,5 +74,12 @@ namespace id3v2Tests
 
             CollectionAssert.AreEqual(expByte, test.ToByte());
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.InvalidSynchSafeInt32Exception))]
+        public void TestInvalidCRC()
+        {
+            SynchsafeCRC test = new SynchsafeCRC(ssByte4);
+        }
     }
 }
