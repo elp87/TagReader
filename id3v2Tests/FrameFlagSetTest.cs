@@ -31,9 +31,10 @@ namespace id3v2Tests
                 }
             }
 
+
             public void GetEData(byte[] frameData)
             {
-                int i = base.GetExtraDate(frameData, 0, true);
+                int i = base.GetExtraData(0, frameData);
             }
         }
 

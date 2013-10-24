@@ -2,6 +2,9 @@
 
 namespace elp87.TagReader.id3v2
 {
+    /// <summary>
+    /// This class provides information about frame header flags
+    /// </summary>
     public class FrameFlagSet
     {
         #region Fields
@@ -11,8 +14,16 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="elp87.TagReader.id3v2.FrameFlagSet"/> that is empty
+        /// </summary>
         public FrameFlagSet() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="elp87.TagReader.id3v2.FrameFlagSet"/>
+        /// </summary>
+        /// <param name="flagBytes">Flags byte array</param>
+        /// <exception cref="elp87.TagReader.id3v2.Exceptions.NotUsableFlagException">Not usable flag is set</exception>
         public FrameFlagSet(byte[] flagBytes)
         {
             this.ParseFlags(flagBytes);
@@ -20,15 +31,51 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properies
+        /// <summary>
+        /// Gets and sets whether "Tag alter preservation" flag is set
+        /// </summary>
         public bool TagAlterPreservation { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "File alter preservation" flag is set
+        /// </summary>
         public bool FileAlterPreservation { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Read only" flag is set
+        /// </summary>
         public bool ReadOnly { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Grouping identity" flag is set
+        /// </summary>
         public bool GroupingIdentity { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Compression" flag is set
+        /// </summary>
         public bool Compression { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Encryption" flag is set
+        /// </summary>
         public bool Encryption { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Unsynchronisation" flag is set
+        /// </summary>
         public bool Unsynchronisation { get; set; }
+
+        /// <summary>
+        /// Gets and sets whether "Data length indicator" flag is set
+        /// </summary>
         public bool DataLengthIndicator { get; set; }
 
+
+        /// <summary>
+        /// Gets group identifier byte if "Grouping identity" flag is set.
+        /// </summary>
+        /// <exception cref="elp87.TagReader.id3v2.Exceptions.FlagUnsetException">"Grouping identity" flag is unset</exception>
         public byte Grouping
         {
             get
@@ -43,6 +90,11 @@ namespace elp87.TagReader.id3v2
                 }
             }
         }
+
+        /// <summary>
+        /// Gets encryption method byte if "Encryption" flag is set
+        /// </summary>
+        /// <exception cref="elp87.TagReader.id3v2.Exceptions.FlagUnsetException">"Encryption flag is unset</exception>
         public byte EncryptMethod
         {
             get
@@ -57,6 +109,11 @@ namespace elp87.TagReader.id3v2
                 }
             }
         }
+
+        /// <summary>
+        /// Gets data length indicator is the value one would write as the 'Frame length' if all of the frame format flags were zeroed
+        /// </summary>
+        /// <exception cref="elp87.TagReader.id3v2.Exceptions.FlagUnsetException">Data Length Indicator flag is unset</exception>
         public int DataLength
         {
             get
@@ -75,7 +132,7 @@ namespace elp87.TagReader.id3v2
 
         #region Methods
         #region Internal
-        internal int GetExtraDate(byte[] tagArray, int position)
+        internal int GetExtraData(byte[] tagArray, int position)
         {
             int offset = 0;
             if (this.GroupingIdentity)
@@ -117,9 +174,15 @@ namespace elp87.TagReader.id3v2
         }
         #endregion
         #region Protected
-        protected int GetExtraDate(byte[] tagArray, int position, bool b)
+        /// <summary>
+        /// Returns length of Grouping, EncryptMethod and DataLength data and sets their value from frame byte array
+        /// </summary>
+        /// <param name="position">Zero-based position of extra data start</param>
+        /// <param name="tagArray">Byte array of current tag</param>
+        /// <returns>Length of Grouping, EncryptMethod and DataLength data</returns>
+        protected int GetExtraData(int position, byte[] tagArray)
         {
-            return this.GetExtraDate(tagArray, position);
+            return this.GetExtraData(tagArray, position);
         }
         #endregion
         #endregion

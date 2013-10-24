@@ -4,6 +4,9 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2
 {
+    /// <summary>
+    /// This class provides functionality to construct new frames from tag byte array
+    /// </summary>
     public class FrameReader
     {
         #region Constants
@@ -23,6 +26,9 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="elp87.TagReader.id3v2.FrameReader"/> class
+        /// </summary>
         public FrameReader()
         {
             _flags = new byte[2];            
@@ -30,8 +36,14 @@ namespace elp87.TagReader.id3v2
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets frame identificator
+        /// </summary>
         public string Id { get { return _identificator; } }
 
+        /// <summary>
+        /// Gets frame size, excluding frame header
+        /// </summary>
         public int FrameSize { get { return _frameSize; } }
         #endregion
 
@@ -51,7 +63,7 @@ namespace elp87.TagReader.id3v2
             {
                 GetFlagsField(tagArray);
                 _flagSet = new FrameFlagSet(_flags);
-                _pointPosition += _flagSet.GetExtraDate(tagArray, _pointPosition);
+                _pointPosition += _flagSet.GetExtraData(tagArray, _pointPosition);
                 GetDataValue(tagArray);
                 SetValueIntoTag(tag);
             }
