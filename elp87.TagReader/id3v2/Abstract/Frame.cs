@@ -27,7 +27,7 @@
         /// Main inheritable constructor for <see cref="elp87.TagReader.id3v2.Abstract.Frame"/> class.
         /// </summary>
         /// <param name="flags">Flag fields of current frame.</param>
-        /// <param name="frameData">Byte array that contains frame data excluding drame header and header extra data.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding frame header and header extra data.</param>
         public Frame(FrameFlagSet flags, byte[] frameData)
         {
             this._flags = flags;
