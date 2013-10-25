@@ -2,20 +2,42 @@
 
 namespace elp87.TagReader.id3v2.Abstract
 {
+    /// <summary>
+    /// This abstract base class provides general functionality for numeric text frames that contains "slash" character
+    /// </summary>
     public abstract class SlashNumericStringFrame
         : TextFrame
     {
         #region Fields
+        /// <summary>
+        /// String value of frame.
+        /// </summary>
+        
         protected string _numericString;
+        /// <summary>
+        /// Main number value.
+        /// </summary>
         protected int _number;
+
+        /// <summary>
+        /// Total number.
+        /// </summary>
         protected int _totalNumber;
         #endregion
 
         #region Constuctors
+        /// <summary>
+        /// Inheritable constructor for <see cref="elp87.TagReader.id3v2.Abstract.SlashNumericStringFrame"/> class
+        /// </summary>
         public SlashNumericStringFrame()
             : base()
         { }
 
+        /// <summary>
+        /// Main inheritable constructor for <see cref="elp87.TagReader.id3v2.Abstract.SlashNumericStringFrame"/> class.
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding drame header and header extra data.</param>
         public SlashNumericStringFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
@@ -29,19 +51,39 @@ namespace elp87.TagReader.id3v2.Abstract
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets string value of frame.
+        /// </summary>
         public string NumericString { get { return this._numericString; } }
+
+        /// <summary>
+        /// Gets main number value.
+        /// </summary>
         public int Number           { get { return this._number; } }
+
+        /// <summary>
+        /// Gets total number.
+        /// </summary>
         public int TotalNumber      { get { return this._totalNumber; } }
         #endregion
 
         #region Methods
         #region Public
+        /// <summary>
+        /// Returns string value of frame.
+        /// </summary>
+        /// <returns>String value of frame.</returns>
         public override string ToString()
         {
             return this._numericString;
         }
         #endregion
+
         #region Protected
+        /// <summary>
+        /// Parse frame numeric string to compliant fields
+        /// </summary>
+        /// <param name="numericString">Numeric string</param>
         protected void ParseNumericString(string numericString)
         {
             if (numericString == "")
