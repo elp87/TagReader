@@ -69,7 +69,6 @@
     <Compile Include="id3v2\Frames\PrivateFrame.cs" />
     <Compile Include="id3v2\Frames\TextInfoFrame.cs" />
     <Compile Include="id3v2\Dictionaries.cs" />
-    <Compile Include="id3v2\Exceptions\FrameTRCKException.cs" />
     <Compile Include="id3v2\Exceptions\NoID3V2TagException.cs" />
     <Compile Include="id3v2\Exceptions\UnknownEncodingException.cs" />
     <Compile Include="id3v2\Exceptions\UnsupportedTagVersionException.cs" />
