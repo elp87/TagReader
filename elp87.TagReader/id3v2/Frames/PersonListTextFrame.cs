@@ -2,26 +2,52 @@
 
 namespace elp87.TagReader.id3v2.Frames
 {
+    /// <summary>
+    /// Provides functionality for frames that contain mapping between people and their roles.
+    /// </summary>
+    /// <remarks>This class allows to read TMCL and TIPL frames. For details read "ID3 tag version 2.4.0 - Native Frames".</remarks>
     public class PersonListTextFrame
         : TextFrame
     {
         #region Subclasses
-        public class PersonMapItem
+        /// <summary>
+        /// This structure represents person and his role.
+        /// </summary>
+        public struct PersonMapItem
         {
+            /// <summary>
+            /// Gets and sets person name.
+            /// </summary>
             public string person { get; set; }
+
+            /// <summary>
+            /// Gets and sets current person's role.
+            /// </summary>
             public string role { get; set; }                        
         }
 
+        /// <summary>
+        /// Represents a frame reader that can read TMCL or TIPL frame.
+        /// </summary>
         public class PersonListItemFrame
             : TextFrame
         {
             #region Constructors
+            /// <summary>
+            /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.PersonListTextFrame.PersonListItemFrame"/> and read frame data.
+            /// </summary>
+            /// <param name="flags">Flag fields of current frame.</param>
+            /// <param name="frameData">Byte array that contains frame data excluding frame header and header extra data.</param>
             public PersonListItemFrame(FrameFlagSet flags, byte[] frameData)
                 : base(flags, frameData)
             { } 
             #endregion
 
             #region Methods
+            /// <summary>
+            /// Returns string value of frame.
+            /// </summary>
+            /// <returns>Frame value.</returns>
             public string GetString()
             {
                 return this.GetString(this._frameData);
@@ -36,6 +62,9 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.PersonListTextFrame"/> that is empty.
+        /// </summary>
         public PersonListTextFrame()
         {
             this._persons = new PersonMapItem[0];
@@ -44,6 +73,9 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets the number of elements actually contained in this type of frames
+        /// </summary>
         public int ListCount
         {
             get
@@ -55,13 +87,11 @@ namespace elp87.TagReader.id3v2.Frames
 
         #region Methods
         #region Public
-        public PersonMapItem GetValue(int index)
-        {
-            return this._persons[index];
-        }
-        #endregion
-
-        #region Private
+        /// <summary>
+        /// Read standart frame data and add information to "person-role" array.
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="byteArray">Byte array that contains frame data excluding frame header and header extra data.</param>
         public void AddData(FrameFlagSet flags, byte[] byteArray)
         {
             if (this._itemStarted == false)
@@ -81,6 +111,18 @@ namespace elp87.TagReader.id3v2.Frames
             }
         }
 
+        /// <summary>
+        /// Returns pair "role-person" at the specified index 
+        /// </summary>
+        /// <param name="index">The zero-based index of the element to get</param>
+        /// <returns>Instance of <see cref="elp87.TagReader.id3v2.Frames.PersonListTextFrame.PersonMapItem"/> that represent a pair "role-person"</returns>
+        public PersonMapItem GetValue(int index)
+        {
+            return this._persons[index];
+        }
+        #endregion
+
+        #region Private
         private PersonMapItem[] AddNewElementToPersons(PersonMapItem[] initialPersonList)
         {
             PersonMapItem[] tempPersonList = this.ClonePersonList(initialPersonList);
@@ -105,8 +147,6 @@ namespace elp87.TagReader.id3v2.Frames
             return clonedList;
         }  
         #endregion
-        #endregion
-
-        
+        #endregion        
     }
 }
