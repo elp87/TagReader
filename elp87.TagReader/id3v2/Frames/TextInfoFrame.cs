@@ -2,6 +2,10 @@
 
 namespace elp87.TagReader.id3v2.Frames
 {
+    /// <summary>
+    /// Provides functionality for most of text information frames.
+    /// </summary>
+    /// <remarks>For details read "ID3 tag version 2.4.0 - Native Frames" section 4.2.</remarks>
     public class TextInfoFrame
         : TextFrame
     {
@@ -22,11 +26,19 @@ namespace elp87.TagReader.id3v2.Frames
 
         #region Methods
         #region Public
+        /// <summary>
+        /// Returns first value of current instance
+        /// </summary>
+        /// <returns>First value if current instance</returns>
         public override string ToString()
         {
             return _values[0];
         }
 
+        /// <summary>
+        /// Returns array of all values
+        /// </summary>
+        /// <returns>Array of all values</returns>
         public string[] GetValues()
         {
             return (string[])_values.Clone();
@@ -58,6 +70,11 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets the element at the specified index.
+        /// </summary>
+        /// <param name="index">The zero-based index of the element to get or set.</param>
+        /// <returns>The element of frame.</returns>
         public string this[int index] { get { return _values[index]; } }
         #endregion
     }
