@@ -6,6 +6,11 @@ using System.Text;
 
 namespace elp87.TagReader.id3v2.Frames
 {
+    /// <summary>
+    /// Provides functionality for attached picture frames.
+    /// </summary>
+    /// <remarks>This class allows to read APIC frames. For details read "ID3 tag version 2.4.0 - Native Frames"</remarks>
+    /// <seealso cref="elp87.TagReader.id3v2.ID3V2.APIC"/>
     public class AttachedPictureFrame
         : TextFrame
     {
@@ -17,10 +22,18 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.AttachedPictureFrame"/> that is empty.
+        /// </summary>
         protected AttachedPictureFrame()
             : base()
         { }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.AttachedPictureFrame"/> and read frame data
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding frame header and header extra data.</param>
         public AttachedPictureFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
@@ -36,18 +49,47 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Properies
+        /// <summary>
+        /// Gets MIME type and subtype for the image.
+        /// </summary>
+        /// <remarks>Usually this property is equal <c>image/jpeg</c>.</remarks>
         public string       MimeType    { get { return this._mimeType; } }
+
+        /// <summary>
+        /// Gets short description of the picture.
+        /// </summary>
         public string       Description { get { return this._description; } }
+
+        /// <summary>
+        /// Gets picture type
+        /// </summary>
+        /// <seealso cref="elp87.TagReader.id3v2.Frames.AttachedPictureFrame.PictureTypes"/>
         public PictureTypes PictureType { get { return (PictureTypes)this._picType; } }
         #endregion
 
         #region Methods
         #region Public
+        /// <summary>
+        /// Returns byte array of attached picture.
+        /// </summary>
+        /// <returns>Byte array of picture data</returns>
         public byte[] GetPictureData()
         {
             return (byte[])this._picData.Clone();
         }
 
+        /// <summary>
+        /// Returns instanse of <see cref="System.Drawing.Image"/> that contains frame picture
+        /// </summary>
+        /// <returns>instanse of <see cref="System.Drawing.Image"/> that contains frame picture</returns>
+        /// <example>
+        /// <code lang="C#">
+        /// MP3File test = new MP3File(_fileNameMP3);
+        /// Image image = test.Id3v2.APIC[0].GetPicture();
+        /// image.Save(_fileNamePicSave);
+        /// </code>
+        /// Here is an example of saving the file to disk from mp3 file
+        /// </example>
         public Image GetPicture()
         {
             Image image = Image.FromStream(new MemoryStream(this._picData));
@@ -108,28 +150,52 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Enums
+        /// <summary>
+        /// Specifies available picture types
+        /// </summary>
         public enum PictureTypes : byte
         {
+            /// <summary> Other </summary>
             Other              = 0x00,
+            /// <summary> 32x32 pixels 'file icon' (PNG only) </summary>
             FileIcon32PNG      = 0x01,
+            /// <summary> Other file icon </summary>
             OtherFileIcon      = 0x02,
+            /// <summary> Cover (front) </summary>
             CoverFront         = 0x03,
+            /// <summary> Cover (back) </summary>
             CoverBack          = 0x04,
+            /// <summary> Leaflet page </summary>
             LeafletPage        = 0x05,
+            /// <summary> Media (e.g. label side of CD) </summary>
             Media              = 0x06,
+            /// <summary> Lead artist/lead performer/soloist </summary>
             LeadArtist         = 0x07,
+            /// <summary> Artist/performer </summary>
             Artist             = 0x08,
+            /// <summary> Conductor </summary>
             Conductor          = 0x09,
+            /// <summary> Band/Orchestra </summary>
             Band               = 0x0A,
+            /// <summary> Composer </summary>
             Composer           = 0x0B,
+            /// <summary> Lyricist/text writer </summary>
             Lyricist           = 0x0C,
+            /// <summary> Recording Location </summary>
             RecordingLocation  = 0x0D,
+            /// <summary> During recording </summary>
             DuringRecording    = 0x0E,
+            /// <summary> During performance </summary>
             DuringPerformance  = 0x0F,
+            /// <summary> Movie/video screen capture </summary>
             ScreenCapture      = 0x10,
+            /// <summary> A bright coloured fish </summary>
             BrightColouredFish = 0x11,
+            /// <summary> Illustration </summary>
             Illustration       = 0x12,
+            /// <summary> Band/artist logotype </summary>
             ArtistLogo         = 0x13,
+            /// <summary> Publisher/Studio logotype </summary>
             PublisherLogo      = 0x14
         }
         #endregion
