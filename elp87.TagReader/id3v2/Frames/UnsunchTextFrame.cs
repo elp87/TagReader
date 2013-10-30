@@ -3,6 +3,12 @@ using System;
 
 namespace elp87.TagReader.id3v2.Frames
 {
+    /// <summary>
+    /// Provides functionality for Unsynchronised text frames.
+    /// </summary>
+    /// <remarks>This class allows to read USLT and COMM frames. For details read "ID3 tag version 2.4.0 - Native Frames"</remarks>
+    /// <seealso cref="elp87.TagReader.id3v2.ID3V2.USLT"/>
+    /// <seealso cref="elp87.TagReader.id3v2.ID3V2.COMM"/>
     public class UnsunchTextFrame
         : LanguageTextFrame
     {
@@ -13,10 +19,18 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.UnsunchTextFrame"/> that is empty.
+        /// </summary>
         protected UnsunchTextFrame()
             : base()
         { }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.UnsunchTextFrame"/> and read frame data
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding frame header and header extra data.</param>
         public UnsunchTextFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
@@ -32,7 +46,14 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Gets short frame description
+        /// </summary>
         public string Description { get { return this._description; } }
+
+        /// <summary>
+        /// Gets actual frame text
+        /// </summary>
         public string Value      { get { return this._textValue; } }
         #endregion
 

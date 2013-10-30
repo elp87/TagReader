@@ -14,9 +14,17 @@ namespace elp87.TagReader.id3v2.Frames
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.TextInfoFrame"/> that is empty.
+        /// </summary>
         protected TextInfoFrame()
         { }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="elp87.TagReader.id3v2.Frames.TextInfoFrame"/> and read frame data
+        /// </summary>
+        /// <param name="flags">Flag fields of current frame.</param>
+        /// <param name="frameData">Byte array that contains frame data excluding frame header and header extra data.</param>
         public TextInfoFrame(FrameFlagSet flags, byte[] frameData)
             : base(flags, frameData)
         {
