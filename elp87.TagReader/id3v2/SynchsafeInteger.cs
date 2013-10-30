@@ -15,6 +15,9 @@ namespace elp87.TagReader.id3v2
     public abstract class Synchsafe
     {
         #region Fields
+        /// <summary>
+        /// Synchsafe integer represented as byte array
+        /// </summary>
         protected byte[] _synchsafeByte;
         #endregion
 
@@ -26,7 +29,7 @@ namespace elp87.TagReader.id3v2
         /// <summary>
         /// Inheritable constructor for <see cref="elp87.TagReader.id3v2.Synchsafe"/> class with reading synchsafe byte array
         /// </summary>
-        /// <param name="synchsafeByte"></param>
+        /// <param name="synchsafeByte">Synchsafe integer represented as byte array</param>
         public Synchsafe(byte[] synchsafeByte)
         {
             this._synchsafeByte = synchsafeByte;

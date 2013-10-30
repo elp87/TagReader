@@ -48,6 +48,10 @@ namespace elp87.TagReader.id3v2.Frames
 
         #region Methods
         #region Public
+        /// <summary>
+        /// Returns "Number" property represented as string
+        /// </summary>
+        /// <returns>"Number" property represented as string</returns>
         public override string ToString()
         {
             return _number.ToString();

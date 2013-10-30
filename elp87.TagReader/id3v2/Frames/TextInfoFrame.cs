@@ -10,6 +10,9 @@ namespace elp87.TagReader.id3v2.Frames
         : TextFrame
     {
         #region Fields
+        /// <summary>
+        /// Array of values
+        /// </summary>
         protected string[] _values;
         #endregion
 
