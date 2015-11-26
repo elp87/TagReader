@@ -24,7 +24,7 @@ namespace id3v2Tests.Frames
                 0x00, 0x03, 0xfc, 0x07, 0xff, 0x00
             };
 
-            MP3File test = new MP3File(_fileNameMCDI);
+            Mp3Tag test = new Mp3Tag(_fileNameMCDI);
 
             CollectionAssert.AreEqual(expData, test.Id3v2.MCDI.GetData());
         }

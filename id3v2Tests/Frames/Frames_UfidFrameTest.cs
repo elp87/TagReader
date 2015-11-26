@@ -48,7 +48,7 @@ namespace id3v2Tests.Frames
         [TestMethod]
         public void TestUFID()
         {
-            MP3File test = new MP3File(_fileNameUFID);
+            Mp3Tag test = new Mp3Tag(_fileNameUFID);
 
             Assert.AreEqual(_expOwnerID, test.Id3v2.UFID[0].OwnerID);
             CollectionAssert.AreEqual(_expValue, test.Id3v2.UFID[0].GetData());

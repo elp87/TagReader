@@ -19,7 +19,7 @@ namespace id3v2Tests.Frames
         {
             string expTIT1 = "Post Rock";
 
-            MP3File testTIT1 = new MP3File(_fileNameTIT1);
+            Mp3Tag testTIT1 = new Mp3Tag(_fileNameTIT1);
 
             Assert.AreEqual(expTIT1, testTIT1.Id3v2.IdentificationFrames.TIT1.ToString());
         }
@@ -32,11 +32,11 @@ namespace id3v2Tests.Frames
                 "Opening", "Интро", "Angel Tears (James Plotkin Remix)"	
             };
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
             {
-                new MP3File(_fileNameOpening),
-                new MP3File(_fileNameIntro),
-                new MP3File(_fileNameTIT1)
+                new Mp3Tag(_fileNameOpening),
+                new Mp3Tag(_fileNameIntro),
+                new Mp3Tag(_fileNameTIT1)
             };
 
             Assert.AreEqual(expValues.Length, testFiles.Length);
@@ -51,7 +51,7 @@ namespace id3v2Tests.Frames
         {
             string expTIT3 = "MOLECUL";
 
-            MP3File testTIT3 = new MP3File(_fileNameSvetSneg);
+            Mp3Tag testTIT3 = new Mp3Tag(_fileNameSvetSneg);
 
             Assert.AreEqual(expTIT3, testTIT3.Id3v2.IdentificationFrames.TIT3.ToString());
         }
@@ -64,10 +64,10 @@ namespace id3v2Tests.Frames
                 "I Was Here For A Moment, Then I Was Gone", "Саундтрек Моей Жизни", "Mono / Pelican"
             };
 
-            MP3File[] testFiles = new MP3File[] {
-                new MP3File(_fileNameOpening),
-                new MP3File(_fileNameIntro),
-                new MP3File(_fileNameTIT1)
+            Mp3Tag[] testFiles = new Mp3Tag[] {
+                new Mp3Tag(_fileNameOpening),
+                new Mp3Tag(_fileNameIntro),
+                new Mp3Tag(_fileNameTIT1)
             };
 
             Assert.AreEqual(expValues.Length, testFiles.Length);
@@ -82,7 +82,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "AN ENDLESS TOMORROW";
 
-            MP3File test = new MP3File(_fileNameTOAL);
+            Mp3Tag test = new Mp3Tag(_fileNameTOAL);
 
             Assert.AreEqual(expValue, test.Id3v2.IdentificationFrames.TOAL.ToString());
         }
@@ -93,11 +93,11 @@ namespace id3v2Tests.Frames
             int[] expNumber = new int[] { 1, 1, 2 };
             int[] expTotalNumber = new int[] { 1, 10, -1};
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
             {
-                new MP3File(_fileNameOpening),
-                new MP3File(_fileNameIntro),
-                new MP3File(_fileNameTIT1)
+                new Mp3Tag(_fileNameOpening),
+                new Mp3Tag(_fileNameIntro),
+                new Mp3Tag(_fileNameTIT1)
             };
 
             Assert.AreEqual(expNumber.Length, testFiles.Length);
@@ -115,7 +115,7 @@ namespace id3v2Tests.Frames
             int expTotalNumber = 12;
             string expStringValue = @"06/12";
 
-            MP3File test = new MP3File(_fileNameTOAL);
+            Mp3Tag test = new Mp3Tag(_fileNameTOAL);
 
             Assert.AreEqual(expNumber, test.Id3v2.IdentificationFrames.TPOS.Number);
             Assert.AreEqual(expTotalNumber, test.Id3v2.IdentificationFrames.TPOS.TotalNumber);
@@ -127,7 +127,7 @@ namespace id3v2Tests.Frames
         {
             string expTSRC = "GBUM70812435";
 
-            MP3File test = new MP3File(_fileNameTSRC);
+            Mp3Tag test = new Mp3Tag(_fileNameTSRC);
 
             Assert.AreEqual(expTSRC, test.Id3v2.IdentificationFrames.TSRC.ToString());
         }

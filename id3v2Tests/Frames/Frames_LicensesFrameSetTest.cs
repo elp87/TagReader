@@ -16,7 +16,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"2007-11-27T16:11:38+01:00 The Phase. Licensed to the public under http://creativecommons.org/licenses/by-sa/3.0/ verify at http://www.jamendo.comalbum/13125/";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.LicensesFrames.TCOP.ToString());
         }
@@ -26,10 +26,10 @@ namespace id3v2Tests.Frames
         {
             string[] expValue = new string[] { "Jamendo", "My Place Records" };
 
-            MP3File[] test = new MP3File[]
+            Mp3Tag[] test = new Mp3Tag[]
             {
-                new MP3File(_fileNameTENC),
-                new MP3File(_fileNameTLAN)
+                new Mp3Tag(_fileNameTENC),
+                new Mp3Tag(_fileNameTLAN)
             };
 
             Assert.AreEqual(expValue.Length, test.Length);
@@ -44,7 +44,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"Federico Agudo Calderón 50456599G , Diego Millán Ruíz 33531313G , David Imbernon Alcántara 50462594L , Oriana Daleina Castillo Matute X9367817D, Daniel Cabal Fernández 09428917K";
 
-            MP3File test = new MP3File(_fileNameTOAL);
+            Mp3Tag test = new Mp3Tag(_fileNameTOAL);
 
             Assert.AreEqual(expValue, test.Id3v2.LicensesFrames.TOWN.ToString());
         }

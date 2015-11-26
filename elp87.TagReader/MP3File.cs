@@ -5,7 +5,7 @@ namespace elp87.TagReader
     /// <summary>
     /// This class provides reading mp3 files info.
     /// </summary>
-    public class MP3File
+    public class Mp3Tag
     {
         #region Fields
         private ID3V2 _id3v2;
@@ -14,17 +14,17 @@ namespace elp87.TagReader
 
         #region Constructors
         /// <summary>
-        /// Initializes a new instance of <see cref="MP3File"/> that is empty.
+        /// Initializes a new instance of <see cref="Mp3Tag"/> that is empty.
         /// </summary>
-        public MP3File()
+        public Mp3Tag()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="MP3File"/> and read file.
+        /// Initializes a new instance of <see cref="Mp3Tag"/> and read file.
         /// </summary>
         /// <param name="filename">The file to open for reading.</param>
-        public MP3File(string filename)
+        public Mp3Tag(string filename)
         {
             this._filename = filename;
             _id3v2 = new ID3V2(filename);
@@ -125,7 +125,7 @@ namespace elp87.TagReader
         /// Returns full file name of this instance
         /// </summary>
         /// <remarks>
-        /// <para>If this instance of <see cref="MP3File"/> is empty, this property returns "". </para>
+        /// <para>If this instance of <see cref="Mp3Tag"/> is empty, this property returns "". </para>
         /// </remarks>
         public string Filename
         {

@@ -12,8 +12,8 @@ namespace id3v2Tests
         private const string _filename03 = @"D:\TestAudio\\01 Opening.mp3"; // Maybeshewill [2011 I Was Here For A Moment, Then I Was Gone] - 01 Opening
         private const string _filename04 = @"D:\TestAudio\\01. Интро.mp3"; // ТКН - [Саундтрек моей жизни] - 01. Интро
         
-        MP3File testFile03 = new MP3File(_filename03);
-        MP3File testFile04 = new MP3File(_filename04);
+        Mp3Tag testFile03 = new Mp3Tag(_filename03);
+        Mp3Tag testFile04 = new Mp3Tag(_filename04);
         
         [TestMethod]
         public void GetHeaderTest()
@@ -64,14 +64,14 @@ namespace id3v2Tests
         [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.UnsupportedTagVersionException))]
         public void UnsupportedTagVersionExceptionTest()
         {
-            MP3File testFile02 = new MP3File(_filename02);
+            Mp3Tag testFile02 = new Mp3Tag(_filename02);
         }
 
         [TestMethod]
         [ExpectedException(typeof(elp87.TagReader.id3v2.Exceptions.NoID3V2TagException))]
         public void NoID3V2TagExceptionTest()
         {
-            MP3File testFileNull = new MP3File(_filenameNull);
+            Mp3Tag testFileNull = new Mp3Tag(_filenameNull);
         }
 
         

@@ -20,7 +20,7 @@ namespace id3v2Tests.Frames
         [TestMethod]
         public void TestPicture()
         {            
-            MP3File test = new MP3File(_fileNamePic);
+            Mp3Tag test = new Mp3Tag(_fileNamePic);
             Image image = test.Id3v2.APIC[0].GetPicture();
 
             Assert.AreEqual(expPicture.Width, image.Width);
@@ -39,7 +39,7 @@ namespace id3v2Tests.Frames
         {
             AttachedPictureFrame.PictureTypes expValue = AttachedPictureFrame.PictureTypes.CoverFront;
 
-            MP3File test = new MP3File(_fileNamePic);
+            Mp3Tag test = new Mp3Tag(_fileNamePic);
 
             Assert.AreEqual(expValue, test.Id3v2.APIC[0].PictureType);            
         }

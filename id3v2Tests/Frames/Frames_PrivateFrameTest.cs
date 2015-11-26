@@ -22,7 +22,7 @@ namespace id3v2Tests.Frames
                 new byte[] {0x7B, 0x2A, 0x00, 0x00}
             };
 
-            MP3File test = new MP3File(_fileNameSvetSneg);
+            Mp3Tag test = new Mp3Tag(_fileNameSvetSneg);
 
             Assert.AreEqual(expOwnerID.Length, test.Id3v2.PRIV.Length);
             for(int i = 0; i < expOwnerID.Length; i++)

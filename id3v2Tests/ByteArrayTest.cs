@@ -17,7 +17,7 @@ namespace id3v2Tests
         {
             string stMask = "SEEK";
             byte[] mask = Encoding.ASCII.GetBytes(stMask);
-            MP3File test = new MP3File(_fileNameIssueTagFinderN2);
+            Mp3Tag test = new Mp3Tag(_fileNameIssueTagFinderN2);
             byte[] byteArray = test.Id3v2.GetTagArray();
             int position = ByteArray.FindSubArray(byteArray, mask);
         }
@@ -27,7 +27,7 @@ namespace id3v2Tests
         {
             string stMask = "SEEK";
             byte[] mask = Encoding.ASCII.GetBytes(stMask);
-            MP3File test = new MP3File(_fileNameIssueTagFinderN2_1);
+            Mp3Tag test = new Mp3Tag(_fileNameIssueTagFinderN2_1);
             byte[] byteArray = test.Id3v2.GetTagArray();
             int position = ByteArray.FindSubArray(byteArray, mask);
         }

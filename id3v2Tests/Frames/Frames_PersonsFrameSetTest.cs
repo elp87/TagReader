@@ -24,13 +24,13 @@ namespace id3v2Tests.Frames
             };
 
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
                 {
-                    new MP3File(_fileNameOpening),
-                    new MP3File(_fileNameIntro),
-                    new MP3File(_fileNameTIT1),
-                    new MP3File(_fileNameTOAL),
-                    new MP3File(_fileNameTSRC)
+                    new Mp3Tag(_fileNameOpening),
+                    new Mp3Tag(_fileNameIntro),
+                    new Mp3Tag(_fileNameTIT1),
+                    new Mp3Tag(_fileNameTOAL),
+                    new Mp3Tag(_fileNameTSRC)
                 };
             Assert.AreEqual(expValue.Length, testFiles.Length);
             for (int i = 0; i < testFiles.Length; i++)
@@ -44,7 +44,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "MOLECUL";
 
-            MP3File test = new MP3File(_fileNameSvetSneg);
+            Mp3Tag test = new Mp3Tag(_fileNameSvetSneg);
 
             Assert.AreEqual(expValue, test.Id3v2.PersonsFrames.TPE2.ToString());
         }
@@ -54,7 +54,7 @@ namespace id3v2Tests.Frames
         {
             string expValue =  "MOLECUL";
 
-            MP3File test = new MP3File(_fileNameSvetSneg);
+            Mp3Tag test = new Mp3Tag(_fileNameSvetSneg);
 
             Assert.AreEqual(expValue, test.Id3v2.PersonsFrames.TPE3.ToString());
         }
@@ -64,7 +64,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "FEDE AGUDO";
 
-            MP3File test = new MP3File(_fileNameTOAL);
+            Mp3Tag test = new Mp3Tag(_fileNameTOAL);
 
             Assert.AreEqual(expValue, test.Id3v2.PersonsFrames.TPE4.ToString());
         }
@@ -77,10 +77,10 @@ namespace id3v2Tests.Frames
                 "ENUMA ELISH", "MOLECUL"
             };
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
             {
-                new MP3File(_fileNameTOAL),
-                new MP3File(_fileNameSvetSneg)
+                new Mp3Tag(_fileNameTOAL),
+                new Mp3Tag(_fileNameSvetSneg)
             };
 
             Assert.AreEqual(expValue.Length, testFiles.Length);
@@ -98,10 +98,10 @@ namespace id3v2Tests.Frames
                 "ENUMA ELISH", "MOLECUL"
             };
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
             {
-                new MP3File(_fileNameTOAL),
-                new MP3File(_fileNameSvetSneg)
+                new Mp3Tag(_fileNameTOAL),
+                new Mp3Tag(_fileNameSvetSneg)
             };
 
             Assert.AreEqual(expValue.Length, testFiles.Length);
@@ -120,10 +120,10 @@ namespace id3v2Tests.Frames
                 "MOLECUL"
             };
 
-            MP3File[] testFiles = new MP3File[]
+            Mp3Tag[] testFiles = new Mp3Tag[]
             {
-                new MP3File(_fileNameTOAL),
-                new MP3File(_fileNameSvetSneg)
+                new Mp3Tag(_fileNameTOAL),
+                new Mp3Tag(_fileNameSvetSneg)
             };
 
             Assert.AreEqual(expValue.Length, testFiles.Length);
@@ -138,7 +138,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "MOLECUL";
 
-            MP3File test = new MP3File(_fileNameSvetSneg);
+            Mp3Tag test = new Mp3Tag(_fileNameSvetSneg);
 
             Assert.AreEqual(expValue, test.Id3v2.PersonsFrames.TCOM.ToString());
         }
@@ -155,7 +155,7 @@ namespace id3v2Tests.Frames
                 "producerName", "masteringName"
             };
 
-            MP3File test = new MP3File(_fileNameTIPL);
+            Mp3Tag test = new Mp3Tag(_fileNameTIPL);
 
             for (int i = 0; i < expRoles.Length; i++)
             {
@@ -169,7 +169,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"Jamendo : http://www.jamendo.com | LAME";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.PersonsFrames.TENC.ToString());
         }

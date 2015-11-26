@@ -20,7 +20,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "Original file name";
 
-            MP3File test = new MP3File(_fileNameTOFN);
+            Mp3Tag test = new Mp3Tag(_fileNameTOFN);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TOFN.ToString());
         }
@@ -30,7 +30,7 @@ namespace id3v2Tests.Frames
         {
             int expValue = 2009;
 
-            MP3File test = new MP3File(_fileNameIntro);
+            Mp3Tag test = new Mp3Tag(_fileNameIntro);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TDRC.Year);
         }
@@ -40,7 +40,7 @@ namespace id3v2Tests.Frames
         {
             int expValue = 2007;
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TDRL.Year);
         }
@@ -51,7 +51,7 @@ namespace id3v2Tests.Frames
             DateTime expDate = new DateTime(2012, 1, 12, 10, 18, 54);
             int expYear = 2012;
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expDate, test.Id3v2.OtherFrames.TDTG.Date);
             Assert.AreEqual(expYear, test.Id3v2.OtherFrames.TDTG.Year);
@@ -62,7 +62,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "-V=\"2\"";
 
-            MP3File test = new MP3File(_fileNameTLAN);
+            Mp3Tag test = new Mp3Tag(_fileNameTLAN);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TSSE.ToString());
         }
@@ -72,7 +72,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "SortOrder";
 
-            MP3File test = new MP3File(_fileNameTSOT);
+            Mp3Tag test = new Mp3Tag(_fileNameTSOT);
 
             Assert.AreEqual(expValue, test.Id3v2.OtherFrames.TSOT.ToString());
         }
@@ -93,10 +93,10 @@ namespace id3v2Tests.Frames
                 new string[] {"0602517737280"}
             };
 
-            MP3File[] test = new MP3File[]
+            Mp3Tag[] test = new Mp3Tag[]
             {
-                new MP3File(_fileNameTLAN),
-                new MP3File(_fileNameTSRC)
+                new Mp3Tag(_fileNameTLAN),
+                new Mp3Tag(_fileNameTSRC)
             };
 
             Assert.AreEqual(expDescription.Length, test.Length);

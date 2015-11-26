@@ -15,7 +15,7 @@ namespace id3v2Tests.Frames
         {
             string[] expValue = new string[] {@"http://www.jamendo.com"};
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue.Length, test.Id3v2.UrlFrames.WCOM.Length);
             for (int i = 0; i < expValue.Length; i++)
@@ -29,7 +29,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"http://creativecommons.org/licenses/by-sa/3.0/";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.UrlFrames.WCOP.Link);
         }
@@ -39,7 +39,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"http://www.jamendo.com/en/track/108579";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.UrlFrames.WOAF.Link);
         }
@@ -49,7 +49,7 @@ namespace id3v2Tests.Frames
         {
             string[] expValue = new string[] { @"http://www.jamendo.com/en/artist/The_Phase" };
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue.Length, test.Id3v2.UrlFrames.WOAR.Length);
             for (int i = 0; i < expValue.Length; i++)
@@ -63,7 +63,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"http://www.jamendo.com/en/album/13125";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.UrlFrames.WOAS.Link);
         }
@@ -73,7 +73,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = @"http://www.jamendo.com";
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expValue, test.Id3v2.UrlFrames.WPUB.Link);
         }
@@ -92,10 +92,10 @@ namespace id3v2Tests.Frames
                 new string[] { @"http://www.exiliaweb.com/" }
             };
 
-            MP3File[] test = new MP3File[]
+            Mp3Tag[] test = new Mp3Tag[]
             {
-                new MP3File(_fileNameTIT1),
-                new MP3File(_fileNameTLAN)
+                new Mp3Tag(_fileNameTIT1),
+                new Mp3Tag(_fileNameTLAN)
             };
 
             Assert.AreEqual(expDescription.Length, test.Length);

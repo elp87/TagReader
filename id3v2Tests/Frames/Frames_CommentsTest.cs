@@ -20,7 +20,7 @@ namespace id3v2Tests.Frames
                 "Attribution-Share Alike 3.0", "http://www.jamendo.com Attribution-Share Alike 3.0"
             };
 
-            MP3File test = new MP3File(_fileNameTENC);
+            Mp3Tag test = new Mp3Tag(_fileNameTENC);
 
             Assert.AreEqual(expDescription.Length, test.Id3v2.COMM.Length);
 

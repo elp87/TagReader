@@ -22,7 +22,7 @@ namespace id3v2Tests.Frames
         {
             int expValue = 35;
 
-            MP3File test = new MP3File(_fileNameTBPM);
+            Mp3Tag test = new Mp3Tag(_fileNameTBPM);
 
             Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TBPM.Number);
         }
@@ -32,7 +32,7 @@ namespace id3v2Tests.Frames
         {
             int expValue = 335908;
 
-            MP3File test = new MP3File(_fileNameTOAL);
+            Mp3Tag test = new Mp3Tag(_fileNameTOAL);
 
             Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TLEN.Number);
         }
@@ -42,7 +42,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "Dbm";
 
-            MP3File test = new MP3File(_fileNameTKEY);
+            Mp3Tag test = new Mp3Tag(_fileNameTKEY);
 
             Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TKEY.ToString());
         }
@@ -52,7 +52,7 @@ namespace id3v2Tests.Frames
         {
             string expValue = "eng";
 
-            MP3File test = new MP3File(_fileNameTLAN);
+            Mp3Tag test = new Mp3Tag(_fileNameTLAN);
 
             Assert.AreEqual(expValue, test.Id3v2.DeliveredFrames.TLAN.ToString());
         }
@@ -65,16 +65,16 @@ namespace id3v2Tests.Frames
                 "MetalCore", "Other", "Other", "255", "Post-rock", "Metal", "Power Metal", "Thrash Metal"
             };
 
-            MP3File[] test = new MP3File[]
+            Mp3Tag[] test = new Mp3Tag[]
             {
-                new MP3File(_fileNameIntro),
-                new MP3File(_fileNameSample),
-                new MP3File(_fileNameTBPM),
-                new MP3File(_fileNameTENC),
-                new MP3File(_fileNameTIT1),
-                new MP3File(_fileNameTLAN),
-                new MP3File(_fileNameTOAL),
-                new MP3File(_fileNameTSRC)
+                new Mp3Tag(_fileNameIntro),
+                new Mp3Tag(_fileNameSample),
+                new Mp3Tag(_fileNameTBPM),
+                new Mp3Tag(_fileNameTENC),
+                new Mp3Tag(_fileNameTIT1),
+                new Mp3Tag(_fileNameTLAN),
+                new Mp3Tag(_fileNameTOAL),
+                new Mp3Tag(_fileNameTSRC)
             };
 
             Assert.AreEqual(expValue.Length, test.Length);
@@ -89,10 +89,10 @@ namespace id3v2Tests.Frames
         {
             string[] expValue = new string[] { "CD (Lossless)", "CD (CD)" };
 
-            MP3File[] test = new MP3File[] 
+            Mp3Tag[] test = new Mp3Tag[] 
             {
-                new MP3File(_fileNameTLAN),
-                new MP3File(_fileNameTOAL),
+                new Mp3Tag(_fileNameTLAN),
+                new Mp3Tag(_fileNameTOAL),
             };
 
             Assert.AreEqual(expValue.Length, test.Length);

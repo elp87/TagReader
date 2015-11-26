@@ -12,7 +12,7 @@ namespace id3v2Tests
         [TestMethod]
         public void TestGetTagArray()
         {            
-            MP3File testFile = new MP3File(filename0);
+            Mp3Tag testFile = new Mp3Tag(filename0);
 
             int expLength = 25;
             byte[] expArray = new byte[] {
@@ -29,11 +29,11 @@ namespace id3v2Tests
         {
             int[] expValue = new int[] {16743, 28524731, 0};
             
-            MP3File[] testFile = new MP3File[]
+            Mp3Tag[] testFile = new Mp3Tag[]
                 {
-                    new MP3File(filename0),
-                    new MP3File(filename1),
-                    new MP3File()
+                    new Mp3Tag(filename0),
+                    new Mp3Tag(filename1),
+                    new Mp3Tag()
 
                 };
             Assert.AreEqual(expValue.Length, testFile.Length);
@@ -48,7 +48,7 @@ namespace id3v2Tests
         {
             string expValue = "";
 
-            MP3File test = new MP3File();
+            Mp3Tag test = new Mp3Tag();
 
             Assert.AreEqual(expValue, test.Filename);
         }
