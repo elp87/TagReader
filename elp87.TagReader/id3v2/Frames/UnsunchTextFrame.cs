@@ -81,6 +81,7 @@ namespace elp87.TagReader.id3v2.Frames
                 position = Array.IndexOf(frameData, termByte);
             }
 
+            if (frameData.Length == 1) return 0; // Bugfix: empty COMM or USLT frame
             while (frameData[position + 1] == 0x00) { position++; }
             return position;
         } 
